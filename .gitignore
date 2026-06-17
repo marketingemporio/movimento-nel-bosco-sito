@@ -1,2 +1,5 @@
 .DS_Store
 .netlify/
+
+# Claude Code (impostazioni locali per-macchina)
+.claude/
