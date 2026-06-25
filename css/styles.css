@@ -9,17 +9,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* --- Palette ver.2 (PROVVISORIA, da confermare con Beamlight) --- */
-  --viola:       #6E1E8E;  /* viola primario */
-  --viola-scuro: #4A1463;  /* viola profondo */
-  --melanzana:   #2B1A2E;  /* testo scuro / quasi nero */
-  --violetto:    #7C5CD8;  /* viola medio */
-  --periwinkle:  #8194E8;  /* azzurro-viola */
-  --lilla:       #D9A9F2;  /* lilla chiaro */
-  --lilla-tenue: #EEDDFA;  /* lilla pastello */
-  --lime:        #8BC53F;  /* verde lime accento */
-  --ambra:       #FBB034;  /* giallo/ambra accento */
-  --panna:       #F7F5F0;  /* off-white */
+  /* --- Palette ufficiale Beamlight (Brand DEF) --- */
+  --viola:       #601d7d;  /* viola primario */
+  --viola-scuro: #2e0644;  /* viola profondo (logo) */
+  --melanzana:   #33252d;  /* testo scuro */
+  --violetto:    #826fc5;  /* viola medio */
+  --periwinkle:  #889be2;  /* azzurro-viola */
+  --lilla:       #d1b4ed;  /* lilla chiaro */
+  --lilla-tenue: #efe6fb;  /* lilla pastello (tint) */
+  --lime:        #9dbf43;  /* verde lime accento */
+  --ambra:       #f2ac20;  /* giallo/ambra accento */
+  --panna:       #faf8f5;  /* off-white */
   --bianco:      #FFFFFF;
 
   --font-title: 'Rubik', system-ui, sans-serif;
@@ -74,6 +74,8 @@ p  { margin: 0 0 1rem; }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 0; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand .logo { width: 42px; height: 52px; flex: none; }
+.brand .logo-full { height: 42px; width: auto; display: block; }
+.logo-footer { height: 52px; }
 .brand .wordmark { font-family: var(--font-title); font-weight: 700; font-size: 1.18rem; color: var(--viola-scuro); line-height: 1; }
 .brand .wordmark span { display: block; font-size: .82rem; font-weight: 500; color: var(--violetto); }
 .nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-family: var(--font-title); font-weight: 500; font-size: .96rem; }
