@@ -23,6 +23,7 @@
         <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
+        <li><a href="eventi.html">Eventi</a></li>
       </ul></nav>
       <div class="nav-cta"><a class="btn btn-primary" href="prenota.html">Prenota</a></div>
     </div>
@@ -42,15 +43,76 @@
     </div>
   </section>
 
-  <!-- Palinsesto unico -->
-  <section class="section">
+  <!-- Palinsesto settimanale -->
+  <section class="section" id="palinsesto">
     <div class="container">
-      <div class="center"><p class="eyebrow">Palinsesto delle classi</p><h2>Orari 2026</h2>
-      <p class="lead">Di seguito gli orari proposti per il prossimo anno accademico 2025/2026. Le lezioni coprono tutta la settimana.</p></div>
-      <picture>
-        <source media="(max-width:760px)" srcset="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/orari_complessivi_2026_vericale.png">
-        <img class="media-full" style="margin-top:30px" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/orari_complessivi_2026.png" alt="Palinsesto completo dei corsi 2026 — Yoga, Pilates e Meditazione">
-      </picture>
+      <div class="center"><p class="eyebrow">Palinsesto delle classi</p><h2>Orari delle lezioni</h2>
+      <p class="lead">Di seguito gli orari proposti per l'anno accademico 2025/2026. Le lezioni coprono tutta la settimana, dal mattino presto alla sera.</p></div>
+
+      <ul class="legenda">
+        <li><span class="dot d-yoga"></span> Vinyasa Yoga</li>
+        <li><span class="dot d-pilates"></span> Pilates</li>
+        <li><span class="dot d-medita"></span> Meditazione</li>
+        <li><span class="dot d-grav"></span> Yoga in Gravidanza</li>
+        <li><span class="dot d-mamma"></span> Mamma e Bimbo</li>
+      </ul>
+
+      <div class="timetable">
+        <div class="tt-day">
+          <h3 class="tt-dayname">Lunedì</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-pilates"><span class="tt-time">13:00</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-medita"><span class="tt-time">17:00</span><span class="tt-name">Meditazione</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">19:00</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">20:15</span><span class="tt-name">Vinyasa Yoga</span></li>
+          </ul>
+        </div>
+        <div class="tt-day">
+          <h3 class="tt-dayname">Martedì</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-yoga"><span class="tt-time">9:30</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-grav"><span class="tt-time">11:00</span><span class="tt-name">Yoga in Gravidanza</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">13:00</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-pilates"><span class="tt-time">16:30</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-pilates"><span class="tt-time">17:45</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-pilates"><span class="tt-time">19:00</span><span class="tt-name">Pilates</span></li>
+          </ul>
+        </div>
+        <div class="tt-day">
+          <h3 class="tt-dayname">Mercoledì</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-pilates"><span class="tt-time">10:00</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">19:00</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">20:15</span><span class="tt-name">Vinyasa Yoga</span></li>
+          </ul>
+        </div>
+        <div class="tt-day">
+          <h3 class="tt-dayname">Giovedì</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-yoga"><span class="tt-time">7:30</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-mamma"><span class="tt-time">9:00</span><span class="tt-name">Mamma e Bimbo</span></li>
+          </ul>
+        </div>
+        <div class="tt-day">
+          <h3 class="tt-dayname">Venerdì</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-pilates"><span class="tt-time">13:00</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-grav"><span class="tt-time">15:30</span><span class="tt-name">Yoga in Gravidanza</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">17:00</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-yoga"><span class="tt-time">18:15</span><span class="tt-name">Vinyasa Yoga</span></li>
+          </ul>
+        </div>
+        <div class="tt-day">
+          <h3 class="tt-dayname">Sabato</h3>
+          <ul class="tt-slots">
+            <li class="tt-slot d-yoga"><span class="tt-time">8:30</span><span class="tt-name">Vinyasa Yoga</span></li>
+            <li class="tt-slot d-pilates"><span class="tt-time">10:00</span><span class="tt-name">Pilates</span></li>
+            <li class="tt-slot d-pilates"><span class="tt-time">11:15</span><span class="tt-name">Pilates</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="center" style="margin-top:26px;font-size:.92rem;color:#6b6470">Gli orari possono subire variazioni stagionali. Prenota il tuo posto dall'applicazione per avere sempre il calendario aggiornato.</p>
     </div>
   </section>
 
@@ -95,15 +157,15 @@
         <div><h4>Info</h4><ul>
           <li><a href="orari.html">Orari</a></li>
           <li><a href="abbonamenti.html">Abbonamenti</a></li>
+          <li><a href="eventi.html">Eventi</a></li>
           <li><a href="regolamento.html">Regolamento</a></li>
           <li><a href="prenota.html">Prenota lezione</a></li>
           <li><a href="laura-albertini.html">Insegnanti</a></li>
         </ul></div>
       </div>
-      <div class="footer-bottom"><span>© Movimento nel Bosco — una realtà di Emporio nel Bosco</span><span>Brescia · Mompiano</span></div>
+      <div class="footer-bottom"><span>© Movimento nel Bosco — progetto nato da Emporio nel Bosco</span><span>Brescia · Mompiano</span></div>
     </div>
   </footer>
-  <div class="wip">⚙️ Anteprima — palette &amp; logo provvisori (in attesa asset Beamlight)</div>
 
 </body>
 </html>

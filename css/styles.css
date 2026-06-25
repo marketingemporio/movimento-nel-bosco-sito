@@ -161,8 +161,6 @@ p  { margin: 0 0 1rem; }
 .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.15); font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
 
-/* badge "provvisorio" */
-.wip { position: fixed; bottom: 14px; right: 14px; z-index: 99; background: var(--ambra); color: var(--melanzana); font-family: var(--font-title); font-weight: 600; font-size: .8rem; padding: 8px 14px; border-radius: 999px; box-shadow: var(--shadow-sm); }
 
 /* =========== PAGINE INTERNE =========== */
 .page-hero { background: linear-gradient(120deg, var(--viola-scuro) 0%, var(--viola) 58%, var(--violetto) 100%); color: #fff; }
@@ -208,6 +206,32 @@ p  { margin: 0 0 1rem; }
 .schedule { width: 100%; border-collapse: collapse; margin-top: 22px; background: #fff; border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); }
 .schedule th, .schedule td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--lilla-tenue); font-size: .96rem; }
 .schedule th { background: var(--lilla-tenue); font-family: var(--font-title); }
+
+/* --- Palinsesto settimanale (timetable) --- */
+.legenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; margin: 30px 0 0; padding: 0; list-style: none; font-family: var(--font-title); font-weight: 500; font-size: .92rem; }
+.legenda li { display: flex; align-items: center; gap: 9px; }
+.dot { width: 13px; height: 13px; border-radius: 50%; flex: none; }
+.dot.d-yoga    { background: var(--viola); }
+.dot.d-pilates { background: var(--lime); }
+.dot.d-medita  { background: var(--melanzana); }
+.dot.d-grav    { background: var(--violetto); }
+.dot.d-mamma   { background: var(--ambra); }
+
+.timetable { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 34px; align-items: start; }
+.tt-day { background: var(--panna); border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); overflow: hidden; }
+.tt-dayname { margin: 0; background: var(--viola); color: #fff; font-family: var(--font-title); font-weight: 600; text-align: center; padding: 12px 8px; font-size: .98rem; letter-spacing: .04em; }
+.tt-slots { list-style: none; margin: 0; padding: 10px; display: grid; gap: 8px; }
+.tt-slot { background: #fff; border: 1px solid var(--lilla-tenue); border-left: 4px solid var(--violetto); border-radius: 11px; padding: 9px 11px; }
+.tt-slot.d-yoga    { border-left-color: var(--viola); }
+.tt-slot.d-pilates { border-left-color: var(--lime); }
+.tt-slot.d-medita  { border-left-color: var(--melanzana); }
+.tt-slot.d-grav    { border-left-color: var(--violetto); }
+.tt-slot.d-mamma   { border-left-color: var(--ambra); }
+.tt-time { display: block; font-family: var(--font-title); font-weight: 700; color: var(--melanzana); font-size: 1rem; line-height: 1.2; }
+.tt-name { display: block; font-size: .82rem; color: #6b6470; }
+.tt-empty { padding: 14px 11px; font-size: .85rem; color: #b3aab6; font-style: italic; }
+@media (max-width: 920px) { .timetable { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .timetable { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
 
 /* recensioni */
 .review { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }

@@ -20,6 +20,9 @@
 | `prenota.html` | `prenota-lezione` | — (→ app) |
 | `laura-albertini.html` | `laura-albertini` | — |
 | `camilla-rossini.html` | `camilla-rossini` | — |
+| `eventi.html` (hub Eventi) | — (nuova, hub) | — |
+| `bagno-sonoro.html` | `bagno-sonoro-handpan-brescia` | — |
+| `viaggio-oli-essenziali.html` | `viaggio-con-oli-essenziali` | — |
 
 ## Prodotti abbonamento (prezzi reali Shopify)
 - **Yoga** (`yoga-abbonamento`): 1=17€, 4=64€, 12=167€, Open=275€ (include Pilates), Lezione privata=45€, Estivo 5=75€, Estivo 10=145€
@@ -36,7 +39,10 @@
 - **gravidanza**: hero `...b87659c6...jpg` · sezione dolce `...57f3543d...jpg`
 - **mamma-e-bimbo**: hero `yoga_mammabimbo_banner.jpg` · sezione `mamma_bimbo_yoga.jpg`
 - **meditazione**: hero `MeditazioneChakra.jpg` · 7° chakra `Campo_lavanda.jpg` · Camilla `Consulenza_con_Camilla.jpg`
-- **orari**: hero `...0c95a512...jpg` · **palinsesto** `orari_complessivi_2026.png` (+ `orari_complessivi_2026_vericale.png` su mobile)
+- **orari**: hero `...0c95a512...jpg` · **palinsesto ora in HTML** (griglia `.timetable`, niente immagine; le vecchie `orari_complessivi_2026*.png` non sono più usate ma restano sulla CDN)
+- **eventi** (hub): hero `giardino_di_manipura.jpg` · card `handpan_nel_parco_1.jpg` / `...f3ccbecc...jpg` / `...51f6c4eb...png` · yoga aperto `peschi_calina_temp.jpg`
+- **bagno-sonoro**: hero `handpan_nel_parco_1.jpg` · `...cb181f76...png` (handpan) · `...0c398a22...jpg` (savasana+handpan)
+- **viaggio-oli-essenziali**: hero `...f3ccbecc...jpg` (strada d'autunno) · Laura `...58e35d12...jpg` · oli `essential_oils.jpg`
 - **abbonamenti**: hero `...0c95a512...jpg` · `Calendario_Corsi_Documento_A4.jpg`
 - **regolamento**: hero `essential_oils.jpg`
 - **prenota**: hero `...0c95a512...jpg`

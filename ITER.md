@@ -18,21 +18,26 @@ Risultato = **sito + app**.
 - **Indirizzo**: **Via Fontane 32, 25133 Brescia (Mompiano)** ovunque.
 - **Insegnanti**: Sara Silvestrini **non c'è più** → la **Meditazione** è di **Camilla Rossini** (che fa anche Pilates). **Laura Albertini**: Yoga, Gravidanza, Mamma e Bimbo, Aromaterapia.
 
-## 🏗️ Cosa è fatto (12 pagine complete)
+## 🏗️ Cosa è fatto (15 pagine complete)
 `index.html` (HOME/hub) · `yoga.html` · `pilates.html` · `gravidanza.html` · `mamma-e-bimbo.html` ·
 `meditazione.html` · `orari.html` · `abbonamenti.html` · `regolamento.html` · `prenota.html` ·
-`laura-albertini.html` · `camilla-rossini.html`.
+`laura-albertini.html` · `camilla-rossini.html` ·
+**`eventi.html`** (hub Eventi) · **`bagno-sonoro.html`** · **`viaggio-oli-essenziali.html`**.
 - Testo **fedele** dagli export GemPages (in `Pagine gempages/`).
 - **Immagini reali** dalla CDN Shopify, posizionate pagina per pagina (mappa in [`PAGINE.md`](PAGINE.md)).
 - **Logo + favicon + palette ufficiali** (Beamlight). CSS condiviso in `css/styles.css` (token colore nel blocco `:root`).
-- Orari = **un solo palinsesto** (immagine `orari_complessivi_2026.png`).
+- **Orari = palinsesto in HTML/CSS** (griglia settimanale `.timetable` + legenda in `orari.html`, stili in `css/styles.css`). NON è più un'immagine: per cambiare gli orari si edita direttamente la griglia in `orari.html` (dati trascritti dall'immagine `orari_complessivi_2026.png`).
+- **Sezione Eventi**: voce "Eventi" in nav e footer di tutte le pagine; hub `eventi.html` con i due eventi nuovi (testi fedeli all'export) + rimando agli eventi di yoga all'aperto (`yoga.html#eventi-yoga`).
+- **Fix (2026-06-25)**: l'hero di `yoga.html` era un'immagine cancellata da Shopify (404) → sostituita con `ea2c0925` (la "rituale" è passata a `c4e7099f`).
 
 ## ⏳ Punti aperti / prossimi passi
-1. **Form Tally** "richiedi prova": nell'originale erano embed Tally → ora i CTA puntano a `prenota.html` / WhatsApp / mail. Se servono i form veri, serve il link/ID Tally.
-2. **Pagine eventi parcheggiate** (export presenti, NON costruite): *Bagno Sonoro con Handpan*, *Viaggio con Oli Essenziali*. Da rivalutare.
-3. **Palinsesto**: ora è l'immagine complessiva; se cambiano gli orari va aggiornata l'immagine.
-4. **Deploy** (GitHub → Netlify) e **dominio** (`movimentonelbosco.it`): solo quando concordato. **NON deployare** senza ok.
-5. Eventuale rifinitura abbinamento foto↔sezione (alcune scelte sono ragionevoli ma migliorabili).
+1. **Form Tally** "richiedi prova": nell'originale erano embed Tally → per ora i CTA puntano a `prenota.html`. Michele li **riaggancerà** lui (servono link/ID Tally). Lasciati così di proposito.
+2. ~~Pagine eventi parcheggiate~~ → **FATTE (2026-06-25)**: `bagno-sonoro.html` e `viaggio-oli-essenziali.html`, raccolte nell'hub `eventi.html`. (L'export "Sessioni di Meditazione" era invece la pagina meditazione, già esistente.)
+3. ~~Palinsesto immagine~~ → **ricostruito in HTML (2026-06-25)** in `orari.html`. Per modifiche orari: editare la griglia `.timetable` lì (non più un'immagine).
+4. **Indirizzo eventi**: nell'export del Bagno Sonoro compariva "Via Fermi 2, Brescia" → ho usato l'indirizzo standard **Via Fontane 32 (Mompiano)** per coerenza. ⚠️ Da confermare se le serate si tengono altrove.
+5. **Banner "Anteprima — palette & logo provvisori"** (classe `.wip`): è rimasto sulle 12 pagine vecchie ma ora è **falso** (il brand Beamlight è applicato). Da rimuovere quando si vuole. Le 3 pagine nuove non ce l'hanno.
+6. **Deploy** (GitHub → Netlify) e **dominio** (`movimentonelbosco.it`): solo quando concordato. **NON deployare** senza ok.
+7. Eventuale rifinitura abbinamento foto↔sezione (alcune scelte sono ragionevoli ma migliorabili).
 
 ## 🧭 Come riprendere in una nuova chat
 1. Apri `index.html` nel browser e naviga (tutti i link interni funzionano).
