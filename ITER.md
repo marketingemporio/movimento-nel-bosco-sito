@@ -30,6 +30,7 @@ Risultato = **sito + app**.
 - **Orari = palinsesto in HTML/CSS** (griglia settimanale `.timetable` + legenda in `orari.html`, stili in `css/styles.css`). NON è più un'immagine: per cambiare gli orari si edita direttamente la griglia in `orari.html` (dati trascritti dall'immagine `orari_complessivi_2026.png`).
 - **Sezione Eventi**: voce "Eventi" in nav e footer di tutte le pagine; hub `eventi.html` con i due eventi nuovi (testi fedeli all'export) + rimando agli eventi di yoga all'aperto (`yoga.html#eventi-yoga`).
 - **Fix (2026-06-25)**: l'hero di `yoga.html` era un'immagine cancellata da Shopify (404) → sostituita con `ea2c0925` (la "rituale" è passata a `c4e7099f`).
+- **Menu mobile (2026-06-25)**: aggiunto **hamburger responsive** (compare sotto i 920px) su tutte le 15 pagine. Prima i link del menu sparivano in mobile/tablet senza alternativa (non c'era hamburger né JS). Ora: pulsante `.nav-toggle` nell'header, stili in `css/styles.css`, logica in **`js/nav.js`** (apre/chiude, icona ☰→✕, si chiude al clic su una voce o con Esc). Verificato con Chrome headless: menu apre su tutte le pagine, **zero overflow** da 1920px fino a 320px.
 
 ## ⏳ Punti aperti / prossimi passi
 1. **Form Tally** "richiedi prova": nell'originale erano embed Tally → per ora i CTA puntano a `prenota.html`. Michele li **riaggancerà** lui (servono link/ID Tally). Lasciati così di proposito.
@@ -39,6 +40,7 @@ Risultato = **sito + app**.
 5. ~~Banner "Anteprima — palette & logo provvisori"~~ → **rimosso (2026-06-25)** da tutte le pagine, insieme alla regola CSS `.wip`.
 6. **Deploy** (GitHub → Netlify) e **dominio** (`movimentonelbosco.it`): solo quando concordato. **NON deployare** senza ok.
 7. Eventuale rifinitura abbinamento foto↔sezione (alcune scelte sono ragionevoli ma migliorabili).
+8. ~~Analisi viewport completa~~ → **FATTA (2026-06-25)**: testate tutte le 15 pagine da 1920px a 320px (Chrome headless). Risultato: layout solido, **zero overflow e zero immagini rotte** ovunque; unico problema funzionale = menu mobile mancante → **risolto** (vedi "Menu mobile" sopra). Resta una **nota minore** non bloccante: i link di testo del footer in mobile sono alti ~20px (ideale ~44px per il tocco) — migliorabile quando si vuole.
 
 ## 🧭 Come riprendere in una nuova chat
 1. Anteprima locale: dalla cartella del sito lancia `python3 -m http.server 8000` → apri **http://localhost:8000** (oppure apri `index.html` col doppio clic).
