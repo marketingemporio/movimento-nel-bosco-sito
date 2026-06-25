@@ -161,3 +161,53 @@ p  { margin: 0 0 1rem; }
 
 /* badge "provvisorio" */
 .wip { position: fixed; bottom: 14px; right: 14px; z-index: 99; background: var(--ambra); color: var(--melanzana); font-family: var(--font-title); font-weight: 600; font-size: .8rem; padding: 8px 14px; border-radius: 999px; box-shadow: var(--shadow-sm); }
+
+/* =========== PAGINE INTERNE =========== */
+.page-hero { background: linear-gradient(120deg, var(--viola-scuro) 0%, var(--viola) 58%, var(--violetto) 100%); color: #fff; }
+.page-hero .container { padding-top: clamp(46px, 9vw, 96px); padding-bottom: clamp(46px, 9vw, 96px); }
+.page-hero h1 { color: #fff; max-width: 20ch; }
+.page-hero p { color: rgba(255,255,255,.92); max-width: 58ch; font-size: 1.12rem; }
+.page-hero .eyebrow { color: var(--ambra); }
+.page-hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.breadcrumb { font-family: var(--font-title); font-size: .82rem; color: rgba(255,255,255,.72); margin-bottom: 14px; }
+.breadcrumb a:hover { color: #fff; }
+
+.prose { max-width: 72ch; }
+.prose p { font-size: 1.05rem; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+/* prezzi */
+.pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; margin-top: 32px; }
+.price { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); padding: 24px; text-align: center; box-shadow: var(--shadow-sm); }
+.price .lab { font-family: var(--font-title); font-weight: 600; }
+.price .num { font-family: var(--font-title); font-weight: 800; font-size: 2rem; color: var(--viola); margin: 6px 0; }
+.price small { display: block; color: #6b6470; }
+.price.hl { background: var(--viola); color: #fff; border-color: var(--viola); }
+.price.hl .num, .price.hl small { color: #fff; }
+
+/* steps */
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 26px 0; display: grid; gap: 14px; max-width: 74ch; }
+.steps li { counter-increment: s; position: relative; padding: 18px 18px 18px 66px; background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); }
+.steps li::before { content: counter(s); position: absolute; left: 18px; top: 16px; width: 34px; height: 34px; border-radius: 50%; background: var(--viola); color: #fff; font-family: var(--font-title); font-weight: 700; display: grid; place-items: center; }
+
+/* tabella orari */
+.schedule { width: 100%; border-collapse: collapse; margin-top: 22px; background: #fff; border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); }
+.schedule th, .schedule td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--lilla-tenue); font-size: .96rem; }
+.schedule th { background: var(--lilla-tenue); font-family: var(--font-title); }
+
+/* recensioni */
+.review { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
+.review p { font-style: italic; }
+.review cite { font-style: normal; font-weight: 600; color: var(--violetto); }
+
+/* checklist */
+.checklist { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 10px; max-width: 68ch; }
+.checklist li { padding-left: 30px; position: relative; }
+.checklist li::before { content: "🌿"; position: absolute; left: 0; }
+
+/* eventi */
+.event { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); padding: 22px; box-shadow: var(--shadow-sm); }
+.event .when { font-family: var(--font-title); font-weight: 600; color: var(--lime); font-size: .85rem; }
+.event h3 { margin: 4px 0 8px; }
+.event p { font-size: .95rem; margin: 0; }
