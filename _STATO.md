@@ -1,4 +1,4 @@
-# ITER — Sito Movimento nel Bosco (memoria di progetto)
+# Movimento nel Bosco — STATO (leggimi per primo)
 
 > **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-25**.
 > Stato: **sito completo in anteprima locale, NON deployato online.**
