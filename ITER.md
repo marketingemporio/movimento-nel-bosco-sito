@@ -1,45 +1,46 @@
-# ITER — Sito Movimento nel Bosco (rebrand + migrazione da Emporio)
+# ITER — Sito Movimento nel Bosco (memoria di progetto)
 
-> Nota di handoff per riprendere il lavoro. Ultimo aggiornamento: **2026-06-24 (sera)**.
-> Stato: **WIP — TUTTE le pagine in scope migrate. Da valutare con Michele. NON deployato online.**
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-25**.
+> Stato: **sito completo in anteprima locale, NON deployato online.**
+> Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font) e [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini).
 
-## 🎯 Obiettivo
-Scorporare il mondo **Yoga / Pilates / Meditazione** dal sito Emporio nel Bosco (sezione *Corsi*, fatta in GemPages) e ricostruirlo come **sito con identità propria** del brand **Movimento nel Bosco**, collegato all'app esistente **Yoga nel Bosco**.
+## 🎯 Obiettivo del progetto
+Scorporare tutto il mondo **Yoga / Pilates / Meditazione** dal sito Emporio nel Bosco
+(dove vive nella sezione *Corsi*, costruita in GemPages) e ricostruirlo come **sito con
+identità propria** del brand **Movimento nel Bosco**, collegato all'app esistente **Yoga nel Bosco**.
+Risultato = **sito + app**.
 
 ## ✅ Decisioni prese (bloccate)
-- **Sito da zero** (vecchio prototipo React parcheggiato in `_vecchio-prototipo/`, non cancellato).
-- **Abbonamenti/acquisti restano sullo Shopify di Emporio**: il sito è la vetrina, i bottoni "Acquista" mandano al checkout Shopify; le prenotazioni vanno sull'app.
-- **Brand** (da `Movimento nel bosco brand_Rev.1.pdf`, Beamlight): **palette ver.2** (luminosa), **logo crocus ver.1** (gambo corposo), **font Rubik** (titoli) + **DM Sans** (testi).
-- **Insegnanti**: Sara Silvestrini **non c'è più** → la **Meditazione** è di **Camilla Rossini** (che fa anche Pilates). Laura Albertini: Yoga, Gravidanza, Mamma e Bimbo, Aromaterapia.
+- **Sito ricostruito da zero** (static HTML + CSS, no build, deployabile su Netlify). Il vecchio prototipo React è in `_vecchio-prototipo/` (preservato, non cancellare).
+- **Commerce**: abbonamenti/acquisti **restano sullo Shopify di Emporio** → i bottoni "Acquista" puntano ai prodotti `emporionelbosco.it/products/...`.
+- **Prenotazioni**: app **`https://movimentonelbosco.it/app`** (link nel bottone "Vai all'applicazione" di prenota.html).
+- **Brand ufficiale Beamlight** applicato (cartella `Brand DEF/`): logo, palette, font. Dettagli in [`BRAND.md`](BRAND.md).
+- **Indirizzo**: **Via Fontane 32, 25133 Brescia (Mompiano)** ovunque.
+- **Insegnanti**: Sara Silvestrini **non c'è più** → la **Meditazione** è di **Camilla Rossini** (che fa anche Pilates). **Laura Albertini**: Yoga, Gravidanza, Mamma e Bimbo, Aromaterapia.
 
-## 🏗️ Fatto — sito completo (12 pagine)
-Tutte costruite con `css/styles.css` condiviso, testo **fedele** dagli export GemPages:
-- `index.html` — **HOME** (dalla hub Corsi)
-- `yoga.html` · `pilates.html` · `gravidanza.html` · `mamma-e-bimbo.html` · `meditazione.html`
-- `orari.html` · `abbonamenti.html` (prezzi reali dai prodotti Shopify) · `regolamento.html` (6 punti integrali) · `prenota.html`
-- `laura-albertini.html` · `camilla-rossini.html`
+## 🏗️ Cosa è fatto (12 pagine complete)
+`index.html` (HOME/hub) · `yoga.html` · `pilates.html` · `gravidanza.html` · `mamma-e-bimbo.html` ·
+`meditazione.html` · `orari.html` · `abbonamenti.html` · `regolamento.html` · `prenota.html` ·
+`laura-albertini.html` · `camilla-rossini.html`.
+- Testo **fedele** dagli export GemPages (in `Pagine gempages/`).
+- **Immagini reali** dalla CDN Shopify, posizionate pagina per pagina (mappa in [`PAGINE.md`](PAGINE.md)).
+- **Logo + favicon + palette ufficiali** (Beamlight). CSS condiviso in `css/styles.css` (token colore nel blocco `:root`).
+- Orari = **un solo palinsesto** (immagine `orari_complessivi_2026.png`).
 
-## 📌 Parcheggiate (fuori scope, da rivalutare)
-- `Bagno Sonoro con Handpan` · `Viaggio con Oli Essenziali` (export presenti, non costruite).
+## ⏳ Punti aperti / prossimi passi
+1. **Form Tally** "richiedi prova": nell'originale erano embed Tally → ora i CTA puntano a `prenota.html` / WhatsApp / mail. Se servono i form veri, serve il link/ID Tally.
+2. **Pagine eventi parcheggiate** (export presenti, NON costruite): *Bagno Sonoro con Handpan*, *Viaggio con Oli Essenziali*. Da rivalutare.
+3. **Palinsesto**: ora è l'immagine complessiva; se cambiano gli orari va aggiornata l'immagine.
+4. **Deploy** (GitHub → Netlify) e **dominio** (`movimentonelbosco.it`): solo quando concordato. **NON deployare** senza ok.
+5. Eventuale rifinitura abbinamento foto↔sezione (alcune scelte sono ragionevoli ma migliorabili).
 
-## ⚠️ PUNTI APERTI da sciogliere con Michele
-1. **Indirizzo incoerente**: alcune pagine dicono **Via Fermi 2** (hub, mamma-bimbo, Regolamento §5), altre **Via Fontane 32** (yoga, pilates, gravidanza, meditazione). Ho uniformato a **Via Fontane 32** ovunque, TRANNE nel Regolamento dove ho lasciato il testo fedele (Via Fermi 2). → decidere quello giusto.
-2. **URL app "Yoga nel Bosco"**: in `prenota.html` il bottone "Vai all'applicazione" è un segnaposto `href="#"` → inserire il link reale.
-3. **Palinsesto Yoga e Gravidanza**: nell'export era un widget/immagine, non testo → in `orari.html` ho messo solo Pilates / Mamma e Bimbo / Meditazione (orari noti) + nota. Servono gli orari di Yoga/Gravidanza.
-4. **Form "Richiedi prova"**: nell'originale erano embed **Tally.so** → ora i CTA puntano a `prenota.html` / mail. Se servono i form, reinserire l'embed Tally.
-5. **Foto**: sono reali dal CDN Shopify ma l'abbinamento foto↔sezione è una mia scelta, da rifinire.
+## 🧭 Come riprendere in una nuova chat
+1. Apri `index.html` nel browser e naviga (tutti i link interni funzionano).
+2. Leggi questo file + `BRAND.md` + `PAGINE.md`.
+3. Gli export GemPages sorgente sono in `Pagine gempages/` (sono ZIP: dentro `1_<id>.json` con HTML; l'id combacia col template della pagina Shopify).
+4. Continua dai "Punti aperti".
 
-## ⏳ In attesa da Beamlight
-Logo ver.1 in **SVG**, **HEX esatti** palette ver.2, **pattern** crocus, **favicon** → sostituire i segnaposto (palette nel blocco `:root` di `css/styles.css`, logo = SVG inline nelle pagine).
-
-## ▶️ Come riprendere
-1. Apri `index.html` e naviga il sito (tutti i link interni funzionano).
-2. Valuta con Michele; correggi i 5 punti aperti qui sopra.
-3. Sostituisci asset provvisori con quelli Beamlight.
-4. Collega CTA acquisto → prodotti Shopify (già fatto sulle pagine principali) e prenotazione → app.
-5. **Deploy** (GitHub + Netlify) e dominio — solo quando concordato.
-
-## 🚫 Note importanti
-- **Non deployare** finché Michele non dà l'ok. Lo stato dell'arte è pushato sulla branch **`rebrand-movimento`** (non `main`; Netlify è collegato a questo repo).
-- Repo GitHub: `marketingemporio/movimento-nel-bosco-sito`.
-- Export GemPages sorgente in `Pagine gempages/`.
+## 🗂️ Repo / git
+- Repo GitHub: **`marketingemporio/movimento-nel-bosco-sito`**
+- Branch di lavoro: **`rebrand-movimento`** (lo stato dell'arte è qui; `main` è collegato a Netlify → non pushare lì finché non si vuole pubblicare).
+- Netlify `siteId` in `.netlify/state.json` (collegato, ma nessun deploy automatico attivato da noi).
