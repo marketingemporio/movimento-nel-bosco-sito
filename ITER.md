@@ -15,8 +15,9 @@ Risultato = **sito + app**.
 - **Commerce**: abbonamenti/acquisti **restano sullo Shopify di Emporio** → i bottoni "Acquista" puntano ai prodotti `emporionelbosco.it/products/...`.
 - **Prenotazioni**: app **`https://movimentonelbosco.it/app`** (link nel bottone "Vai all'applicazione" di prenota.html).
 - **Brand ufficiale Beamlight** applicato (cartella `Brand DEF/`): logo, palette, font. Dettagli in [`BRAND.md`](BRAND.md).
-- **Indirizzo**: **Via Fontane 32, 25133 Brescia (Mompiano)** ovunque.
+- **Indirizzo**: **Via Fontane 32, 25133 Brescia (Mompiano)** ovunque (anche per gli eventi).
 - **Insegnanti**: Sara Silvestrini **non c'è più** → la **Meditazione** è di **Camilla Rossini** (che fa anche Pilates). **Laura Albertini**: Yoga, Gravidanza, Mamma e Bimbo, Aromaterapia.
+- **Posizionamento brand**: claim hero della home = **"a Mompiano dal 2024"** (Movimento nel Bosco ha identità propria dal 2024); footer = **"progetto nato da Emporio nel Bosco"** (non "una realtà di").
 
 ## 🏗️ Cosa è fatto (15 pagine complete)
 `index.html` (HOME/hub) · `yoga.html` · `pilates.html` · `gravidanza.html` · `mamma-e-bimbo.html` ·
@@ -34,13 +35,13 @@ Risultato = **sito + app**.
 1. **Form Tally** "richiedi prova": nell'originale erano embed Tally → per ora i CTA puntano a `prenota.html`. Michele li **riaggancerà** lui (servono link/ID Tally). Lasciati così di proposito.
 2. ~~Pagine eventi parcheggiate~~ → **FATTE (2026-06-25)**: `bagno-sonoro.html` e `viaggio-oli-essenziali.html`, raccolte nell'hub `eventi.html`. (L'export "Sessioni di Meditazione" era invece la pagina meditazione, già esistente.)
 3. ~~Palinsesto immagine~~ → **ricostruito in HTML (2026-06-25)** in `orari.html`. Per modifiche orari: editare la griglia `.timetable` lì (non più un'immagine).
-4. **Indirizzo eventi**: nell'export del Bagno Sonoro compariva "Via Fermi 2, Brescia" → ho usato l'indirizzo standard **Via Fontane 32 (Mompiano)** per coerenza. ⚠️ Da confermare se le serate si tengono altrove.
-5. **Banner "Anteprima — palette & logo provvisori"** (classe `.wip`): è rimasto sulle 12 pagine vecchie ma ora è **falso** (il brand Beamlight è applicato). Da rimuovere quando si vuole. Le 3 pagine nuove non ce l'hanno.
+4. ~~Indirizzo eventi~~ → **risolto (2026-06-25)**: sempre **Via Fontane 32 (Mompiano)**, confermato da Michele (l'export Bagno Sonoro riportava "Via Fermi 2", non usato).
+5. ~~Banner "Anteprima — palette & logo provvisori"~~ → **rimosso (2026-06-25)** da tutte le pagine, insieme alla regola CSS `.wip`.
 6. **Deploy** (GitHub → Netlify) e **dominio** (`movimentonelbosco.it`): solo quando concordato. **NON deployare** senza ok.
 7. Eventuale rifinitura abbinamento foto↔sezione (alcune scelte sono ragionevoli ma migliorabili).
 
 ## 🧭 Come riprendere in una nuova chat
-1. Apri `index.html` nel browser e naviga (tutti i link interni funzionano).
+1. Anteprima locale: dalla cartella del sito lancia `python3 -m http.server 8000` → apri **http://localhost:8000** (oppure apri `index.html` col doppio clic).
 2. Leggi questo file + `BRAND.md` + `PAGINE.md`.
 3. Gli export GemPages sorgente sono in `Pagine gempages/` (sono ZIP: dentro `1_<id>.json` con HTML; l'id combacia col template della pagina Shopify).
 4. Continua dai "Punti aperti".
