@@ -1,0 +1,6 @@
+# Configurazione Netlify per Movimento nel Bosco (sito statico in radice).
+# Le Netlify Functions (es. la mail di conferma ordine) stanno in netlify/functions.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"

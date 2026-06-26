@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abbonamenti e Pacchetti | Movimento nel Bosco</title>
-  <meta name="description" content="Scegli il tuo abbonamento ai corsi di Yoga, Pilates e Meditazione a Brescia. Filtra per disciplina, scegli il pacchetto e completa con bonifico o pagamento in sede.">
+  <title>Cassa | Movimento nel Bosco</title>
+  <meta name="description" content="Completa il tuo ordine: scegli come pagare (bonifico o in sede) e ricevi la conferma via email.">
+  <meta name="robots" content="noindex">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -29,52 +30,52 @@
     </div>
   </header>
 
-  <section class="page-hero has-img">
-    <img class="hero-bg" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Corsi Movimento nel Bosco">
-    <div class="container">
-      <p class="breadcrumb"><a href="index.html">Home</a> / Abbonamenti</p>
-      <p class="eyebrow">I nostri abbonamenti</p>
-      <h1>Scegli il tuo abbonamento</h1>
-      <p>Filtra per disciplina, scegli il pacchetto e vai alla cassa. Nessun pagamento online: completi con <strong>bonifico</strong> o <strong>in sede</strong> alla prima lezione. Le classi sono a numero limitato.</p>
-    </div>
-  </section>
-
-  <!-- Come funziona -->
   <section class="section">
-    <div class="container">
-      <div class="shop-steps">
-        <div><span class="shop-step-n">1</span><p>Scegli l'abbonamento e vai alla cassa.</p></div>
-        <div><span class="shop-step-n">2</span><p>Ricevi la conferma dell'ordine via email.</p></div>
-        <div><span class="shop-step-n">3</span><p>Paghi con <strong>bonifico</strong> o <strong>in sede</strong> alla prima lezione.</p></div>
-      </div>
-    </div>
-  </section>
+    <div class="container ck-wrap">
+      <p class="breadcrumb"><a href="abbonamenti.html">Abbonamenti</a> / Cassa</p>
+      <h1>Completa l'ordine</h1>
 
-  <!-- Catalogo -->
-  <section class="section tint-panna">
-    <div class="container">
-      <div class="center" style="margin-bottom:8px"><p class="eyebrow">Catalogo</p><h2>Trova il pacchetto giusto per te</h2></div>
-      <div class="shop-filters" aria-label="Filtra per disciplina">
-        <button class="chip is-active" type="button" data-f="all">Tutti</button>
-        <button class="chip" type="button" data-f="yoga">Yoga</button>
-        <button class="chip" type="button" data-f="pilates">Pilates</button>
-        <button class="chip" type="button" data-f="meditazione">Meditazione</button>
-        <button class="chip" type="button" data-f="gravidanza">Gravidanza</button>
-        <button class="chip" type="button" data-f="mamma">Mamma e Bimbo</button>
-        <button class="chip" type="button" data-f="open">Open</button>
-      </div>
-      <div id="shop-grid" class="shop-grid"></div>
-      <noscript><p class="center" style="margin-top:20px">Per vedere il catalogo attiva JavaScript, oppure <a href="prova-gratuita.html#contatti">scrivici</a> e ti aiutiamo noi.</p></noscript>
-    </div>
-  </section>
+      <div class="ck-grid">
+        <!-- Riepilogo -->
+        <aside class="ck-card">
+          <h2>Il tuo ordine</h2>
+          <div id="ck-summary"><p>Caricamento…</p></div>
+          <p class="ck-pay-note">Nessun pagamento online. Dopo l'ordine ti inviamo la conferma via email e completi con <strong>bonifico</strong> o <strong>in sede</strong> alla prima lezione.</p>
+          <p><a class="more" href="abbonamenti.html">← Cambia abbonamento</a></p>
+        </aside>
 
-  <!-- CTA -->
-  <section class="section cta-band">
-    <div class="container">
-      <p class="eyebrow" style="color:#fff">Non sai quale scegliere?</p>
-      <h2>Vieni a provare, è gratis</h2>
-      <p>La prima lezione è gratuita: provi e poi scegli con calma l'abbonamento più adatto a te.</p>
-      <p style="margin-top:20px"><a class="btn btn-accent" href="prova-gratuita.html">Richiedi la prova gratuita</a></p>
+        <!-- Form ordine (Netlify Forms) -->
+        <form id="ck-form" class="ck-card" name="ordine-abbonamento" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie.html">
+          <input type="hidden" name="form-name" value="ordine-abbonamento">
+          <p hidden><label>Non compilare: <input name="bot-field"></label></p>
+          <input type="hidden" name="abbonamento" value="">
+          <input type="hidden" name="prezzo" value="">
+
+          <h2>I tuoi dati</h2>
+          <label>Nome e cognome
+            <input type="text" name="nome" required autocomplete="name">
+          </label>
+          <label>Email
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+          <label>Telefono
+            <input type="tel" name="telefono" autocomplete="tel">
+          </label>
+
+          <fieldset class="ck-pay">
+            <legend>Come vuoi pagare?</legend>
+            <label class="ck-radio"><input type="radio" name="metodo_pagamento" value="Bonifico bancario" checked> Bonifico bancario <small>(ti inviamo i dati via email)</small></label>
+            <label class="ck-radio"><input type="radio" name="metodo_pagamento" value="In sede"> In sede <small>(alla prima lezione)</small></label>
+          </fieldset>
+
+          <label>Note (facoltative)
+            <textarea name="note" rows="3" placeholder="Es. disciplina che ti interessa, giorni preferiti…"></textarea>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Invia l'ordine</button>
+          <p class="ck-privacy">Inviando confermi di voler essere ricontattato per completare l'iscrizione. I tuoi dati sono usati solo per gestire l'ordine.</p>
+        </form>
+      </div>
     </div>
   </section>
 
