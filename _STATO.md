@@ -21,7 +21,7 @@ Risultato = **sito + app**.
 - **Posizionamento brand**: claim hero home = **"a Mompiano dal 2024"**; footer = **"progetto nato da Emporio nel Bosco"**.
 
 ## 🛒 E-commerce abbonamenti (NUOVO 2026-06-26) — come funziona
-- **`abbonamenti.html`** = **catalogo** in stile shop: **card compatte** + **filtri per disciplina** (Tutti/Yoga/Pilates/Meditazione/Gravidanza/Mamma e Bimbo/Open), niente più lista lunga di blocchi. L'**Open (275€)** è **in fondo**, full-width evidenziato (il più caro, non va per primo).
+- **`abbonamenti.html`** = **catalogo** in stile shop: si sceglie la **disciplina** dalle chip (Yoga/Pilates/Meditazione/Gravidanza/Mamma e Bimbo/Open — **niente "Tutti"**, si vede **una disciplina alla volta**) e dentro la card un **menu a tendina** sceglie il pacchetto (1/4/12 lezioni…) aggiornando **prezzo** e pulsante "Acquista". L'**Open (275€)** è l'ultima chip.
 - **I prezzi vivono in UN SOLO posto**: `js/shop.js` (array `PRODOTTI`). Card e checkout leggono da lì. Per cambiare un prezzo si edita solo `js/shop.js`.
 - Flusso: catalogo → **"Acquista"** (`checkout.html?p=<id>`) → **`checkout.html`** (riepilogo + dati cliente + scelta pagamento bonifico/in sede) → invio → **`grazie.html`** (conferma).
 - Il form della cassa usa **Netlify Forms** (`name="ordine-abbonamento"`): cattura gli ordini **quando il sito è online su Netlify** (in locale il submit non parte, è normale). `action="/grazie.html"`.

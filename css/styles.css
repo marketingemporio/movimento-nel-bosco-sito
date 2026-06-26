@@ -299,16 +299,21 @@ p  { margin: 0 0 1rem; }
 .chip.is-active { background: var(--viola); color: #fff; border-color: var(--viola); }
 
 /* ====== Shop: griglia prodotti ====== */
-.shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
-.shop-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); padding: 20px; box-shadow: var(--shadow-sm); }
-.shop-card h3 { margin: 2px 0 0; font-size: 1.18rem; }
+.shop-grid { display: flex; justify-content: center; }
+.shop-card { display: flex; flex-direction: column; gap: 8px; background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-sm); }
+.shop-card h3 { margin: 2px 0 4px; font-size: 1.5rem; }
 .shop-note { margin: 0; font-size: .85rem; color: #6b6470; }
-.shop-price { font-family: var(--font-title); font-weight: 800; font-size: 1.9rem; color: var(--viola-scuro); margin: 6px 0 12px; }
-.shop-card .btn { margin-top: auto; }
-.shop-card--open { border: 2px solid var(--ambra); background: linear-gradient(180deg, #fff, #fff7e8); grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
-.shop-card--open .shop-price { color: var(--viola); margin: 0; }
-.shop-card--open h3 { font-size: 1.45rem; }
-.shop-card--open .shop-note { flex-basis: 100%; }
+.shop-price { font-family: var(--font-title); font-weight: 800; font-size: 2.6rem; color: var(--viola-scuro); margin: 8px 0 2px; line-height: 1; }
+.shop-card .btn { align-self: center; margin-top: 10px; }
+/* card disciplina: una alla volta, centrata, con selettore pacchetto */
+.shop-card--disc { width: 100%; max-width: 440px; text-align: center; align-items: stretch; }
+.shop-card--disc .tag { align-self: center; }
+.variant-pick { display: flex; flex-direction: column; gap: 6px; text-align: left; font-family: var(--font-title); font-weight: 600; font-size: .9rem; color: var(--melanzana); margin-top: 4px; }
+.variant-select { font-family: var(--font-body); font-size: 1.02rem; padding: 12px 14px; border: 1px solid var(--lilla); border-radius: 12px; background: var(--panna); width: 100%; cursor: pointer; }
+.variant-select:focus { outline: 2px solid var(--violetto); border-color: var(--violetto); }
+.variant-single { margin: 4px 0 0; font-family: var(--font-title); font-weight: 600; color: var(--violetto); }
+.shop-card--open { border: 2px solid var(--ambra); background: linear-gradient(180deg, #fff, #fff7e8); }
+.shop-card--open .shop-price { color: var(--viola); }
 
 /* ====== Checkout ====== */
 .ck-wrap { max-width: 920px; }
