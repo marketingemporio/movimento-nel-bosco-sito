@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /checkout.html
+Disallow: /grazie.html
+
+Sitemap: https://movimentonelbosco.it/sitemap.xml

@@ -48,6 +48,7 @@ eventi: `eventi.html` (hub) · `bagno-sonoro.html` · `viaggio-oli-essenziali.ht
 10. **pilates.html / meditazione.html**: tolti i listini propri, rimandano al catalogo.
 11. **regolamento.html**: testo pagamenti allineato (no carta online; bonifico o in sede).
 12. **Testato** desktop (1280/1100) e mobile con Chrome headless. Link interni: tutti validi. Catalogo: 16 prodotti renderizzati, Open ultima, checkout prende prodotto+prezzo da `?p=`.
+13. **SEO completa (2026-06-26)** su tutte le 16 pagine indicizzabili (checkout/grazie restano `noindex`): **title + description** unici (focus **Mompiano/Brescia** + esperienza insegnanti), **canonical**, **Open Graph + Twitter Card**, meta `geo`/`theme-color`, **alt** degli hero arricchiti, **JSON-LD** (`@graph`: LocalBusiness/HealthClub a Mompiano + WebPage + BreadcrumbList; **Course** sulle pagine corso, **Person** su Laura/Camilla). Aggiunti **`sitemap.xml`** (16 URL) e **`robots.txt`**. JSON-LD validati (16/16 ok), nessun title duplicato.
 
 ## ⏳ Cosa deve fare Michele (per andare live davvero)
 1. **Tally — UN form unico**: in `prova-gratuita.html` ora c'è il form **Yoga (`w2LvYg`)** come **TEMPORANEO**. Crea **un solo** form con una tendina **"Disciplina"** e sostituisci `w2LvYg` con il nuovo ID (cerca `SEGNAPOSTO MODULO TALLY` nel file). (L'altro form ricevuto era Pilates `q4ZPz9`.)
@@ -56,6 +57,7 @@ eventi: `eventi.html` (hub) · `bagno-sonoro.html` · `viaggio-oli-essenziali.ht
 4. **Notifica ordini a te**: su Netlify → Forms → notifiche email verso la tua casella.
 5. **IBAN bonifico**: si invia a mano via email al cliente (di proposito NON è messo in pagina).
 6. **Deploy**: il checkout e le email funzionano **solo online** (Netlify). Quando vuoi pubblicare, si fa il merge in `main` (collegato a Netlify). **NON pushare su `main` senza ok.**
+7. **SEO — da verificare/completare dopo il deploy**: (a) le **coordinate geo** nel JSON-LD sono **approssimative** (Mompiano ~45.571, 10.236) → metti quelle esatte di Via Fontane 32; (b) eventuale **telefono/email/Instagram** nell'attività locale (ora omessi per non inventarli); (c) dopo la pubblicazione, invia **`sitemap.xml`** a **Google Search Console** e registra l'attività su **Google Business Profile** (Mompiano) per la SEO locale; (d) immagine social (og:image) ora = foto hero da CDN Shopify: se vuoi, sostituiscila con una grafica dedicata 1200×630.
 
 ## ⏳ Punti aperti minori
 - Rifinitura abbinamento foto↔sezione (alcune scelte migliorabili).
