@@ -18,7 +18,7 @@ Risultato = **sito + app**.
 - **Brand ufficiale Beamlight** applicato (cartella `Brand DEF/`): logo, palette, font. Dettagli in [`BRAND.md`](BRAND.md).
 - **Indirizzo**: **Via Fontane 32, 25133 Brescia (Mompiano)** ovunque (anche per gli eventi).
 - **Insegnanti**: Sara Silvestrini **non c'è più** → la **Meditazione** è di **Camilla Rossini** (che fa anche Pilates). **Laura Albertini**: Yoga, Gravidanza, Mamma e Bimbo, Aromaterapia.
-- **Posizionamento brand**: claim hero home = **"a Mompiano dal 2024"**; footer = **"progetto nato da Emporio nel Bosco"**.
+- **Posizionamento brand**: claim hero home = **"a Mompiano dal 2024"**; footer = **"progetto nato da Emporio nel Bosco"** (dal 2026-06-26 «Emporio nel Bosco» è un **link dofollow** a `emporionelbosco.it`, per link building, su tutte le 18 pagine).
 
 ## 🛒 E-commerce abbonamenti (NUOVO 2026-06-26) — come funziona
 - **`abbonamenti.html`** = **catalogo** in stile shop: si sceglie la **disciplina** dalle chip (Yoga/Pilates/Meditazione/Gravidanza/Mamma e Bimbo/Open — **niente "Tutti"**, si vede **una disciplina alla volta**) e dentro la card un **menu a tendina** sceglie il pacchetto (1/4/12 lezioni…) aggiornando **prezzo** e pulsante "Acquista". L'**Open (275€)** è l'ultima chip.
