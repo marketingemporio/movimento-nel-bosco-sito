@@ -338,3 +338,35 @@ p  { margin: 0 0 1rem; }
 /* ====== Modulo Tally (prova gratuita) ====== */
 .tally-wrap { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); padding: 12px; box-shadow: var(--shadow-sm); }
 .tally-wrap iframe { display: block; }
+
+/* ====== Blog dal Bosco ======
+   Sezione racconti (nome "Blog dal Bosco" PROVVISORIO, da cambiare).
+   Riusa .page-hero, .section, .cards, .card, .tag, .btn già esistenti. */
+.blog-intro { max-width: 60ch; }
+.post-date { font-family: var(--font-title); font-weight: 600; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--violetto); }
+/* Vetrina racconti: le card restano piccole anche quando sono poche.
+   (la griglia .cards di default allarga la card singola a tutta la riga) */
+.blog-cards { justify-items: center; }
+.blog-cards .card { width: 100%; max-width: 360px; }
+
+/* meta sotto il titolo nell'hero del racconto (testo chiaro su sfondo scuro) */
+.post-meta { margin-top: 16px; font-family: var(--font-title); font-weight: 500; color: rgba(255,255,255,.92); font-size: .95rem; }
+.post-meta .sep { opacity: .5; margin: 0 8px; }
+
+/* corpo del racconto: colonna stretta e leggibile */
+.post-body { max-width: 64ch; margin: 0 auto; }
+.post-body p { font-size: 1.14rem; line-height: 1.75; margin: 0 0 1.4rem; }
+.post-body p:first-of-type::first-letter { font-family: var(--font-title); font-weight: 700; font-size: 3.4rem; line-height: .8; float: left; margin: .05em .12em 0 0; color: var(--viola); }
+.post-body h2 { margin: 2.4rem 0 .8rem; font-size: 1.7rem; }
+
+/* immagine con didascalia dentro al racconto */
+.post-figure { margin: 2.2rem 0; }
+.post-figure img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+.post-figure figcaption { text-align: center; font-size: .9rem; color: #6b6470; margin-top: 12px; font-style: italic; }
+
+/* citazione in evidenza */
+.post-quote { border-left: 4px solid var(--lilla); padding: 4px 0 4px 22px; margin: 2.2rem 0; font-family: var(--font-title); font-weight: 500; font-size: 1.4rem; line-height: 1.35; color: var(--viola-scuro); }
+
+/* chiusura racconto: firma + ritorno alla vetrina */
+.post-end { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--lilla-tenue); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+.post-signature { font-family: var(--font-title); font-weight: 600; color: var(--violetto); }

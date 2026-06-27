@@ -1,8 +1,8 @@
 # Movimento nel Bosco — STATO (leggimi per primo)
 
-> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-26**.
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-27**.
 > Stato: **sito completo in anteprima locale, NON deployato online.**
-> Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font) e [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini).
+> Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
 
 ## 🎯 Obiettivo del progetto
 Scorporare tutto il mondo **Yoga / Pilates / Meditazione** dal sito Emporio nel Bosco
@@ -26,6 +26,16 @@ Risultato = **sito + app**.
 - Flusso: catalogo → **"Acquista"** (`checkout.html?p=<id>`) → **`checkout.html`** (riepilogo + dati cliente + scelta pagamento bonifico/in sede) → invio → **`grazie.html`** (conferma).
 - Il form della cassa usa **Netlify Forms** (`name="ordine-abbonamento"`): cattura gli ordini **quando il sito è online su Netlify** (in locale il submit non parte, è normale). `action="/grazie.html"`.
 - **Mail di conferma al cliente**: scaffold pronto in **`netlify/functions/submission-created.mjs`** (usa Resend). DA ATTIVARE con le chiavi (vedi "Cosa deve fare Michele").
+
+## 🆕 Blog dal Bosco (2026-06-27) — sezione racconti
+Nuova sezione **narrativa**: il diario di **Paola** sul movimento nel bosco (passeggiate,
+fiori, stagioni). **Nome "Blog dal Bosco" PROVVISORIO** (da cambiare). Pagine nuove:
+`blog.html` (vetrina), `blog-le-primule-sotto-il-faggio.html` (racconto di **esempio**,
+da sostituire), `blog-modello-racconto.html` (modello da duplicare, `noindex`). Voce
+**"Blog"** aggiunta a menu e footer di **tutte** le 18 pagine. Stili nel blocco
+`/* Blog dal Bosco */` di `css/styles.css`. SEO + `sitemap.xml` aggiornati; modello in
+`robots.txt` Disallow. **I racconti li scrive Paola** con questo strumento (no CMS):
+procedura passo-passo in [`BLOG.md`](BLOG.md).
 
 ## 🏗️ Pagine (17 totali)
 HOME/hub `index.html` · corsi: `yoga.html` `pilates.html` `gravidanza.html` `mamma-e-bimbo.html` `meditazione.html` ·
