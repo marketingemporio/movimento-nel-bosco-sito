@@ -29,6 +29,16 @@
 </head>
 <body>
 
+  <!-- ============ TOPBAR (striscia scorrevole) ============ -->
+  <div class="topbar" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee__track">
+        <span>Yoga</span><span>·</span><span>Pilates</span><span>·</span><span>Meditazione</span><span>·</span><span>Mompiano — Brescia</span><span>·</span><span>Immersi nel verde, ai piedi del Colle San Giuseppe</span><span>·</span>
+        <span>Yoga</span><span>·</span><span>Pilates</span><span>·</span><span>Meditazione</span><span>·</span><span>Mompiano — Brescia</span><span>·</span><span>Immersi nel verde, ai piedi del Colle San Giuseppe</span><span>·</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
@@ -58,6 +68,7 @@
               <li><a href="meditazione.html">Meditazione</a></li>
             </ul>
           </li>
+          <li><a href="il-team.html">Il team</a></li>
           <li><a href="orari.html">Orari</a></li>
           <li><a href="abbonamenti.html">Abbonamenti</a></li>
           <li><a href="eventi.html">Eventi</a></li>
@@ -73,7 +84,7 @@
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="hero">
+  <section class="hero hero--big">
     <img class="hero-bg" src="immagini/Yoga%20Rochi.jpg" alt="Lezione di yoga di gruppo al tramonto all'Agricola Ronchi, nei dintorni di Brescia — Movimento nel Bosco">
     <div class="container">
       <div class="hero-inner">
@@ -95,88 +106,109 @@
         <p class="eyebrow">Le discipline</p>
         <h2>Yoga, Pilates e Meditazione</h2>
       </div>
-      <div class="cards">
+      <div class="disc-grid">
+        <div class="disc">
+          <a class="disc__img" href="yoga.html"><img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Yoga"></a>
+          <h3>Yoga</h3>
+          <p>Vinyasa per adulti, in gravidanza e mamma e bimbo: pratiche per ogni livello.</p>
+          <a class="more" href="yoga.html">Scopri →</a>
+        </div>
+        <div class="disc">
+          <a class="disc__img" href="pilates.html"><img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_pilates_2.jpg" alt="Pilates"></a>
+          <h3>Pilates</h3>
+          <p>Una pratica per sostenere il corpo e la postura, con esercizi a basso impatto.</p>
+          <a class="more" href="pilates.html">Scopri →</a>
+        </div>
+        <div class="disc">
+          <a class="disc__img" href="meditazione.html"><img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-ac3679d9-5ba1-4998-99ed-7c577a591676.png" alt="Meditazione"></a>
+          <h3>Meditazione</h3>
+          <p>La pratica sacra della meditazione, per ritrovare calma, respiro e presenza.</p>
+          <a class="more" href="meditazione.html">Scopri →</a>
+        </div>
+      </div>
+      <p class="disc-note">Lo Yoga è anche per la <a href="gravidanza.html">gravidanza</a> e per <a href="mamma-e-bimbo.html">mamma e bimbo</a>.</p>
+    </div>
+  </section>
 
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Vinyasa Yoga">
-          <div class="body">
-            <span class="tag">Yoga</span>
-            <h3>Vinyasa Yoga</h3>
-            <p>Pratiche adattate al livello delle persone presenti, in modo che tutti possano trarne beneficio!</p>
-            <a class="more" href="vinyasa-yoga.html">Scopri il corso →</a>
-          </div>
-        </article>
+  <!-- ============ FASCIA ATMOSFERA (full-bleed) ============ -->
+  <section class="band-full">
+    <img class="band-bg" src="immagini/Valle%20di%20Mompiano.jpeg" alt="La valle di Mompiano: prati fioriti e colline boscose">
+    <div class="container">
+      <p class="eyebrow">Movimento nel Bosco</p>
+      <blockquote>«Praticando Yoga torniamo a quella condizione di meraviglia, alla parte più intima e leggera di noi stessi.»</blockquote>
+      <cite>— Laura Albertini</cite>
+    </div>
+  </section>
 
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_pilates_2.jpg" alt="Pilates Matwork">
-          <div class="body">
-            <span class="tag">Pilates</span>
-            <h3>Pilates</h3>
-            <p>Una pratica per sostenere il corpo e la sua postura, a cura di Camilla Rossini Naturopata.</p>
-            <a class="more" href="pilates.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-ac3679d9-5ba1-4998-99ed-7c577a591676.png" alt="Sessione di meditazione">
-          <div class="body">
-            <span class="tag">Meditazione</span>
-            <h3>Meditazione</h3>
-            <p>La pratica sacra della meditazione, per ritrovare calma, respiro e presenza.</p>
-            <a class="more" href="meditazione.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/pregnant-woman-practicing-yoga.jpg" alt="Yoga in gravidanza">
-          <div class="body">
-            <span class="tag">Gravidanza</span>
-            <h3>Yoga in Gravidanza</h3>
-            <p>Una pratica leggera per sostenere la mamma durante la gestazione.</p>
-            <a class="more" href="gravidanza.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-806cd946-3ac6-46d8-973c-273202481d3b.jpg" alt="Yoga mamma e bimbo">
-          <div class="body">
-            <span class="tag">Mamma e Bimbo</span>
-            <h3>Yoga Mamma e Bimbo</h3>
-            <p>Per nuove mamme e bimbi dai 3 ai 6 mesi.</p>
-            <a class="more" href="mamma-e-bimbo.html">Scopri il corso →</a>
-          </div>
-        </article>
-
+  <!-- ============ MANIFESTO (significato del nome) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="center">
+        <p class="eyebrow eyebrow-bosco">Chi siamo</p>
+        <h2>Cosa vuol dire "Movimento nel Bosco"</h2>
+        <p class="lead">Siamo una scuola di Yoga, Pilates e Meditazione a Mompiano — e già il nome racconta qualcosa di più. Siamo davvero nel bosco: ai piedi del Colle San Giuseppe, nel cuore verde di Mompiano. È da qui che parte tutto: dal movimento e dalla natura come modo per fermarsi, respirare e ritrovare il proprio ritmo, guidati da insegnanti che mettono al centro le persone.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <p class="eyebrow eyebrow-bosco">Bosco</p>
+          <h3>Un luogo che ci riconnette</h3>
+          <p>Per noi il bosco è un posto magico e pieno d'incanto, dove la vita vibra e l'energia ci riconnette con la terra, con la natura e con l'universo. È lì che la mente si calma e lascia spazio alla creatività di emergere.</p>
+        </div>
+        <div>
+          <p class="eyebrow eyebrow-bosco">Movimento</p>
+          <h3>Il fluire, insieme</h3>
+          <p>Movimento è impermanenza: il cambiamento incessante di tutte le cose. È il fluire del corpo, della mente e dell'anima. Ed è un gruppo di persone, mosse da intenti comuni, che insieme agiscono per realizzarli.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ QUOTE ============ -->
-  <section class="section quote">
+  <!-- ============ ESPERIENZE (oltre la sala) ============ -->
+  <section class="section tint-bosco">
     <div class="container">
-      <blockquote>«Praticando Yoga possiamo tornare a quella condizione di meraviglia e ritrovare la parte più intima e leggera di noi stessi, quella che spesso dimentichiamo.»
-        <cite>— Laura Albertini</cite>
-      </blockquote>
+      <div class="center">
+        <p class="eyebrow eyebrow-bosco">Oltre la sala</p>
+        <h2>Non solo lezioni: le esperienze nel bosco</h2>
+        <p class="lead">Il bosco non resta fuori dalla porta. Da noi il movimento incontra la natura anche oltre il tappetino, con appuntamenti che cambiano con le stagioni.</p>
+      </div>
+      <div class="explist">
+        <div class="exp-row">
+          <span class="num">01</span>
+          <div class="exp-txt"><h3>Bagni sonori</h3><p>Le vibrazioni dell'handpan a 432 Hz per un rilassamento profondo: ti lasci cullare dal suono.</p></div>
+          <a class="more" href="bagno-sonoro.html">Scopri →</a>
+        </div>
+        <div class="exp-row">
+          <span class="num">02</span>
+          <div class="exp-txt"><h3>Viaggi negli oli essenziali</h3><p>Un percorso tra i profumi delle piante, per conoscere gli oli essenziali e il loro mondo.</p></div>
+          <a class="more" href="viaggio-oli-essenziali.html">Scopri →</a>
+        </div>
+        <div class="exp-row">
+          <span class="num">03</span>
+          <div class="exp-txt"><h3>Yoga nel verde</h3><p>La pratica esce dalla sala: tra i filari di una vigna, in riva al lago, in un rifugio di montagna.</p></div>
+          <a class="more" href="eventi.html">Scopri →</a>
+        </div>
+        <div class="exp-row">
+          <span class="num">04</span>
+          <div class="exp-txt"><h3>Blog dal Bosco</h3><p>Il diario di Paola: passeggiate, fiori, stagioni e piccole scoperte. Un modo lento di vivere il movimento.</p></div>
+          <a class="more" href="blog.html">Leggi →</a>
+        </div>
+        <div class="exp-row">
+          <span class="num">05</span>
+          <div class="exp-txt"><h3>Passeggiate consapevoli</h3><p>Lo immaginiamo: camminare insieme, con lentezza e consapevolezza, dentro il bosco. Un passo alla volta.</p></div>
+          <span class="more" style="color:var(--violetto)">Presto</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ INTRO ============ -->
-  <section class="section center">
-    <div class="container">
-      <p class="eyebrow">La nostra scuola</p>
-      <h2>Movimento, equilibrio e ascolto di sé</h2>
-      <p class="lead">I nostri corsi per ritrovare un benessere e un equilibrio profondo e consapevole. A Brescia, immersi nel verde di Mompiano: classi durante tutta la settimana e per ogni livello.</p>
-    </div>
-  </section>
-
-  <!-- ============ AROMATERAPIA (split) ============ -->
-  <section class="section" id="aromaterapia">
+  <!-- ============ AMBIENTE (il luogo) ============ -->
+  <section class="section" id="ambiente">
     <div class="container split reverse">
-      <img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-7bddd503-6345-4a48-b6d4-9315e8ad3618.png" alt="Oli essenziali">
+      <img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-7bddd503-6345-4a48-b6d4-9315e8ad3618.png" alt="L'atmosfera naturale di Movimento nel Bosco">
       <div>
-        <p class="eyebrow">Il nostro segno distintivo</p>
-        <h2>La scuola con Aromaterapia</h2>
-        <p>Nei nostri corsi combiniamo lo yoga e le tecniche di meditazione con il potere terapeutico degli oli essenziali. Gli oli essenziali agiscono in sinergia con le pratiche di respirazione e rilassamento, creando un ambiente profondamente rilassante e rigenerante.</p>
+        <p class="eyebrow eyebrow-bosco">Il nostro spazio</p>
+        <h2>Una sala luminosa, immersa nel verde</h2>
+        <p>Pratichi in un ambiente accogliente ed esclusivo, ai piedi del Colle San Giuseppe: luce naturale, silenzio e lo spazio giusto per muoverti senza fretta. E poiché siamo dentro l'Emporio nel Bosco, la pratica si intreccia con la sua cura erboristica — oli essenziali e fiori di Bach che accompagnano corpo e respiro, e una tisana per restare ancora un momento.</p>
       </div>
     </div>
   </section>
@@ -198,20 +230,6 @@
           <p>Aiutarti a dirigerti verso i tuoi obiettivi con serenità.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ INSEGNANTI ============ -->
-  <section class="section" id="insegnanti">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">Le insegnanti</p>
-        <h2>Laura Albertini</h2>
-        <p>Insegnante di Yoga dal 2010, una delle sue più grandi passioni. Le sue pratiche includono aromaterapia, campane tibetane, strumenti ancestrali, canto, pietre e cristalli.</p>
-        <p style="color:var(--violetto);font-weight:600;margin-top:1.2rem">Camilla Rossini — Naturopata, guida i corsi di Pilates e i percorsi di Meditazione.</p>
-        <p style="margin-top:16px"><a class="btn btn-ghost" href="laura-albertini.html">Conosci Laura →</a> <a class="btn btn-ghost" href="camilla-rossini.html">Conosci Camilla →</a></p>
-      </div>
-      <img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_Rossini.jpg" alt="Le insegnanti di Movimento nel Bosco">
     </div>
   </section>
 
@@ -303,7 +321,7 @@
             <li><a href="prova-gratuita.html">Prova gratuita</a></li>
           <li><a href="prenota.html">Come prenotare</a></li>
             <li><a href="blog.html">Blog dal Bosco</a></li>
-            <li><a href="laura-albertini.html">Insegnanti</a></li>
+            <li><a href="il-team.html">Insegnanti</a></li>
           </ul>
         </div>
       </div>

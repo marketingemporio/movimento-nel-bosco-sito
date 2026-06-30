@@ -1,8 +1,35 @@
 # Movimento nel Bosco — STATO (leggimi per primo)
 
-> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-27**.
-> Stato: **sito completo in anteprima locale, NON deployato online.**
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-30**.
+> Stato: **restyling in corso sul branch `restyling-v2`** (anteprima locale, NON deployato online). Snapshot precedente congelato nel tag **`versione-1`**.
+> 👉 **Parti dalla sezione [🆕 Sessione 2026-06-30](#-sessione-2026-06-30--restyling--nuove-pagine-branch-restyling-v2)** qui sotto: è lo stato più recente.
 > Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
+
+## 🆕 Sessione 2026-06-30 — restyling + nuove pagine (branch `restyling-v2`)
+> Lavoro fatto sul branch **`restyling-v2`** (creato dallo snapshot **tag `versione-1`**, che congela lo stato "sito completo" del 27/06). `versione-1` resta recuperabile in ogni momento.
+
+**Navigazione & corsi**
+- Menu **"Corsi"** a tendina: dentro c'è **Yoga** (voce cliccabile → pagina panoramica) con sotto-menu **Vinyasa Yoga · Gravidanza · Mamma e Bimbo**, più **Pilates** e **Meditazione**. Aggiunta la voce **"Il team"** in navbar (tra Corsi e Orari) su tutte le pagine.
+- **`yoga.html`** ora è la **panoramica** "Corsi di Yoga a Mompiano" (presenta i tipi di yoga). **NUOVA `vinyasa-yoga.html`** = ex "yoga adulti", solo Vinyasa (rimosso "Over 60"). Schede corsi: tolto "Con + insegnante"; Meditazione senza "Aromatica" né riferimenti agli oli essenziali.
+
+**Home ridisegnata** (ispirazione: Alma, MYA, Samya)
+- **Hero** con foto **"Yoga Ronchi"** (lezione di gruppo al tramonto), immersivo e centrato; testi aggiornati.
+- Struttura: **striscia marquee** in alto · **discipline in 3 card con foto circolari** (Yoga/Pilates/Meditazione) · **Manifesto del nome** (Bosco + Movimento) · **fascia immagine full-bleed** (foto "Valle di Mompiano") · **esperienze in elenco numerato** · **"Il nostro spazio"** (ex sezione "aromaterapia", ridimensionata: ambiente + cura erboristica dell'Emporio).
+- Comunicata l'**identità "Movimento nel Bosco"** (fonti marketing in `Marketing-Brain/Movimento nel Bosco/`: *Piano azione…* e *Instagram - Primi 9 post*).
+
+**Team**
+- **NUOVA `il-team.html`**: **Laura Albertini, Laura Mantratzi, Paola Parisi** (Vinyasa Yoga) e **Camilla Rossini** (Pilates e Meditazione). **Foto e bio sono PLACEHOLDER** — cerca i commenti `FOTO:` e `BIO:` nel file. Sezione insegnanti **tolta dalla home**; footer "Insegnanti" → `il-team.html`.
+- ⚠️ Questo **aggiorna** la riga "Insegnanti" più in basso: il team Yoga è Laura Albertini + Laura Mantratzi + Paola Parisi (tutte Vinyasa); Camilla fa Pilates e Meditazione.
+
+**Branding**
+- **Font invariati** (Rubik + DM Sans). Palette = **brand iniziale (viola/lilla)**; come accento verde si usa **solo il lime della palette** (`#9dbf43`). Tolto il "verde bosco" custom. Gli header dei corsi interni mantengono i colori palette (Pilates ambra, Meditazione periwinkle).
+- Immagini locali in **`immagini/`** (`Valle di Mompiano.jpeg`, `Yoga Rochi.jpg`).
+
+**Da fare (prossimi passi)**
+- Inserire **foto e bio reali** del team; creare le pagine dedicate per **Mantratzi** e **Parisi** (come `laura-albertini.html` / `camilla-rossini.html`).
+- **Estendere il restyling della home alle pagine interne** (ora hanno ancora l'impostazione precedente).
+- Eventuali: menu con anteprime fotografiche, animazioni leggere allo scroll.
+- Anteprima locale di questa fase: `npx serve . -l 3000` → **http://localhost:3000**.
 
 ## 🎯 Obiettivo del progetto
 Scorporare tutto il mondo **Yoga / Pilates / Meditazione** dal sito Emporio nel Bosco
@@ -82,5 +109,7 @@ eventi: `eventi.html` (hub) · `bagno-sonoro.html` · `viaggio-oli-essenziali.ht
 
 ## 🗂️ Repo / git
 - Repo GitHub: **`marketingemporio/movimento-nel-bosco-sito`**
-- Branch di lavoro: **`rebrand-movimento`** (lo stato dell'arte è qui; `main` è collegato a Netlify → non pushare lì finché non si vuole pubblicare).
+- **Branch di lavoro attuale: `restyling-v2`** (pushato su GitHub il 2026-06-30) — è qui lo stato dell'arte.
+- Snapshot congelato: **tag `versione-1`** (stato "sito completo" pre-restyling). Branch `rebrand-movimento` fermo a quel punto.
+- `main` è collegato a Netlify → **non pushare/mergiare lì** finché non si vuole pubblicare.
 - Netlify `siteId` in `.netlify/state.json` (collegato, ma nessun deploy automatico attivato da noi).
