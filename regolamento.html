@@ -35,11 +35,26 @@
         <img class="logo-full" src="assets/logo-positivo.svg" alt="Movimento nel Bosco">
       </a>
       <nav><ul class="nav-links" id="nav-menu">
-        <li><a href="yoga.html">Yoga</a></li>
-        <li><a href="pilates.html">Pilates</a></li>
-        <li><a href="meditazione.html">Meditazione</a></li>
-        <li><a href="gravidanza.html">Gravidanza</a></li>
-        <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+        <li class="has-dropdown">
+          <span class="dropdown-parent">
+            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corsi <span class="caret" aria-hidden="true"></span></button>
+          </span>
+          <ul class="dropdown-menu">
+            <li class="has-dropdown has-dropdown--sub">
+              <span class="dropdown-parent">
+                <a href="yoga.html">Yoga</a>
+                <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+              </span>
+              <ul class="dropdown-menu dropdown-menu--sub">
+                <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
+                <li><a href="gravidanza.html">Gravidanza</a></li>
+                <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+              </ul>
+            </li>
+            <li><a href="pilates.html">Pilates</a></li>
+            <li><a href="meditazione.html">Meditazione</a></li>
+          </ul>
+        </li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
         <li><a href="eventi.html">Eventi</a></li>
@@ -91,9 +106,9 @@
     <div class="container">
       <div class="center"><p class="eyebrow">Scopri i corsi</p><h2>Le nostre pratiche</h2></div>
       <div class="cards">
-        <article class="card"><div class="body"><span class="tag">Yoga</span><h3>Corso Yoga</h3><p class="who">Con Laura Albertini</p><p>Vinyasa Yoga, corsi per ogni livello di esperienza.</p><a class="more" href="yoga.html">Vai al corso →</a></div></article>
-        <article class="card"><div class="body"><span class="tag">Meditazione</span><h3>Meditazione Aromatica</h3><p class="who">Con Camilla Rossini</p><p>Rilassamento in un'esperienza profumata.</p><a class="more" href="meditazione.html">Scopri →</a></div></article>
-        <article class="card"><div class="body"><span class="tag">Pilates</span><h3>Pilates Matwork</h3><p class="who">Con Camilla Rossini</p><p>Forza, flessibilità ed equilibrio corporeo.</p><a class="more" href="pilates.html">Scopri →</a></div></article>
+        <article class="card"><div class="body"><span class="tag">Yoga</span><h3>Corso Yoga</h3><p>Vinyasa Yoga, corsi per ogni livello di esperienza.</p><a class="more" href="yoga.html">Vai al corso →</a></div></article>
+        <article class="card"><div class="body"><span class="tag">Meditazione</span><h3>Meditazione</h3><p>Rilassamento profondo attraverso il respiro.</p><a class="more" href="meditazione.html">Scopri →</a></div></article>
+        <article class="card"><div class="body"><span class="tag">Pilates</span><h3>Pilates Matwork</h3><p>Forza, flessibilità ed equilibrio corporeo.</p><a class="more" href="pilates.html">Scopri →</a></div></article>
       </div>
     </div>
   </section>

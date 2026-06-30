@@ -35,11 +35,26 @@
         <img class="logo-full" src="assets/logo-positivo.svg" alt="Movimento nel Bosco">
       </a>
       <nav><ul class="nav-links" id="nav-menu">
-        <li><a href="yoga.html">Yoga</a></li>
-        <li><a href="pilates.html">Pilates</a></li>
-        <li><a href="meditazione.html">Meditazione</a></li>
-        <li><a href="gravidanza.html">Gravidanza</a></li>
-        <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+        <li class="has-dropdown">
+          <span class="dropdown-parent">
+            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corsi <span class="caret" aria-hidden="true"></span></button>
+          </span>
+          <ul class="dropdown-menu">
+            <li class="has-dropdown has-dropdown--sub">
+              <span class="dropdown-parent">
+                <a href="yoga.html">Yoga</a>
+                <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+              </span>
+              <ul class="dropdown-menu dropdown-menu--sub">
+                <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
+                <li><a href="gravidanza.html">Gravidanza</a></li>
+                <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+              </ul>
+            </li>
+            <li><a href="pilates.html">Pilates</a></li>
+            <li><a href="meditazione.html">Meditazione</a></li>
+          </ul>
+        </li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
         <li><a href="eventi.html">Eventi</a></li>
@@ -91,7 +106,7 @@
             <span class="tag">Yoga all'aperto</span>
             <h3>Lo yoga esce dalla scuola</h3>
             <p>Appuntamenti speciali condotti da Laura: tra i filari di una vigna, in riva al lago e in un rifugio di montagna.</p>
-            <a class="more" href="yoga.html#eventi-yoga">Scopri di più →</a>
+            <a class="more" href="vinyasa-yoga.html#eventi-yoga">Scopri di più →</a>
           </div>
         </article>
       </div>
@@ -105,7 +120,7 @@
         <p class="eyebrow">Yoga all'aperto</p>
         <h2>Lo yoga esce dalla scuola</h2>
         <p>Tra i filari al tramonto, in riva al lago all'alba, in un rifugio di montagna o tra i pescheti in fiore: ogni stagione porta i suoi appuntamenti all'aperto, spesso con un momento conviviale dopo la pratica. E non manca il weekend in retreat tra i profumi della Toscana.</p>
-        <p><a class="btn btn-ghost" href="yoga.html#eventi-yoga">Vedi gli eventi di yoga →</a></p>
+        <p><a class="btn btn-ghost" href="vinyasa-yoga.html#eventi-yoga">Vedi gli eventi di yoga →</a></p>
       </div>
       <img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/peschi_calina_temp.jpg" alt="Yoga tra i pescheti in fiore">
     </div>

@@ -26,10 +26,12 @@
   --font-body:  'DM Sans', system-ui, sans-serif;
 
   --maxw: 1160px;
-  --radius: 22px;
-  --radius-sm: 14px;
-  --shadow: 0 18px 50px -22px rgba(43,26,46,.45);
-  --shadow-sm: 0 8px 24px -14px rgba(43,26,46,.45);
+  /* Raggi "organici": angoli irregolari per un look meno geometrico e più naturale */
+  --radius: 20px 34px 22px 30px;
+  --radius-sm: 12px 20px 13px 18px;
+  /* Ombre più morbide e calde (terra), come luce naturale diffusa */
+  --shadow: 0 24px 60px -26px rgba(60,42,24,.42);
+  --shadow-sm: 0 12px 30px -16px rgba(60,42,24,.34);
 }
 
 * { box-sizing: border-box; }
@@ -39,7 +41,9 @@ body {
   overflow-x: hidden;
   font-family: var(--font-body);
   color: var(--melanzana);
-  background: var(--bianco);
+  /* Sfondo color carta + grana leggerissima, per un'aria più naturale e "grezza" */
+  background-color: var(--panna);
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.06'/></svg>");
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -118,16 +122,104 @@ p  { margin: 0 0 1rem; }
   .nav-cta .btn { padding: .5em .85em; font-size: .9rem; }
 }
 
+/* --- Tendine del menu (dropdown "Corsi" e sotto-menu "Yoga") --- */
+.nav-dropdown-toggle {
+  font: inherit; color: inherit; background: transparent; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px; padding: 0; white-space: nowrap;
+}
+.nav-dropdown-toggle:hover { color: var(--viola); }
+.dropdown-parent { display: inline-flex; align-items: center; gap: 4px; }
+.caret {
+  display: inline-block; width: 7px; height: 7px; flex: none;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s ease;
+}
+.has-dropdown { position: relative; }
+.dropdown-menu { display: none; list-style: none; margin: 0; padding: 0; }
+
+/* ===== DESKTOP (oltre 1024px): tendine a comparsa ===== */
+@media (min-width: 1025px) {
+  .dropdown-menu {
+    display: block; position: absolute; top: calc(100% + 10px); left: -8px; min-width: 210px;
+    background: #fff; border: 1px solid var(--lilla-tenue); border-radius: 14px;
+    box-shadow: var(--shadow-sm); padding: 8px;
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity .16s ease, transform .16s ease, visibility .16s; z-index: 70;
+  }
+  /* "ponte" trasparente: tiene vivo l'hover tra la voce e la tendina */
+  .has-dropdown > .dropdown-menu::before {
+    content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px;
+  }
+  /* voci semplici della tendina (Pilates, Meditazione, Vinyasa, Gravidanza, ...) */
+  .dropdown-menu li > a {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 10px 12px; border-radius: 9px;
+  }
+  .dropdown-menu li > a:hover { background: var(--lilla-tenue); color: var(--viola); }
+  /* riga "genitore" cliccabile (Yoga): link a sinistra + freccetta a destra */
+  .dropdown-menu .dropdown-parent { display: flex; width: 100%; gap: 0; }
+  .dropdown-menu .dropdown-parent > a {
+    flex: 1 1 auto; display: flex; align-items: center; padding: 10px 4px 10px 12px; border-radius: 9px;
+  }
+  .dropdown-menu .dropdown-parent > .nav-dropdown-toggle { flex: none; padding: 10px 12px 10px 6px; border-radius: 9px; }
+  .dropdown-menu .dropdown-parent:hover > a,
+  .dropdown-menu .dropdown-parent:hover > .nav-dropdown-toggle { background: var(--lilla-tenue); color: var(--viola); }
+  /* apertura: passaggio del mouse, focus da tastiera, o click (classe .open) */
+  .has-dropdown:hover > .dropdown-menu,
+  .has-dropdown:focus-within > .dropdown-menu,
+  .has-dropdown.open > .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  /* sotto-tendina "Yoga": si apre a fianco, verso destra */
+  .dropdown-menu--sub { top: -9px; left: calc(100% + 4px); }
+  .dropdown-menu--sub::before {
+    content: ""; position: absolute; top: 0; left: -10px; width: 10px; height: 100%; right: auto;
+  }
+  .has-dropdown--sub .caret { transform: rotate(-45deg); }
+  /* freccia "Corsi" punta in su quando aperta */
+  .has-dropdown:not(.has-dropdown--sub):hover > .dropdown-parent .caret,
+  .has-dropdown:not(.has-dropdown--sub).open > .dropdown-parent .caret { transform: translateY(2px) rotate(-135deg); }
+}
+
+/* ===== MOBILE (fino a 1024px): tendine ad apertura verticale (a fisarmonica) ===== */
+@media (max-width: 1024px) {
+  /* riga "Corsi" (solo freccetta-bottone): si comporta come una voce a piena larghezza */
+  .site-header.open .nav-links > .has-dropdown > .dropdown-parent { display: flex; width: 100%; }
+  .site-header.open .nav-links > .has-dropdown > .dropdown-parent > .nav-dropdown-toggle {
+    flex: 1 1 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: 13px 4px; border-bottom: 1px solid var(--lilla-tenue); font-size: 1.05rem;
+  }
+  /* riga "Yoga" (link + freccetta affiancati) */
+  .site-header.open .nav-links .dropdown-menu .dropdown-parent {
+    display: flex; align-items: stretch; border-bottom: 1px solid var(--lilla-tenue);
+  }
+  .site-header.open .nav-links .dropdown-menu .dropdown-parent > a {
+    flex: 1 1 auto; border-bottom: 0; padding-left: 22px;
+  }
+  .site-header.open .nav-links .dropdown-menu .dropdown-parent > .nav-dropdown-toggle {
+    flex: none; display: flex; align-items: center; border-bottom: 0; padding: 13px 16px; font-size: 1.05rem;
+  }
+  .nav-links .has-dropdown.open > .dropdown-menu { display: block; }
+  /* rientro progressivo dei sotto-livelli */
+  .site-header.open .nav-links .dropdown-menu li > a { padding-left: 22px; }
+  .site-header.open .nav-links .dropdown-menu--sub li > a { padding-left: 40px; }
+  /* freccia ruota quando il livello è aperto */
+  .nav-links .has-dropdown.open > .dropdown-parent .caret { transform: translateY(2px) rotate(-135deg); }
+}
+
 /* --- Hero --- */
 .hero { position: relative; color: #fff; isolation: isolate; }
 .hero::after { content:""; position:absolute; inset:0; z-index:-1;
-  background: linear-gradient(120deg, rgba(74,20,99,.86) 0%, rgba(110,30,142,.6) 55%, rgba(43,26,46,.5) 100%); }
+  background: linear-gradient(120deg, rgba(10,32,18,.66) 0%, rgba(16,46,26,.46) 55%, rgba(6,22,13,.4) 100%); }
 .hero-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+/* hero home: inquadratura verso il basso, per mostrare il prato con le persone */
+.hero .hero-bg { object-position: center 70%; }
 .hero-inner { padding: clamp(80px, 16vw, 180px) 0 clamp(60px, 10vw, 120px); max-width: 760px; }
 .hero h1 { color: #fff; }
 .hero p { font-size: 1.2rem; max-width: 56ch; color: rgba(255,255,255,.94); }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
-.hero .eyebrow { color: var(--ambra); }
+.hero .eyebrow { color: var(--lilla); }
+/* nell'hero l'accento giallo diventa viola */
+.hero .btn-accent { background: var(--viola); color: #fff; border-color: var(--viola); }
+.hero .btn-accent:hover { background: var(--viola-scuro); border-color: var(--viola-scuro); }
 
 /* --- Quote --- */
 .quote { background: var(--lilla-tenue); }
@@ -137,7 +229,7 @@ p  { margin: 0 0 1rem; }
 /* --- Griglia discipline --- */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 26px; margin-top: 40px; }
 .card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--lilla-tenue); display: flex; flex-direction: column; transition: transform .18s ease, box-shadow .18s ease; }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card:hover { transform: translateY(-4px) rotate(-.5deg); box-shadow: var(--shadow); border-radius: 32px 20px 34px 22px; }
 .card .thumb { aspect-ratio: 4/3; width: 100%; object-fit: cover; }
 .card .body { padding: 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .card .tag { font-family: var(--font-title); font-weight: 600; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--lime); }
@@ -150,8 +242,9 @@ p  { margin: 0 0 1rem; }
 .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
 .split.reverse { direction: rtl; }
 .split.reverse > * { direction: ltr; }
-.split img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; }
-.laura-video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); background: #000; display: block; }
+.split img { border-radius: 44px 16px 44px 16px; box-shadow: var(--shadow); width: 100%; }
+.split.reverse img { border-radius: 16px 44px 16px 44px; }
+.laura-video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 44px 16px 44px 16px; box-shadow: var(--shadow); background: #000; display: block; }
 @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
 
 .tint-lilla { background: var(--lilla-tenue); }
@@ -160,7 +253,7 @@ p  { margin: 0 0 1rem; }
 /* --- Info / 4 colonne --- */
 .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 26px; margin-top: 36px; }
 .info { background: #fff; border-radius: var(--radius-sm); padding: 24px; border: 1px solid var(--lilla-tenue); }
-.info .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--lilla-tenue); display: grid; place-items: center; margin-bottom: 12px; color: var(--viola); font-size: 1.3rem; }
+.info .ico { width: 42px; height: 42px; border-radius: 52% 42% 56% 44%; background: var(--lilla-tenue); display: grid; place-items: center; margin-bottom: 12px; color: var(--viola); font-size: 1.3rem; }
 .info h3 { font-size: 1.05rem; margin-bottom: .3rem; }
 .info p { font-size: .95rem; margin: 0; }
 
@@ -206,10 +299,19 @@ p  { margin: 0 0 1rem; }
 .breadcrumb a:hover { color: #fff; }
 .page-hero.has-img { position: relative; isolation: isolate; background: var(--viola-scuro); }
 .page-hero .hero-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
-.page-hero.has-img::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(120deg, rgba(74,20,99,.9) 0%, rgba(110,30,142,.62) 55%, rgba(43,26,46,.62) 100%); }
+.page-hero.has-img::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(120deg, rgba(74,20,99,.68) 0%, rgba(110,30,142,.44) 55%, rgba(43,26,46,.44) 100%); }
+
+/* Colore identitario per ogni disciplina sull'header con foto.
+   Lato sinistro più scuro (per leggibilità del testo bianco) che sfuma nel colore della disciplina. */
+.page-hero--pilates.has-img::after {
+  background: linear-gradient(120deg, rgba(95,58,0,.68) 0%, rgba(176,112,10,.52) 45%, rgba(242,172,32,.38) 100%); }
+.page-hero--meditazione.has-img::after {
+  background: linear-gradient(120deg, rgba(38,48,105,.68) 0%, rgba(80,96,175,.52) 45%, rgba(136,155,226,.38) 100%); }
+/* Foto di Camilla (Pilates): inquadratura spostata in alto per mostrare bene il viso */
+.page-hero--pilates .hero-bg { object-position: center 25%; }
 
 /* immagini in-pagina */
-.media { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); margin-top: 24px; }
+.media { width: 100%; border-radius: 40px 16px 40px 16px; box-shadow: var(--shadow); margin-top: 24px; }
 .media-full { width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
 .equip { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 18px; margin-top: 32px; }
 .equip figure { margin: 0; background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); text-align: center; }

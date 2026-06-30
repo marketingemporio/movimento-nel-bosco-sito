@@ -38,11 +38,26 @@
       </a>
       <nav>
         <ul class="nav-links" id="nav-menu">
-          <li><a href="yoga.html">Yoga</a></li>
-          <li><a href="pilates.html">Pilates</a></li>
-          <li><a href="meditazione.html">Meditazione</a></li>
-          <li><a href="gravidanza.html">Gravidanza</a></li>
-          <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+          <li class="has-dropdown">
+            <span class="dropdown-parent">
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corsi <span class="caret" aria-hidden="true"></span></button>
+            </span>
+            <ul class="dropdown-menu">
+              <li class="has-dropdown has-dropdown--sub">
+                <span class="dropdown-parent">
+                  <a href="yoga.html">Yoga</a>
+                  <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+                </span>
+                <ul class="dropdown-menu dropdown-menu--sub">
+                  <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
+                  <li><a href="gravidanza.html">Gravidanza</a></li>
+                  <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+                </ul>
+              </li>
+              <li><a href="pilates.html">Pilates</a></li>
+              <li><a href="meditazione.html">Meditazione</a></li>
+            </ul>
+          </li>
           <li><a href="orari.html">Orari</a></li>
           <li><a href="abbonamenti.html">Abbonamenti</a></li>
           <li><a href="eventi.html">Eventi</a></li>
@@ -59,16 +74,79 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <img class="hero-bg" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-c4e7099f-9040-44f5-b7f5-85b9edc28ceb.jpg" alt="Pratica di Yoga di gruppo all'aperto a Mompiano, Brescia — Movimento nel Bosco">
+    <img class="hero-bg" src="immagini/Yoga%20Rochi.jpg" alt="Lezione di yoga di gruppo al tramonto all'Agricola Ronchi, nei dintorni di Brescia — Movimento nel Bosco">
     <div class="container">
       <div class="hero-inner">
-        <p class="eyebrow">a Mompiano dal 2024</p>
-        <h1>Corsi di Yoga, Pilates e Meditazione a Brescia</h1>
-        <p>La prima scuola di Yoga, Pilates e Meditazione a Brescia che unisce le pratiche di movimento e rilassamento all'aromaterapia. Vieni a conoscerci!</p>
+        <p class="eyebrow">a Brescia, immersi nel verde di Mompiano</p>
+        <h1>Corsi di Yoga, Pilates e Meditazione</h1>
+        <p>Pratiche multilivello, distribuite lungo tutta la settimana, in una sala luminosa e accogliente ai piedi del Colle San Giuseppe.</p>
         <div class="actions">
           <a class="btn btn-accent" href="prova-gratuita.html">Richiedi una prova</a>
           <a class="btn btn-light" href="#corsi">I nostri corsi</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DISCIPLINE (cards) ============ -->
+  <section class="section tint-panna" id="corsi">
+    <div class="container">
+      <div class="center">
+        <p class="eyebrow">Le discipline</p>
+        <h2>Yoga, Pilates e Meditazione</h2>
+      </div>
+      <div class="cards">
+
+        <article class="card">
+          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Vinyasa Yoga">
+          <div class="body">
+            <span class="tag">Yoga</span>
+            <h3>Vinyasa Yoga</h3>
+            <p>Pratiche adattate al livello delle persone presenti, in modo che tutti possano trarne beneficio!</p>
+            <a class="more" href="vinyasa-yoga.html">Scopri il corso →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_pilates_2.jpg" alt="Pilates Matwork">
+          <div class="body">
+            <span class="tag">Pilates</span>
+            <h3>Pilates</h3>
+            <p>Una pratica per sostenere il corpo e la sua postura, a cura di Camilla Rossini Naturopata.</p>
+            <a class="more" href="pilates.html">Scopri il corso →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-ac3679d9-5ba1-4998-99ed-7c577a591676.png" alt="Sessione di meditazione">
+          <div class="body">
+            <span class="tag">Meditazione</span>
+            <h3>Meditazione</h3>
+            <p>La pratica sacra della meditazione, per ritrovare calma, respiro e presenza.</p>
+            <a class="more" href="meditazione.html">Scopri il corso →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/pregnant-woman-practicing-yoga.jpg" alt="Yoga in gravidanza">
+          <div class="body">
+            <span class="tag">Gravidanza</span>
+            <h3>Yoga in Gravidanza</h3>
+            <p>Una pratica leggera per sostenere la mamma durante la gestazione.</p>
+            <a class="more" href="gravidanza.html">Scopri il corso →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-806cd946-3ac6-46d8-973c-273202481d3b.jpg" alt="Yoga mamma e bimbo">
+          <div class="body">
+            <span class="tag">Mamma e Bimbo</span>
+            <h3>Yoga Mamma e Bimbo</h3>
+            <p>Per nuove mamme e bimbi dai 3 ai 6 mesi.</p>
+            <a class="more" href="mamma-e-bimbo.html">Scopri il corso →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -88,74 +166,6 @@
       <p class="eyebrow">La nostra scuola</p>
       <h2>Movimento, equilibrio e ascolto di sé</h2>
       <p class="lead">I nostri corsi per ritrovare un benessere e un equilibrio profondo e consapevole. A Brescia, immersi nel verde di Mompiano: classi durante tutta la settimana e per ogni livello.</p>
-    </div>
-  </section>
-
-  <!-- ============ DISCIPLINE (cards) ============ -->
-  <section class="section tint-panna" id="corsi">
-    <div class="container">
-      <div class="center">
-        <p class="eyebrow">Le discipline</p>
-        <h2>Yoga, Pilates e Meditazione</h2>
-      </div>
-      <div class="cards">
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Corso di Yoga">
-          <div class="body">
-            <span class="tag">Yoga</span>
-            <h3>Corso di Yoga</h3>
-            <p class="who">Con Laura Albertini</p>
-            <p>Pratiche adattate al livello delle persone presenti, in modo che tutti possano trarne beneficio!</p>
-            <a class="more" href="yoga.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_pilates_2.jpg" alt="Pilates Matwork">
-          <div class="body">
-            <span class="tag">Pilates</span>
-            <h3>Pilates</h3>
-            <p class="who">Con Camilla Rossini</p>
-            <p>Una pratica per sostenere il corpo e la sua postura, a cura di Camilla Rossini Naturopata.</p>
-            <a class="more" href="pilates.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-ac3679d9-5ba1-4998-99ed-7c577a591676.png" alt="Meditazione e aromaterapia">
-          <div class="body">
-            <span class="tag">Meditazione</span>
-            <h3>Meditazione Aromatica</h3>
-            <p class="who">Con Camilla Rossini</p>
-            <p>La pratica sacra della meditazione con i profumi magici degli oli essenziali.</p>
-            <a class="more" href="meditazione.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/pregnant-woman-practicing-yoga.jpg" alt="Yoga in gravidanza">
-          <div class="body">
-            <span class="tag">Gravidanza</span>
-            <h3>Yoga in Gravidanza</h3>
-            <p class="who">Con Laura Albertini</p>
-            <p>Una pratica leggera per sostenere la mamma durante la gestazione.</p>
-            <a class="more" href="gravidanza.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="thumb" src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-806cd946-3ac6-46d8-973c-273202481d3b.jpg" alt="Yoga mamma e bimbo">
-          <div class="body">
-            <span class="tag">Mamma e Bimbo</span>
-            <h3>Yoga Mamma e Bimbo</h3>
-            <p class="who">Con Laura Albertini</p>
-            <p>Per nuove mamme e bimbi dai 3 ai 6 mesi.</p>
-            <a class="more" href="mamma-e-bimbo.html">Scopri il corso →</a>
-          </div>
-        </article>
-
-      </div>
     </div>
   </section>
 
