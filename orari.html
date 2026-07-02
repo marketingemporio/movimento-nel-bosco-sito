@@ -55,7 +55,15 @@
             <li><a href="meditazione.html">Meditazione</a></li>
           </ul>
         </li>
-        <li><a href="il-team.html">Il team</a></li>
+        <li class="has-dropdown">
+          <span class="dropdown-parent">
+            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Chi siamo <span class="caret" aria-hidden="true"></span></button>
+          </span>
+          <ul class="dropdown-menu">
+            <li><a href="la-visione.html">La visione</a></li>
+            <li><a href="il-team.html">Il team</a></li>
+          </ul>
+        </li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
         <li><a href="eventi.html">Eventi</a></li>
@@ -87,66 +95,138 @@
 
       <ul class="legenda">
         <li><span class="dot d-yoga"></span> Vinyasa Yoga</li>
-        <li><span class="dot d-pilates"></span> Pilates</li>
-        <li><span class="dot d-medita"></span> Meditazione</li>
         <li><span class="dot d-grav"></span> Yoga in Gravidanza</li>
         <li><span class="dot d-mamma"></span> Mamma e Bimbo</li>
+        <li><span class="dot d-pilates"></span> Pilates</li>
+        <li><span class="dot d-medita"></span> Meditazione</li>
       </ul>
 
-      <div class="timetable">
-        <div class="tt-day">
-          <h3 class="tt-dayname">Lunedì</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-pilates"><span class="tt-time">13:00</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-medita"><span class="tt-time">17:00</span><span class="tt-name">Meditazione</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">19:00</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">20:15</span><span class="tt-name">Vinyasa Yoga</span></li>
-          </ul>
-        </div>
-        <div class="tt-day">
-          <h3 class="tt-dayname">Martedì</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-yoga"><span class="tt-time">9:30</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-grav"><span class="tt-time">11:00</span><span class="tt-name">Yoga in Gravidanza</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">13:00</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-pilates"><span class="tt-time">16:30</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-pilates"><span class="tt-time">17:45</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-pilates"><span class="tt-time">19:00</span><span class="tt-name">Pilates</span></li>
-          </ul>
-        </div>
-        <div class="tt-day">
-          <h3 class="tt-dayname">Mercoledì</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-pilates"><span class="tt-time">10:00</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">19:00</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">20:15</span><span class="tt-name">Vinyasa Yoga</span></li>
-          </ul>
-        </div>
-        <div class="tt-day">
-          <h3 class="tt-dayname">Giovedì</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-yoga"><span class="tt-time">7:30</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-mamma"><span class="tt-time">9:00</span><span class="tt-name">Mamma e Bimbo</span></li>
-          </ul>
-        </div>
-        <div class="tt-day">
-          <h3 class="tt-dayname">Venerdì</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-pilates"><span class="tt-time">13:00</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-grav"><span class="tt-time">15:30</span><span class="tt-name">Yoga in Gravidanza</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">17:00</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-yoga"><span class="tt-time">18:15</span><span class="tt-name">Vinyasa Yoga</span></li>
-          </ul>
-        </div>
-        <div class="tt-day">
-          <h3 class="tt-dayname">Sabato</h3>
-          <ul class="tt-slots">
-            <li class="tt-slot d-yoga"><span class="tt-time">8:30</span><span class="tt-name">Vinyasa Yoga</span></li>
-            <li class="tt-slot d-pilates"><span class="tt-time">10:00</span><span class="tt-name">Pilates</span></li>
-            <li class="tt-slot d-pilates"><span class="tt-time">11:15</span><span class="tt-name">Pilates</span></li>
-          </ul>
-        </div>
+      <div class="tt-scroll">
+        <table class="tt">
+          <thead>
+            <tr>
+              <th class="tt-h"><span class="vh">Ora</span></th>
+              <th>Lunedì</th>
+              <th>Martedì</th>
+              <th>Mercoledì</th>
+              <th>Giovedì</th>
+              <th>Venerdì</th>
+              <th>Sabato</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="tt-h">07:00</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-yoga"><b>7:30</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">08:00</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-yoga"><b>8:30</b><span>Vinyasa Yoga</span></div></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">09:00</th>
+              <td></td>
+              <td><div class="ev d-yoga"><b>9:30</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td><div class="ev d-mamma"><b>9:00</b><span>Mamma e Bimbo</span></div></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">10:00</th>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-pilates"><b>10:00</b><span>Pilates</span></div></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-pilates"><b>10:00</b><span>Pilates</span></div></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">11:00</th>
+              <td></td>
+              <td><div class="ev d-grav"><b>11:00</b><span>Gravidanza</span></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-pilates"><b>11:15</b><span>Pilates</span></div></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">13:00</th>
+              <td><div class="ev d-pilates"><b>13:00</b><span>Pilates</span></div></td>
+              <td><div class="ev d-yoga"><b>13:00</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-pilates"><b>13:00</b><span>Pilates</span></div></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">15:00</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-grav"><b>15:30</b><span>Gravidanza</span></div></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">16:00</th>
+              <td></td>
+              <td><div class="ev d-pilates"><b>16:30</b><span>Pilates</span></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">17:00</th>
+              <td><div class="ev d-medita"><b>17:00</b><span>Meditazione</span></div></td>
+              <td><div class="ev d-pilates"><b>17:45</b><span>Pilates</span></div></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-yoga"><b>17:00</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">18:00</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="ev d-yoga"><b>18:15</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">19:00</th>
+              <td><div class="ev d-yoga"><b>19:00</b><span>Vinyasa Yoga</span></div></td>
+              <td><div class="ev d-pilates"><b>19:00</b><span>Pilates</span></div></td>
+              <td><div class="ev d-yoga"><b>19:00</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row" class="tt-h">20:00</th>
+              <td><div class="ev d-yoga"><b>20:15</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td><div class="ev d-yoga"><b>20:15</b><span>Vinyasa Yoga</span></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <p class="tt-hint">Su smartphone scorri la tabella in orizzontale per vedere tutti i giorni →</p>
 
       <p class="center" style="margin-top:26px;font-size:.92rem;color:#6b6470">Gli orari possono subire variazioni stagionali. Prenota il tuo posto dall'applicazione per avere sempre il calendario aggiornato.</p>
     </div>

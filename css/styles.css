@@ -208,7 +208,7 @@ p  { margin: 0 0 1rem; }
 /* --- Hero --- */
 .hero { position: relative; color: #fff; isolation: isolate; }
 .hero::after { content:""; position:absolute; inset:0; z-index:-1;
-  background: linear-gradient(120deg, rgba(74,20,99,.86) 0%, rgba(110,30,142,.6) 55%, rgba(43,26,46,.5) 100%); }
+  background: linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.44) 100%); }
 .hero-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
 /* hero home: inquadratura verso il basso, per mostrare il prato con le persone */
 .hero .hero-bg { object-position: center 70%; }
@@ -343,31 +343,36 @@ p  { margin: 0 0 1rem; }
 .schedule th, .schedule td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--lilla-tenue); font-size: .96rem; }
 .schedule th { background: var(--lilla-tenue); font-family: var(--font-title); }
 
-/* --- Palinsesto settimanale (timetable) --- */
+/* --- Palinsesto settimanale (legenda + griglia oraria) --- */
 .legenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; margin: 30px 0 0; padding: 0; list-style: none; font-family: var(--font-title); font-weight: 500; font-size: .92rem; }
 .legenda li { display: flex; align-items: center; gap: 9px; }
 .dot { width: 13px; height: 13px; border-radius: 50%; flex: none; }
+/* Colori discipline (solo palette): i tre yoga in tonalità di viola, pilates ambra, meditazione periwinkle */
 .dot.d-yoga    { background: var(--viola); }
-.dot.d-pilates { background: var(--lime); }
-.dot.d-medita  { background: var(--melanzana); }
 .dot.d-grav    { background: var(--violetto); }
-.dot.d-mamma   { background: var(--ambra); }
+.dot.d-mamma   { background: var(--lilla); }
+.dot.d-pilates { background: var(--ambra); }
+.dot.d-medita  { background: var(--periwinkle); }
 
-.timetable { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 34px; align-items: start; }
-.tt-day { background: var(--panna); border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); overflow: hidden; }
-.tt-dayname { margin: 0; background: var(--viola); color: #fff; font-family: var(--font-title); font-weight: 600; text-align: center; padding: 12px 8px; font-size: .98rem; letter-spacing: .04em; }
-.tt-slots { list-style: none; margin: 0; padding: 10px; display: grid; gap: 8px; }
-.tt-slot { background: #fff; border: 1px solid var(--lilla-tenue); border-left: 4px solid var(--violetto); border-radius: 11px; padding: 9px 11px; }
-.tt-slot.d-yoga    { border-left-color: var(--viola); }
-.tt-slot.d-pilates { border-left-color: var(--lime); }
-.tt-slot.d-medita  { border-left-color: var(--melanzana); }
-.tt-slot.d-grav    { border-left-color: var(--violetto); }
-.tt-slot.d-mamma   { border-left-color: var(--ambra); }
-.tt-time { display: block; font-family: var(--font-title); font-weight: 700; color: var(--melanzana); font-size: 1rem; line-height: 1.2; }
-.tt-name { display: block; font-size: .82rem; color: #6b6470; }
-.tt-empty { padding: 14px 11px; font-size: .85rem; color: #b3aab6; font-style: italic; }
-@media (max-width: 920px) { .timetable { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 560px) { .timetable { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+/* Griglia oraria: asse Y = ore (colonna sinistra), colonne = giorni della settimana */
+.tt-scroll { margin-top: 34px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); }
+.tt { width: 100%; min-width: 720px; table-layout: fixed; border-collapse: collapse; font-family: var(--font-body); }
+.tt thead th { background: var(--viola); color: #fff; font-family: var(--font-title); font-weight: 600; font-size: .92rem; letter-spacing: .03em; padding: 12px 8px; text-align: center; }
+.tt thead th:first-child { background: var(--viola-scuro); width: 66px; }
+.tt th.tt-h { background: var(--panna); color: var(--melanzana); font-family: var(--font-title); font-weight: 700; font-size: .8rem; text-align: right; padding: 8px 12px; white-space: nowrap; border-right: 1px solid var(--lilla-tenue); }
+.tt td { border-top: 1px solid var(--lilla-tenue); border-left: 1px solid var(--lilla-tenue); padding: 6px; height: 56px; background: #fff; vertical-align: middle; }
+.tt tbody th.tt-h { border-top: 1px solid var(--lilla-tenue); }
+.tt .ev { --c: var(--violetto); display: block; border: 1px solid color-mix(in srgb, var(--c) 42%, #fff); border-left: 4px solid var(--c); border-radius: 9px; padding: 6px 9px; background: color-mix(in srgb, var(--c) 16%, #fff); color: var(--melanzana); }
+.tt .ev b { display: block; font-family: var(--font-title); font-weight: 700; font-size: .9rem; line-height: 1.15; }
+.tt .ev span { display: block; font-size: .76rem; color: #5b5560; }
+.tt .ev.d-yoga    { --c: var(--viola); }
+.tt .ev.d-grav    { --c: var(--violetto); }
+.tt .ev.d-mamma   { --c: var(--lilla); }
+.tt .ev.d-pilates { --c: var(--ambra); }
+.tt .ev.d-medita  { --c: var(--periwinkle); }
+.tt-hint { display: none; text-align: center; margin: 12px 0 0; font-size: .86rem; color: #6b6470; }
+.vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
+@media (max-width: 720px) { .tt-hint { display: block; } }
 
 /* recensioni */
 .review { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
@@ -438,6 +443,10 @@ p  { margin: 0 0 1rem; }
 .ck-privacy { font-size: .82rem; color: #8a8290; margin-top: 12px; }
 @media (max-width: 720px) { .ck-grid { grid-template-columns: 1fr; } }
 
+/* ====== Box "Avvisami" (avvisi sulle date degli eventi) ====== */
+.avvisami-form { max-width: 520px; margin: 28px auto 0; }
+.avvisami-form .btn { width: 100%; }
+
 /* ====== Modulo Tally (prova gratuita) ====== */
 .tally-wrap { background: #fff; border: 1px solid var(--lilla-tenue); border-radius: var(--radius-sm); padding: 12px; box-shadow: var(--shadow-sm); }
 .tally-wrap iframe { display: block; }
@@ -488,9 +497,10 @@ p  { margin: 0 0 1rem; }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
 /* --- Hero immersivo (home) --- */
-.hero.hero--big { min-height: 88vh; display: flex; align-items: center; text-align: center; }
-.hero.hero--big .hero-inner { max-width: 900px; margin: 0 auto; padding: clamp(120px, 22vh, 220px) 0 clamp(90px, 14vh, 150px); }
+.hero.hero--big { min-height: 70vh; display: flex; align-items: center; text-align: center; }
+.hero.hero--big .hero-inner { max-width: 900px; margin: 0 auto; padding: clamp(40px, 8vh, 90px) 0; }
 .hero.hero--big h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: 1.04; }
+.hero.hero--big h1 .hero-h1-more { display: block; margin-top: .5em; font-size: clamp(1.15rem, 2.6vw, 1.9rem); font-weight: 500; line-height: 1.25; color: rgba(255,255,255,.95); }
 .hero.hero--big p { margin-left: auto; margin-right: auto; }
 .hero.hero--big .actions { justify-content: center; }
 
@@ -510,7 +520,7 @@ p  { margin: 0 0 1rem; }
 /* --- Fascia immagine a tutta larghezza (atmosfera) --- */
 .band-full { position: relative; isolation: isolate; color: #fff; text-align: center; padding: clamp(110px, 20vw, 220px) 0; }
 .band-full .band-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
-.band-full::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(46,6,68,.42), rgba(46,6,68,.64)); }
+.band-full::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.48) 100%); }
 .band-full .eyebrow { color: var(--lilla); }
 .band-full blockquote { font-family: var(--font-title); font-weight: 500; font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1.25; color: #fff; max-width: 22ch; margin: 0 auto; }
 .band-full cite { display: block; margin-top: 1.2rem; font-style: normal; font-weight: 600; color: rgba(255,255,255,.85); font-size: 1rem; }

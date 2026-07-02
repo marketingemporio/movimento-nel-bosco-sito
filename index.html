@@ -29,16 +29,6 @@
 </head>
 <body>
 
-  <!-- ============ TOPBAR (striscia scorrevole) ============ -->
-  <div class="topbar" aria-hidden="true">
-    <div class="marquee">
-      <div class="marquee__track">
-        <span>Yoga</span><span>·</span><span>Pilates</span><span>·</span><span>Meditazione</span><span>·</span><span>Mompiano — Brescia</span><span>·</span><span>Immersi nel verde, ai piedi del Colle San Giuseppe</span><span>·</span>
-        <span>Yoga</span><span>·</span><span>Pilates</span><span>·</span><span>Meditazione</span><span>·</span><span>Mompiano — Brescia</span><span>·</span><span>Immersi nel verde, ai piedi del Colle San Giuseppe</span><span>·</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
@@ -68,7 +58,15 @@
               <li><a href="meditazione.html">Meditazione</a></li>
             </ul>
           </li>
-          <li><a href="il-team.html">Il team</a></li>
+          <li class="has-dropdown">
+            <span class="dropdown-parent">
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Chi siamo <span class="caret" aria-hidden="true"></span></button>
+            </span>
+            <ul class="dropdown-menu">
+              <li><a href="la-visione.html">La visione</a></li>
+              <li><a href="il-team.html">Il team</a></li>
+            </ul>
+          </li>
           <li><a href="orari.html">Orari</a></li>
           <li><a href="abbonamenti.html">Abbonamenti</a></li>
           <li><a href="eventi.html">Eventi</a></li>
@@ -89,7 +87,7 @@
     <div class="container">
       <div class="hero-inner">
         <p class="eyebrow">a Brescia, immersi nel verde di Mompiano</p>
-        <h1>Corsi di Yoga, Pilates e Meditazione</h1>
+        <h1>Yoga, Pilates, Meditazione<span class="hero-h1-more">e altre pratiche di consapevolezza del corpo e del movimento</span></h1>
         <p>Pratiche multilivello, distribuite lungo tutta la settimana, in una sala luminosa e accogliente ai piedi del Colle San Giuseppe.</p>
         <div class="actions">
           <a class="btn btn-accent" href="prova-gratuita.html">Richiedi una prova</a>
@@ -208,7 +206,7 @@
       <div>
         <p class="eyebrow eyebrow-bosco">Il nostro spazio</p>
         <h2>Una sala luminosa, immersa nel verde</h2>
-        <p>Pratichi in un ambiente accogliente ed esclusivo, ai piedi del Colle San Giuseppe: luce naturale, silenzio e lo spazio giusto per muoverti senza fretta. E poiché siamo dentro l'Emporio nel Bosco, la pratica si intreccia con la sua cura erboristica — oli essenziali e fiori di Bach che accompagnano corpo e respiro, e una tisana per restare ancora un momento.</p>
+        <p>Pratichi in un ambiente accogliente ed esclusivo, ai piedi del Colle San Giuseppe: luce naturale, silenzio e lo spazio giusto per muoverti senza fretta. E poiché siamo dentro l'Emporio nel Bosco, la pratica si intreccia con la sua cura erboristica — oli essenziali e fiori di Bach che accompagnano corpo e respiro.</p>
       </div>
     </div>
   </section>
@@ -256,11 +254,6 @@
           <h3>Certificazioni</h3>
           <p>Hari-Yoga, Yoga Alliance e Pilates. Un percorso di anni per guidare gli allievi unendo corpo, mente e spirito.</p>
         </div>
-        <div class="info">
-          <div class="ico">🌿</div>
-          <h3>Tisane e Infusi</h3>
-          <p>Concludi la pratica con le nostre tisane e i nostri infusi naturali.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -281,7 +274,7 @@
   <section class="section parent">
     <div class="container split">
       <div>
-        <p class="eyebrow">Una realtà di</p>
+        <p class="eyebrow">Un progetto nato da</p>
         <h2>Emporio nel Bosco</h2>
         <p style="font-weight:600;color:#fff">Fitoterapia e Naturopatia a Mompiano</p>
         <p>Siamo da sempre appassionati di erbe officinali, per aiutare coloro che come noi si affidano alla medicina naturale. Vogliamo essere una guida nel viaggio verso l'autoguarigione e il benessere naturale, riportando l'essere umano alla piena consapevolezza di sé mediante le forze della natura.</p>

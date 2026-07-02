@@ -55,7 +55,15 @@
             <li><a href="meditazione.html">Meditazione</a></li>
           </ul>
         </li>
-        <li><a href="il-team.html">Il team</a></li>
+        <li class="has-dropdown">
+          <span class="dropdown-parent">
+            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Chi siamo <span class="caret" aria-hidden="true"></span></button>
+          </span>
+          <ul class="dropdown-menu">
+            <li><a href="la-visione.html">La visione</a></li>
+            <li><a href="il-team.html">Il team</a></li>
+          </ul>
+        </li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
         <li><a href="eventi.html">Eventi</a></li>
@@ -124,6 +132,30 @@
         <div class="info"><div class="ico">🎶</div><h3>Cosa portare</h3><p>Abbigliamento comodo. Tappetino e coperta a disposizione; se preferisci, porta i tuoi. Chiedici pure se non li hai.</p></div>
         <div class="info"><div class="ico">✍️</div><h3>Prenota</h3><p>I posti sono limitati: <a href="prova-gratuita.html#contatti">scrivici per prenotare</a> la tua serata.</p></div>
       </div>
+    </div>
+  </section>
+
+  <!-- Avvisami quando escono le date -->
+  <section class="section" id="avvisami">
+    <div class="container">
+      <div class="center">
+        <p class="eyebrow">Resta connesso</p>
+        <h2>Avvisami della prossima serata</h2>
+        <p class="lead">Lasciaci la tua email: ti scriviamo appena fissiamo la data del prossimo bagno sonoro. Solo gli appuntamenti del Bosco, niente spam.</p>
+      </div>
+      <form class="ck-card avvisami-form" name="avvisami-eventi" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie-avvisami.html">
+        <input type="hidden" name="form-name" value="avvisami-eventi">
+        <input type="hidden" name="evento" value="Bagno Sonoro con Handpan">
+        <p hidden><label>Non compilare: <input name="bot-field"></label></p>
+        <label>Nome
+          <input type="text" name="nome" autocomplete="name">
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <button class="btn btn-accent" type="submit">Avvisami</button>
+        <p class="ck-privacy">Useremo la tua email solo per avvisarti delle date. Puoi chiederne la cancellazione quando vuoi.</p>
+      </form>
     </div>
   </section>
 

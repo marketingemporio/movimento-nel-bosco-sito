@@ -55,7 +55,15 @@
             <li><a href="meditazione.html">Meditazione</a></li>
           </ul>
         </li>
-        <li><a href="il-team.html">Il team</a></li>
+        <li class="has-dropdown">
+          <span class="dropdown-parent">
+            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Chi siamo <span class="caret" aria-hidden="true"></span></button>
+          </span>
+          <ul class="dropdown-menu">
+            <li><a href="la-visione.html">La visione</a></li>
+            <li><a href="il-team.html">Il team</a></li>
+          </ul>
+        </li>
         <li><a href="orari.html">Orari</a></li>
         <li><a href="abbonamenti.html">Abbonamenti</a></li>
         <li><a href="eventi.html">Eventi</a></li>
@@ -126,6 +134,30 @@
       <h2>Un profondo rilassamento cosciente</h2>
       <p>Yoga Nidra è una tecnica molto antica che aiuta a rilassare corpo e mente. La parola <em>Nidra</em> significa <em>sonno</em>, ma questo termine non deve trarre in inganno: il sonno indotto da questa pratica è un profondo stato di rilassamento cosciente.</p>
       <p>Durante lo Yoga Nidra il corpo e la mente sciolgono le tensioni accumulate, stimolando altre facoltà mentali come la creatività, il problem solving, la riduzione dello stress e il rilassamento.</p>
+    </div>
+  </section>
+
+  <!-- Avvisami quando escono le date -->
+  <section class="section" id="avvisami">
+    <div class="container">
+      <div class="center">
+        <p class="eyebrow">Resta connesso</p>
+        <h2>Avvisami del prossimo incontro</h2>
+        <p class="lead">Lasciaci la tua email: ti scriviamo appena fissiamo la data del prossimo viaggio con gli oli essenziali. Solo gli appuntamenti del Bosco, niente spam.</p>
+      </div>
+      <form class="ck-card avvisami-form" name="avvisami-eventi" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie-avvisami.html">
+        <input type="hidden" name="form-name" value="avvisami-eventi">
+        <input type="hidden" name="evento" value="Viaggio con Oli Essenziali">
+        <p hidden><label>Non compilare: <input name="bot-field"></label></p>
+        <label>Nome
+          <input type="text" name="nome" autocomplete="name">
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <button class="btn btn-accent" type="submit">Avvisami</button>
+        <p class="ck-privacy">Useremo la tua email solo per avvisarti delle date. Puoi chiederne la cancellazione quando vuoi.</p>
+      </form>
     </div>
   </section>
 
