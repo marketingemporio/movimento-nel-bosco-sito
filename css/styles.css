@@ -291,13 +291,20 @@ p  { margin: 0 0 1rem; }
 .slot--pilates { background: var(--ambra-tenue); color: #8a5f0a; }
 .slot--meditazione { background: #eef0fb; color: #4a5aa8; }
 .slot--gravidanza { background: var(--lime-tenue); color: #5c7317; }
+.slot--mamma { background: #ece8f8; color: #5a48a8; }
+.tt-legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; list-style: none; margin: 30px 0 0; padding: 0; font-size: .9rem; font-family: var(--font-title); font-weight: 500; }
+.tt-legend .dot { display: inline-block; width: .85em; height: .85em; border-radius: 4px; margin-right: .45em; vertical-align: -1px; }
+.tt-hint { text-align: center; font-size: .85rem; color: var(--ink-soft); margin-top: 14px; }
 
 /* ---------- Shop / catalogo abbonamenti (classi usate da js/shop.js) ---------- */
 .chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
 .chip { font-family: var(--font-title); font-weight: 600; font-size: .95rem; padding: .55em 1.3em; border-radius: 999px;
   border: 2px solid var(--lilla); background: #fff; color: var(--viola); cursor: pointer; transition: all .15s ease; }
 .chip:hover { border-color: var(--viola); }
-.chip.active { background: var(--viola); border-color: var(--viola); color: #fff; }
+.chip.is-active { background: var(--viola); border-color: var(--viola); color: #fff; }
+.shop-filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
+.shop-card--open { border: 2px solid var(--ambra); }
+.shop-card--open .tag { background: var(--ambra-tenue); color: #8a5f0a; }
 
 .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
 .shop-card { background: #fff; border-radius: var(--radius-lg); padding: 30px 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
@@ -330,11 +337,82 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .radio-pill .rp-txt strong { display: block; font-family: var(--font-title); color: var(--viola-scuro); }
 .ck-line { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--lilla-tenue); font-size: .97rem; }
 .ck-line strong { font-family: var(--font-title); color: var(--viola-scuro); }
+.ck-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 26px; align-items: start; margin-top: 30px; }
+.ck-card { background: #fff; border-radius: var(--radius-lg); padding: clamp(22px, 3.5vw, 36px); box-shadow: var(--shadow-sm); display: grid; gap: 14px; }
+.ck-card h2 { font-size: 1.3rem; margin: 0; }
+.ck-pay { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+.ck-pay legend { font-family: var(--font-title); font-weight: 600; color: var(--viola-scuro); margin-bottom: .4em; }
+.ck-radio { display: block; border: 2px solid var(--lilla-tenue); border-radius: 14px; padding: 12px 14px; cursor: pointer; background: var(--panna); font-weight: 400; font-family: var(--font-body); color: var(--melanzana); }
+.ck-radio:has(input:checked) { border-color: var(--viola); background: var(--lilla-tenue); }
+.ck-radio input { accent-color: var(--viola); margin-right: .5em; }
+.ck-radio small { color: var(--ink-soft); }
+.ck-pay-note { font-size: .9rem; color: var(--ink-soft); background: var(--ambra-tenue); border-radius: 12px; padding: 12px 14px; }
+.breadcrumb { font-size: .85rem; color: var(--ink-soft); margin: 0 0 .8rem; }
+.breadcrumb a { color: var(--viola); }
+@media (max-width: 860px) { .ck-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Tally embed ---------- */
 .tally-wrap { background: #fff; border-radius: var(--radius-lg); padding: clamp(18px, 3vw, 34px); box-shadow: var(--shadow-sm); }
 
-/* ---------- Blog ---------- */
+/* ---------- Contenuti editoriali ---------- */
+.prose { max-width: 720px; }
+.prose .media, .media { border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin: 26px 0; width: 100%; }
+.checklist { list-style: none; padding: 0; margin: 0 0 1.2rem; }
+.checklist li { padding: 8px 0 8px 34px; position: relative; }
+.checklist li::before { content: "✓"; position: absolute; left: 4px; top: 8px; color: var(--lime); font-weight: 800; font-family: var(--font-title); }
+.laura-video { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--viola-scuro); aspect-ratio: 9/12; object-fit: cover; }
+.quote-band { background: var(--lilla-tenue); text-align: center; }
+.quote-band blockquote { font-family: var(--font-title); font-weight: 500; font-size: clamp(1.25rem, 2.6vw, 1.8rem); line-height: 1.4; color: var(--viola-scuro); max-width: 30ch; margin: 0 auto .6em; letter-spacing: -.01em; }
+.quote-band cite { font-style: normal; color: var(--viola); font-weight: 600; }
+
+/* ---------- Card eventi / appuntamenti ---------- */
+.event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.event { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
+.event img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
+.event .ev-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+.event .when { font-size: .8rem; color: var(--viola); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-title); font-weight: 600; margin: 0 0 6px; }
+.event h3 { font-size: 1.12rem; margin-bottom: .3em; }
+.event p { font-size: .93rem; color: var(--ink-soft); margin: 0 0 .5rem; }
+.event .ev-body .more { margin-top: auto; }
+
+/* ---------- Attrezzi Pilates (figure) ---------- */
+.equip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 40px; }
+.equip figure { margin: 0; text-align: center; }
+.equip img { border-radius: var(--radius); box-shadow: var(--shadow-sm); aspect-ratio: 1; object-fit: cover; width: 100%; }
+.equip figcaption { font-family: var(--font-title); font-weight: 600; font-size: .9rem; color: var(--viola-scuro); margin-top: 10px; }
+
+/* ---------- Form "avvisami" (Netlify) ---------- */
+.avvisami-form { max-width: 520px; margin: 36px auto 0; display: grid; gap: 14px; }
+.avvisami-form .btn { justify-self: start; }
+.ck-privacy { font-size: .82rem; color: var(--ink-soft); margin: 0; }
+
+/* ---------- Blog dal Bosco ---------- */
+/* Le "cartoline" della vetrina (blog.html) usano .cards/.card come da BLOG.md */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 44px; }
+.card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card .thumb { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
+.card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.card .body h3 { font-size: 1.15rem; }
+.card .body p { font-size: .94rem; color: var(--ink-soft); flex: 1; }
+.card .body .tag { display: inline-block; align-self: flex-start; font-size: .78rem; font-family: var(--font-title); font-weight: 600; color: var(--viola); background: var(--lilla-tenue); border-radius: 999px; padding: .25em .9em; margin-bottom: 10px; }
+.post-date { font-size: .8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-title); font-weight: 500; margin-bottom: 8px; }
+
+/* Il racconto (pagine blog-*.html) — classi documentate in BLOG.md */
+.post-meta { font-size: .92rem; color: var(--lilla); font-family: var(--font-title); }
+.post-meta .sep { opacity: .6; margin: 0 .35em; }
+.post-body { max-width: 680px; margin: 0 auto; font-size: 1.08rem; line-height: 1.85; }
+.post-body > p:first-of-type::first-letter { font-family: var(--font-title); font-weight: 700; font-size: 3.2em; float: left; line-height: .85; padding-right: .12em; color: var(--viola); }
+.post-body h2 { font-size: 1.5rem; margin-top: 1.8em; }
+.post-quote { font-family: var(--font-title); font-weight: 500; font-size: 1.3rem; color: var(--viola); border-left: 4px solid var(--lilla); padding-left: 20px; margin: 1.8em 0; line-height: 1.5; }
+.post-figure { margin: 2em 0; }
+.post-figure figure { margin: 0; }
+.post-figure img { border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); width: 100%; }
+.post-figure figcaption { font-size: .85rem; color: var(--ink-soft); margin-top: 10px; text-align: center; }
+.post-end { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-top: 3em; padding-top: 1.5em; border-top: 1px solid var(--lilla-tenue); }
+.post-signature { font-family: var(--font-title); font-weight: 600; color: var(--viola); font-size: 1.1rem; }
+.btn-sm { font-size: .9rem; padding: .6em 1.2em; }
+
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 44px; }
 .post-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .2s ease, box-shadow .2s ease; }
 .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
@@ -390,7 +468,8 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 
 @media (max-width: 900px) {
   .disc-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .reviews, .steps, .info-grid, .shop-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .reviews, .steps, .info-grid, .shop-grid, .blog-grid, .event-grid, .cards { grid-template-columns: repeat(2, 1fr); }
+  .equip { grid-template-columns: repeat(3, 1fr); }
   .split, .split.reverse { grid-template-columns: 1fr; }
   .split.reverse > *:first-child { order: 1; }
   .split.reverse > *:last-child { order: 2; }
@@ -413,7 +492,8 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 }
 
 @media (max-width: 560px) {
-  .disc-grid, .team-grid, .reviews, .steps, .info-grid, .shop-grid, .blog-grid { grid-template-columns: 1fr; }
+  .disc-grid, .team-grid, .reviews, .steps, .info-grid, .shop-grid, .blog-grid, .event-grid, .cards { grid-template-columns: 1fr; }
+  .equip { grid-template-columns: repeat(2, 1fr); }
   .disc__img img { aspect-ratio: 16/10; }
   .footer-grid { grid-template-columns: 1fr; gap: 26px; }
   .exp-row { gap: 14px; }

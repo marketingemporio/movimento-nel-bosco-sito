@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /checkout.html
 Disallow: /grazie.html
+Disallow: /grazie-avvisami.html
 Disallow: /blog-modello-racconto.html
 
 Sitemap: https://movimentonelbosco.it/sitemap.xml

@@ -1,106 +1,101 @@
 <!DOCTYPE html>
-<!-- =====================================================================
-     MODELLO RACCONTO — Blog dal Bosco
-     NON è una pagina pubblica: è il template da DUPLICARE per ogni racconto.
-     Istruzioni complete in BLOG.md.
-
-     Cosa cambiare (cerca i segnaposti in MAIUSCOLO):
-       TITOLO_RACCONTO   → il titolo (es. Le primule sotto il faggio)
-       SOMMARIO          → 1-2 frasi che riassumono il racconto (per Google e social)
-       SLUG              → nome del file senza "blog-" (es. le-primule-sotto-il-faggio)
-       DATA_ESTESA       → es. 12 Marzo 2026
-       DATA_ISO          → stessa data in formato 2026-03-12 (anno-mese-giorno)
-       CATEGORIA         → es. Passeggiate di primavera
-       URL_FOTO_COPERTINA→ link della foto grande in cima
-       MINUTI            → minuti di lettura (es. 4)
-     Poi scrivi il racconto dentro <div class="post-body"> e aggiungi la
-     cartolina nella vetrina blog.html (vedi BLOG.md).
-     ===================================================================== -->
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TITOLO_RACCONTO — Blog dal Bosco | Movimento nel Bosco</title>
-  <meta name="description" content="SOMMARIO">
+  <meta name="description" content="SOMMARIO_DEL_RACCONTO (una frase che invita a leggere).">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
   <!-- SEO:auto -->
-  <link rel="canonical" href="https://movimentonelbosco.it/blog-SLUG.html">
-  <meta name="robots" content="noindex, nofollow"><!-- ⚠️ nel RACCONTO vero cambia in: index, follow -->
-
-  <meta name="author" content="Paola">
+  <link rel="canonical" href="https://movimentonelbosco.it/blog-modello-racconto.html">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Movimento nel Bosco">
   <meta name="geo.region" content="IT-BS">
   <meta name="geo.placename" content="Mompiano, Brescia">
   <meta name="theme-color" content="#601d7d">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Movimento nel Bosco">
-  <meta property="og:title" content="TITOLO_RACCONTO — Blog dal Bosco">
-  <meta property="og:description" content="SOMMARIO">
-  <meta property="og:url" content="https://movimentonelbosco.it/blog-SLUG.html">
+  <meta property="og:title" content="TITOLO_RACCONTO — Blog dal Bosco | Movimento nel Bosco">
+  <meta property="og:description" content="SOMMARIO_DEL_RACCONTO (una frase che invita a leggere).">
+  <meta property="og:url" content="https://movimentonelbosco.it/blog-modello-racconto.html">
   <meta property="og:image" content="URL_FOTO_COPERTINA">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TITOLO_RACCONTO — Blog dal Bosco">
-  <meta name="twitter:description" content="SOMMARIO">
+  <meta name="twitter:title" content="TITOLO_RACCONTO — Blog dal Bosco | Movimento nel Bosco">
+  <meta name="twitter:description" content="SOMMARIO_DEL_RACCONTO (una frase che invita a leggere).">
   <meta name="twitter:image" content="URL_FOTO_COPERTINA">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "TITOLO_RACCONTO", "description": "SOMMARIO", "image": "URL_FOTO_COPERTINA", "inLanguage": "it-IT", "datePublished": "DATA_ISO", "dateModified": "DATA_ISO", "author": {"@type": "Person", "name": "Paola"}, "publisher": {"@type": "Organization", "name": "Movimento nel Bosco", "logo": {"@type": "ImageObject", "url": "https://movimentonelbosco.it/assets/logo-positivo.svg"}}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://movimentonelbosco.it/blog-SLUG.html"}, "isPartOf": {"@type": "Blog", "@id": "https://movimentonelbosco.it/blog.html#blog", "name": "Blog dal Bosco"}}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://movimentonelbosco.it/"}, {"@type": "ListItem", "position": 2, "name": "Blog dal Bosco", "item": "https://movimentonelbosco.it/blog.html"}, {"@type": "ListItem", "position": 3, "name": "TITOLO_RACCONTO", "item": "https://movimentonelbosco.it/blog-SLUG.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://movimentonelbosco.it/blog-modello-racconto.html#webpage","url":"https://movimentonelbosco.it/blog-modello-racconto.html","name":"TITOLO_RACCONTO — Blog dal Bosco | Movimento nel Bosco","description":"SOMMARIO_DEL_RACCONTO (una frase che invita a leggere).","inLanguage":"it-IT","isPartOf":{"@type":"WebSite","@id":"https://movimentonelbosco.it/#website","name":"Movimento nel Bosco","url":"https://movimentonelbosco.it/"},"primaryImageOfPage":"URL_FOTO_COPERTINA"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://movimentonelbosco.it/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://movimentonelbosco.it/blog.html"},{"@type":"ListItem","position":3,"name":"TITOLO_RACCONTO","item":"https://movimentonelbosco.it/blog-modello-racconto.html"}]}]}</script>
 </head>
 <body>
 
+  <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Movimento nel Bosco — home">
         <img class="logo-full" src="assets/logo-positivo.svg" alt="Movimento nel Bosco">
       </a>
-      <nav><ul class="nav-links" id="nav-menu">
-        <li class="has-dropdown">
-          <span class="dropdown-parent">
-            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corsi <span class="caret" aria-hidden="true"></span></button>
-          </span>
-          <ul class="dropdown-menu">
-            <li class="has-dropdown has-dropdown--sub">
-              <span class="dropdown-parent">
-                <a href="yoga.html">Yoga</a>
-                <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
-              </span>
-              <ul class="dropdown-menu dropdown-menu--sub">
-                <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
-                <li><a href="gravidanza.html">Gravidanza</a></li>
-                <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
-              </ul>
-            </li>
-            <li><a href="pilates.html">Pilates</a></li>
-            <li><a href="meditazione.html">Meditazione</a></li>
-          </ul>
-        </li>
-        <li class="has-dropdown">
-          <span class="dropdown-parent">
-            <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Chi siamo <span class="caret" aria-hidden="true"></span></button>
-          </span>
-          <ul class="dropdown-menu">
-            <li><a href="la-visione.html">La visione</a></li>
-            <li><a href="il-team.html">Il team</a></li>
-          </ul>
-        </li>
-        <li><a href="orari.html">Orari</a></li>
-        <li><a href="abbonamenti.html">Abbonamenti</a></li>
-        <li><a href="eventi.html">Eventi</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul></nav>
-      <div class="nav-cta"><a class="btn btn-ghost nav-accedi" href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">App prenotazione</a><a class="btn btn-primary" href="prova-gratuita.html">Prova gratuita</a><button class="nav-toggle" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-menu"><span class="nav-toggle-bars"></span></button></div>
+      <nav>
+        <ul class="nav-links" id="nav-menu">
+          <li class="has-dropdown">
+            <span class="dropdown-parent">
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Corsi <span class="caret" aria-hidden="true"></span></button>
+            </span>
+            <ul class="dropdown-menu">
+              <li class="has-dropdown has-dropdown--sub">
+                <span class="dropdown-parent">
+                  <a href="yoga.html">Yoga</a>
+                  <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+                </span>
+                <ul class="dropdown-menu dropdown-menu--sub">
+                  <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
+                  <li><a href="gravidanza.html">Gravidanza</a></li>
+                  <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+                </ul>
+              </li>
+              <li><a href="pilates.html">Pilates</a></li>
+              <li><a href="meditazione.html">Meditazione</a></li>
+            </ul>
+          </li>
+          <li><a href="orari.html">Orari</a></li>
+          <li><a href="abbonamenti.html">Abbonamenti</a></li>
+          <li><a href="il-team.html">Il team</a></li>
+          <li><a href="eventi.html">Eventi</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="nav-app" href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">App prenotazione</a>
+        <a class="btn btn-cta" href="prova-gratuita.html">Prenota la prova</a>
+        <button class="nav-toggle" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-menu"><span class="nav-toggle-bars"></span></button>
+      </div>
     </div>
   </header>
 
-  <section class="page-hero has-img">
+  <!-- ============================================================
+       MODELLO RACCONTO — da duplicare per ogni nuovo racconto.
+       Segnaposti da sostituire (in MAIUSCOLO):
+       - TITOLO_RACCONTO   → il titolo del racconto (anche nel <title> e nei meta)
+       - SOMMARIO_DEL_RACCONTO → una frase per i meta/anteprima social
+       - CATEGORIA         → es. "Passeggiate di primavera"
+       - DATA_ESTESA       → es. "12 Marzo 2026"
+       - MINUTI            → minuti di lettura, es. "4"
+       - URL_FOTO_COPERTINA / URL_FOTO / DESCRIVI_LA_FOTO
+       ⚠️ E nel <head>: cambia "noindex, nofollow" in "index, follow"!
+       Procedura completa: BLOG.md
+       ============================================================ -->
+
+  <!-- ============ HERO ============ -->
+  <section class="page-hero">
     <img class="hero-bg" src="URL_FOTO_COPERTINA" alt="DESCRIVI_LA_FOTO">
     <div class="container">
-      <p class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / TITOLO_RACCONTO</p>
       <p class="eyebrow">CATEGORIA</p>
       <h1>TITOLO_RACCONTO</h1>
-      <p class="post-meta">di Paola <span class="sep">·</span> DATA_ESTESA <span class="sep">·</span> MINUTI minuti di lettura</p>
+      <p><span class="post-meta">di Paola <span class="sep">·</span> DATA_ESTESA <span class="sep">·</span> MINUTI minuti di lettura</span></p>
+      
     </div>
   </section>
+
 
   <section class="section">
     <div class="container">
@@ -139,15 +134,22 @@
     </div>
   </section>
 
+
+  <!-- ============ CTA FINALE ============ -->
   <section class="section cta-band">
     <div class="container">
-      <p class="eyebrow" style="color:#fff">Dal bosco alla sala</p>
+      <p class="eyebrow">Dal bosco alla sala</p>
       <h2>Vieni a camminare e a respirare con noi</h2>
-      <p>Le stesse cose che cerco nel bosco le ritrovi nelle nostre pratiche: presenza, respiro, lentezza.</p>
-      <p style="margin-top:20px"><a class="btn btn-accent" href="prova-gratuita.html">Prova una lezione</a></p>
+      <p>Le stesse cose che Paola cerca nel bosco le ritrovi nelle nostre pratiche: presenza, respiro, lentezza.</p>
+      <div class="actions">
+        <a class="btn btn-cta btn--lg" href="prova-gratuita.html">Prenota la lezione di prova</a>
+      </div>
+      <p class="note">📍 Via Fontane 32, Mompiano (Brescia) — dentro l’Emporio nel Bosco</p>
     </div>
   </section>
 
+
+  <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -156,29 +158,59 @@
             <img class="logo-full logo-footer" src="assets/logo-negativo.svg" alt="Movimento nel Bosco">
           </div>
           <p>Scuola di Yoga, Pilates e Meditazione a Brescia.<br>Via Fontane 32, 25133 Brescia (Mompiano).</p>
+          <p class="footer-cta"><a class="btn btn-cta" href="prova-gratuita.html">Prenota la prova</a></p>
         </div>
-        <div><h4>Corsi</h4><ul>
-          <li><a href="yoga.html">Yoga</a></li>
-          <li><a href="pilates.html">Pilates</a></li>
-          <li><a href="meditazione.html">Meditazione</a></li>
-          <li><a href="gravidanza.html">Yoga in Gravidanza</a></li>
-          <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
-        </ul></div>
-        <div><h4>Info</h4><ul>
-          <li><a href="orari.html">Orari</a></li>
-          <li><a href="abbonamenti.html">Abbonamenti</a></li>
-          <li><a href="eventi.html">Eventi</a></li>
-          <li><a href="blog.html">Blog dal Bosco</a></li>
-          <li><a href="regolamento.html">Regolamento</a></li>
-          <li><a href="prova-gratuita.html">Prova gratuita</a></li>
-          <li><a href="prenota.html">Come prenotare</a></li>
-          <li><a href="il-team.html">Insegnanti</a></li>
-        </ul></div>
+        <div>
+          <h4>Corsi</h4>
+          <ul>
+            <li><a href="yoga.html">Yoga</a></li>
+            <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
+            <li><a href="pilates.html">Pilates</a></li>
+            <li><a href="meditazione.html">Meditazione</a></li>
+            <li><a href="gravidanza.html">Yoga in Gravidanza</a></li>
+            <li><a href="mamma-e-bimbo.html">Mamma e Bimbo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <ul>
+            <li><a href="orari.html">Orari</a></li>
+            <li><a href="abbonamenti.html">Abbonamenti</a></li>
+            <li><a href="eventi.html">Eventi</a></li>
+            <li><a href="il-team.html">Il team</a></li>
+            <li><a href="la-visione.html">La visione</a></li>
+            <li><a href="regolamento.html">Regolamento</a></li>
+            <li><a href="blog.html">Blog dal Bosco</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contatti</h4>
+          <ul>
+            <li>📍 Via Fontane 32, Brescia</li>
+            <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
+            <li><a href="https://wa.me/393520885612" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener">📷 Instagram</a></li>
+            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">📱 App prenotazione</a></li>
+            <li><a href="prenota.html">Come prenotare</a></li>
+            <li><a href="prova-gratuita.html">Lezione di prova</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-bottom"><span>© Movimento nel Bosco — progetto nato da <a href="https://emporionelbosco.it" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Emporio nel Bosco</a></span><span>Brescia · Mompiano</span></div>
+      <div class="footer-bottom">
+        <span>© Movimento nel Bosco — progetto nato da <a href="https://emporionelbosco.it" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Emporio nel Bosco</a></span>
+        <span>A Mompiano dal 2024</span>
+      </div>
     </div>
   </footer>
 
+  <!-- ============ BARRA CTA MOBILE ============ -->
+  <div class="mobile-cta">
+    <a class="btn btn-cta" href="prova-gratuita.html">Prenota la lezione di prova</a>
+    <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
+    <a class="btn btn-wa" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg></a>
+  </div>
+
   <script src="js/nav.js" defer></script>
+
 </body>
 </html>

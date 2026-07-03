@@ -1,9 +1,31 @@
 # Movimento nel Bosco — STATO (leggimi per primo)
 
-> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-06-30**.
-> Stato: **restyling in corso sul branch `restyling-v2`** (anteprima locale, NON deployato online). Snapshot precedente congelato nel tag **`versione-1`**.
-> 👉 **Parti dalla sezione [🆕 Sessione 2026-06-30](#-sessione-2026-06-30--restyling--nuove-pagine-branch-restyling-v2)** qui sotto: è lo stato più recente.
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-07-03**.
+> Stato: **RESTYLING COMPLETO v3 sul branch `restyling-v3`** (anteprima locale, NON deployato online). Il restyling-v2 resta intatto sul suo branch; snapshot pre-restyling nel tag **`versione-1`**.
+> 👉 **Parti dalla sezione [🆕 Sessione 2026-07-03](#-sessione-2026-07-03--restyling-completo-v3-branch-restyling-v3)** qui sotto: è lo stato più recente.
 > Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
+
+## 🆕 Sessione 2026-07-03 — RESTYLING COMPLETO v3 (branch `restyling-v3`)
+> Richiesta di Paola: **restyling completo, contenuti + grafica**, mantenendo solo **palette Brand DEF e font (Rubik + DM Sans)**. Obiettivo: un sito che rispecchi i documenti di lavoro del vault emporio-brain (`Movimento nel Bosco/Piano azione - nuovo sito e Instagram`, `Instagram - Primi 9 post`), cioè la "nuova veste" della scuola.
+
+**Principi applicati (dal piano d'azione):**
+- **CTA unica dominante ovunque: "Prenota la lezione di prova"** (bottone ambra; l'app resta come link sobrio nel navbar). Ogni pagina chiude con la CTA prova.
+- **Mobile-first**: nuova **barra CTA fissa in basso** su mobile (prova + WhatsApp) su tutte le pagine.
+- **Frizione zero**: bottoni **WhatsApp** (`wa.me`) in home, prova, barra mobile e footer. ⚠️ Il numero è quello **Emporio (+39 352 088 5612)** come SEGNAPOSTO (già usato nella pagina di Camilla): cercare `SEGNAPOSTO WHATSAPP` per sostituirlo se arriva un numero dedicato.
+- **Insegnanti in primo piano** (sezione "Facce vere" in home, team-grid con ritratti tondi). Foto Mantratzi/Parisi = placeholder iniziali (cerca `FOTO:`).
+- **Regola copy**: niente promesse di cura; benessere/equilibrio/ascolto/percorso. Claim brand in home: "Il benessere non è una destinazione, ma un percorso".
+- Recensioni Google reali con stelline su home e pagine corso.
+
+**Cosa è stato rifatto:** `css/styles.css` **da zero** (nuovo design system: foto ad arco stile crocus, sezioni tinte, reveal allo scroll, accordion FAQ nativi `<details>`); tutte le **24 pagine** rigenerate con header/footer/meta uniformi. Meditazione ora è **evergreen** (a cicli, senza date fisse). Gli eventi yoga-all'aperto vivono in `eventi.html#yoga-aperto`. **Invariati e funzionanti**: `js/shop.js` (catalogo/cassa, stesse classi), Netlify Forms (`ordine-abbonamento`, `avvisami-eventi`), loader Tally in prova-gratuita, `netlify/functions/`. Blog: stesse classi e procedura `BLOG.md` (modello incluso). SEO: meta/JSON-LD per pagina + `sitemap.xml` (21 URL) + robots (aggiunto Disallow grazie-avvisami).
+- Le pagine sono state generate con script usa-e-getta nello scratchpad della sessione (non nel repo): il sito resta **HTML statico puro senza build**.
+
+**Testato il 2026-07-03**: tutte le pagine HTTP 200 in locale; link interni tutti validi (script di verifica); screenshot desktop 1280px (home, orari, abbonamenti, pilates, prova, checkout) e mobile 500px (home): catalogo con filtri/tendine ok, checkout carica il prodotto da `?p=`, barra mobile ok.
+
+**Da fare / decisioni aperte (oltre alla lista "Cosa deve fare Michele"):**
+- Foto reali dallo shooting (10-11 lug) → sostituire hero/ritratti (cerca `FOTO:` e i commenti nei file).
+- Numero WhatsApp dedicato? (ora c'è quello Emporio, cerca `SEGNAPOSTO WHATSAPP`).
+- Link Instagram nel footer punta a `instagram.com/movimentonelbosco` (account previsto ~14 lug — verificare handle al lancio).
+- Anteprima locale: **`npx serve . -l 3000`** (⚠️ su questo PC `python` non funziona, è solo l'alias dello Store).
 
 ## 🆕 Sessione 2026-06-30 — restyling + nuove pagine (branch `restyling-v2`)
 > Lavoro fatto sul branch **`restyling-v2`** (creato dallo snapshot **tag `versione-1`**, che congela lo stato "sito completo" del 27/06). `versione-1` resta recuperabile in ogni momento.
