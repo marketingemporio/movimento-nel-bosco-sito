@@ -76,4 +76,21 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') setOpen(false);
   });
+
+  // ---------- Comparsa dolce allo scroll (.reveal) ----------
+  // Rispetta prefers-reduced-motion (il CSS mostra tutto senza animazione).
+  var els = document.querySelectorAll('.reveal');
+  if (els.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('is-visible'); });
+  }
 });
