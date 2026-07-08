@@ -1,9 +1,22 @@
 # Movimento nel Bosco — STATO (leggimi per primo)
 
-> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-07-03**.
-> Stato: **RESTYLING COMPLETO v3 sul branch `restyling-v3`** (anteprima locale, NON deployato online). Il restyling-v2 resta intatto sul suo branch; snapshot pre-restyling nel tag **`versione-1`**.
-> 👉 **Parti dalla sezione [🆕 Sessione 2026-07-03](#-sessione-2026-07-03--restyling-completo-v3-branch-restyling-v3)** qui sotto: è lo stato più recente.
-> Leggi anche: [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-07-07**.
+> Stato: **branch `restyling-v3`** — anteprima come **draft Netlify** (sito `movimento-nel-bosco-75b5b2ef`, account Paola; ogni `netlify deploy --no-build --dir .` senza `--prod` genera un nuovo link), NON in produzione. Il restyling-v2 resta intatto sul suo branch; snapshot pre-restyling nel tag **`versione-1`**.
+> 👉 **Parti dalla sezione [🆕 Sessione 2026-07-06/07](#-sessione-2026-07-0607--revisione-struttura-home-e-navbar) qui sotto**: è lo stato più recente.
+> Leggi anche: [`FILOSOFIA.md`](FILOSOFIA.md) (essenza e struttura della scuola — NUOVO), [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
+
+## 🆕 Sessione 2026-07-06/07 — revisione struttura, home e navbar
+> Richieste di Paola, in sequenza. Tutto verificato con screenshot/click reali in locale.
+
+- **Meditazione non è più un corso**: tolta da menu, home, palinsesto e catalogo abbonamenti; vive tra gli **eventi** ("Cicli di Meditazione", card in `eventi.html` e in home). `meditazione.html` resta la sua pagina (a cicli) con acquisto diretto delle 2 formule (120€/20€). `js/shop.js`: tolta dalla `DISC_ORDER`.
+- **Orari giornalieri**: `orari.html` ora ha **tab Lun–Sab** (stile nalumilano.com/booking), un giorno alla volta, default = giorno corrente (`js/orari.js`, nuovo). Niente più tabella settimanale.
+- **Home ristrutturata**: hero "Yoga, Pilates e consapevolezza, a Brescia" + sottotitolo su corsi+eventi; sezione **"Corsi ed eventi, una direzione"** (2 card + "+", dalla filosofia); video **"Ci presentiamo"**; corsi = solo Vinyasa Yoga e Pilates; poi eventi, prova in 3 passi, sala nel verde (foto Piazzetta Braille), recensioni, "Qualche informazione utile" (ex FAQ), banda Emporio ("nati da Emporio nel Bosco"). Rimossi: sezione insegnanti, citazione Laura.
+- **Grafica home "bosco magico"**: sfondi a macchie sfumate della palette (radial-gradient per sezione), bordi superiori strappati (clip-path), card leggermente ruotate che si raddrizzano al hover, evidenziatore organico `.mark`, timbro brand in filigrana (`assets/timbro.svg`, da Brand DEF → copiato anche in `immagini/Branding/`). Foto: angoli arrotondati uniformi (`--arch: 24px`), niente più forma ad arco.
+- **Copy**: via tutte le etichette sopra i titoli (`.eyebrow`, "scritte piccoline"); titolo struttura "Corsi ed eventi" (non "due percorsi": si sommano, non si escludono).
+- **Font**: dopo prove con DM Serif Display e Fraunces (Montas Light e Roca One sono a pagamento), **si resta su Rubik**.
+- **Navbar nuovo** (identico su tutte le 25 pagine): Yoga (link + tendina: Vinyasa/Gravidanza/Mamma e Bimbo) · Pilates · Orari · Abbonamenti · Eventi · **Chi siamo** (tendina: Movimento nel Bosco → `la-visione.html`, Le insegnanti → `il-team.html`) · Blog. Sparito il contenitore "Corsi"; CSS aggiornato per il caso "link+freccetta" a livello principale.
+- **NUOVO `FILOSOFIA.md` + `FILOSOFIA.html`**: l'essenza della scuola (corpo come strumento di consapevolezza; corsi settimanali = lavoro costante, eventi = pratiche cicliche su suono/aromaterapia/natura). È la bussola per contenuti futuri.
+- **Netlify**: sito draft `movimento-nel-bosco-75b5b2ef` creato il 2026-07-06 (site_id `bb91b528-…`, team Paola). Deploy anteprima: `netlify deploy --no-build --dir . --site bb91b528-5f0c-4999-b082-8c86bb0dc953 --message "..."`. **Mai `--prod`.**
 
 ## 🆕 Sessione 2026-07-03 — RESTYLING COMPLETO v3 (branch `restyling-v3`)
 > Richiesta di Paola: **restyling completo, contenuti + grafica**, mantenendo solo **palette Brand DEF e font (Rubik + DM Sans)**. Obiettivo: un sito che rispecchi i documenti di lavoro del vault emporio-brain (`Movimento nel Bosco/Piano azione - nuovo sito e Instagram`, `Instagram - Primi 9 post`), cioè la "nuova veste" della scuola.

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filosofia — l'essenza di Movimento nel Bosco</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+  :root {
+    --viola:#601d7d; --viola-scuro:#2e0644; --melanzana:#33252d;
+    --violetto:#826fc5; --periwinkle:#889be2; --lilla:#d1b4ed; --lilla-tenue:#efe6fb;
+    --lime:#9dbf43; --lime-tenue:#f0f4e0; --ambra:#f2ac20; --ambra-tenue:#fdf3dd;
+    --panna:#faf8f5; --ink-soft:#6d5f68;
+    --font-title:'Rubik',system-ui,sans-serif; --font-body:'DM Sans',system-ui,sans-serif;
+    --radius-lg:26px; --shadow:0 22px 55px -24px rgba(46,6,68,.28);
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--font-body); color:var(--melanzana); background:var(--panna); line-height:1.65; font-size:1.02rem; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 24px 80px; }
+  h1,h2,h3 { font-family:var(--font-title); color:var(--viola-scuro); line-height:1.15; margin:0 0 .5em; }
+  h1 { font-size:clamp(1.9rem,4.5vw,2.7rem); }
+  h2 { font-size:clamp(1.35rem,3vw,1.7rem); margin-top:2.4em; padding-top:.2em; }
+  p { margin:0 0 1em; }
+  strong { color:var(--viola-scuro); }
+  a { color:var(--viola); font-weight:600; }
+
+  header.hero {
+    background:
+      radial-gradient(ellipse 60% 70% at 90% 0%, rgba(157,191,67,.35), transparent 60%),
+      radial-gradient(ellipse 55% 60% at 5% 100%, rgba(136,155,226,.35), transparent 60%),
+      linear-gradient(135deg, var(--viola-scuro), var(--viola));
+    color:#fff; padding:56px 24px 46px; text-align:center;
+  }
+  header.hero .kicker { font-family:var(--font-title); letter-spacing:.2em; text-transform:uppercase; font-size:12.5px; color:var(--lilla); font-weight:600; }
+  header.hero h1 { color:#fff; margin:.4em auto .3em; max-width:22ch; }
+  header.hero p { color:#efe6fb; max-width:46ch; margin:0 auto; }
+
+  .lead { font-size:1.18rem; color:var(--ink-soft); }
+
+  .center-block { background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:clamp(28px,4vw,44px); margin:34px 0; border-left:6px solid var(--violetto); }
+  .center-block p:last-child { margin-bottom:0; }
+
+  .pillars { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:28px 0; }
+  .pillar { background:#fff; border-radius:var(--radius-lg); padding:26px 28px; box-shadow:var(--shadow); border-top:5px solid var(--violetto); }
+  .pillar--eventi { border-top-color:var(--lime); }
+  .pillar-tag { display:inline-block; font-family:var(--font-title); font-weight:600; font-size:.74rem; letter-spacing:.05em; text-transform:uppercase; color:var(--violetto); background:var(--lilla-tenue); padding:.3em 1em; border-radius:999px; margin-bottom:14px; }
+  .pillar--eventi .pillar-tag { color:#5c7317; background:var(--lime-tenue); }
+  .pillar ul { margin:.6em 0 0; padding-left:1.2em; }
+  .pillar li { margin:.3em 0; }
+  @media (max-width:640px) { .pillars { grid-template-columns:1fr; } }
+
+  .callout { background:var(--ambra-tenue); border:1px solid var(--ambra); border-radius:16px; padding:20px 24px; margin:22px 0; }
+  .callout h3 { margin:0 0 .4em; font-size:1.05rem; color:#8a5f0a; }
+  .callout p:last-child { margin-bottom:0; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:22px 0; }
+  .two-col .box { background:#fff; border-radius:18px; padding:22px 24px; box-shadow:0 10px 28px -18px rgba(46,6,68,.25); }
+  .two-col h3 { font-size:1rem; margin-bottom:.5em; }
+  @media (max-width:640px) { .two-col { grid-template-columns:1fr; } }
+
+  .name-split { display:flex; gap:24px; flex-wrap:wrap; margin:22px 0; }
+  .name-split .word { flex:1 1 220px; background:#fff; border-radius:18px; padding:20px 24px; box-shadow:0 10px 28px -18px rgba(46,6,68,.25); }
+  .name-split .word b { font-family:var(--font-title); color:var(--viola); display:block; margin-bottom:.3em; font-size:1.1rem; }
+
+  footer.note { margin-top:50px; padding-top:20px; border-top:1px dashed var(--lilla); font-size:.88rem; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">Movimento nel Bosco · documento di riferimento</div>
+  <h1>Filosofia — l'essenza della scuola</h1>
+  <p>Non è una pagina pubblica (quella è <code>la-visione.html</code>): è la base per costruire struttura, tono e contenuti futuri.</p>
+</header>
+
+<div class="wrap">
+
+  <h2>Il centro: il corpo come strumento di consapevolezza</h2>
+  <div class="center-block">
+    <p class="lead">Movimento nel Bosco non vende lezioni: <strong>offre un percorso.</strong></p>
+    <p>Il corpo è uno strumento di consapevolezza. Il lavoro fisico — respiro, movimento, ascolto — costruisce consapevolezza del corpo, e quella consapevolezza diventa un veicolo per portare attenzione e presenza nella vita di tutti i giorni. Il corpo arriva dove la mente da sola non arriva: <strong>senza il filtro del pensiero, è più vicino a chi siamo davvero.</strong> Da lì, un passo alla volta, nasce il cambiamento.</p>
+    <p>Non è una promessa terapeutica (vedi la regola compliance più sotto): è un invito a un percorso.</p>
+  </div>
+
+  <h2>Corsi ed eventi, una direzione</h2>
+  <p style="text-align:center;color:var(--ink-soft)">Non due percorsi alternativi: due parti della stessa esperienza, che si sommano.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="pillar-tag">Ogni settimana</span>
+      <h3>Corsi — Yoga e Pilates</h3>
+      <p>Il lavoro continuativo. Non un evento, ma un'abitudine: ogni settimana, tutto l'anno. Qui la consapevolezza si costruisce con la ripetizione — la pratica del corpo come base solida per il benessere psicofisico.</p>
+    </div>
+    <div class="pillar pillar--eventi">
+      <span class="pillar-tag">A cicli e stagioni</span>
+      <h3>Eventi — altre pratiche magiche</h3>
+      <p>Il complemento episodico. Altre vie sensoriali verso la stessa consapevolezza:</p>
+      <ul>
+        <li><strong>Suono</strong> — bagni sonori con handpan</li>
+        <li><strong>Aromaterapia</strong> — oli essenziali, fiori di Bach</li>
+        <li><strong>Natura</strong> — yoga all'aperto, il bosco stesso</li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--ink-soft)">Stessa direzione, canali che si completano: il corpo (corsi) e i sensi (eventi) lavorano insieme verso la stessa consapevolezza.</p>
+
+  <h2>Perché "Movimento nel Bosco" (il nome)</h2>
+  <div class="name-split">
+    <div class="word">
+      <b>🌳 Bosco</b>
+      Il luogo reale (ai piedi del Colle San Giuseppe, Mompiano) e il simbolo: un posto dove la mente rallenta e si torna a respirare.
+    </div>
+    <div class="word">
+      <b>🌊 Movimento</b>
+      Il cambiamento continuo del corpo e della mente, e una comunità di persone che si muove nella stessa direzione.
+    </div>
+  </div>
+
+  <h2>Regola compliance</h2>
+  <div class="callout">
+    <h3>⚠️ Non negoziabile</h3>
+    <p>Mai promesse di cura o guarigione ("cura l'ansia", "elimina lo stress", ecc.). Vocabolario ammesso: <strong>benessere, equilibrio, ascolto, percorso, consapevolezza, cambiamento.</strong> Vale per sito, social e ads — anche perché Meta modera il settore wellness.</p>
+  </div>
+
+  <h2>Tono di voce: due registri, non uno</h2>
+  <div class="two-col">
+    <div class="box">
+      <h3>Corsi, prezzi, orari, form</h3>
+      <p>Asciutto e diretto (vedi <code>BRAND.md</code>): frasi corte, fatti e azioni, CTA unica "Prenota la lezione di prova".</p>
+    </div>
+    <div class="box">
+      <h3>Visione, blog, momenti come questo</h3>
+      <p>Più narrativo: si può nominare l'anima, la consapevolezza, il cambiamento con più libertà — ma senza scivolare nello slogan new-age vuoto. Resta concreto: un'immagine, un gesto, mai solo un'affermazione astratta.</p>
+    </div>
+  </div>
+
+  <h2>Come si traduce in struttura</h2>
+  <ul>
+    <li>La home racconta la struttura esplicitamente ("Corsi ed eventi, una direzione") prima di entrare nel dettaglio di corsi ed eventi.</li>
+    <li>Ogni pilastro editoriale (social, blog) si può ricondurre ai corsi, agli eventi, o al ponte fra loro.</li>
+    <li>Le pagine corso (yoga/pilates) restano pratiche e dirette; "La visione" e il Blog dal Bosco restano la casa del registro narrativo.</li>
+  </ul>
+
+  <footer class="note">
+    Filosofia condivisa da Paola in sessione, 2026-07-07. Vedi anche <code>BRAND.md</code> (tono di voce e palette) e <code>la-visione.html</code> (versione pubblica sintetica). Versione testuale: <code>FILOSOFIA.md</code>.
+  </footer>
+
+</div>
+</body>
+</html>

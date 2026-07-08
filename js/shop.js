@@ -17,13 +17,13 @@ const PRODOTTI = [
   { id: 'grav-12',       disc: 'gravidanza',  tag: 'Gravidanza',    titolo: '12 lezioni',       prezzo: 167, nota: '' },
   { id: 'mb-1',          disc: 'mamma',       tag: 'Mamma e Bimbo', titolo: '1 lezione',        prezzo: 17,  nota: '' },
   { id: 'mb-4',          disc: 'mamma',       tag: 'Mamma e Bimbo', titolo: '4 lezioni',        prezzo: 55,  nota: '' },
-  { id: 'open',          disc: 'open',        tag: 'Open',          titolo: 'Tutte le lezioni', prezzo: 275, nota: 'ogni corso incluso — Yoga, Pilates, Meditazione e oltre' }
+  { id: 'open',          disc: 'open',        tag: 'Open',          titolo: 'Tutte le lezioni', prezzo: 275, nota: 'ogni corso incluso — Yoga, Pilates e oltre' }
 ];
 
 // Ordine e titoli delle discipline (l'Open resta per ultimo)
-const DISC_ORDER = ['yoga', 'pilates', 'meditazione', 'gravidanza', 'mamma', 'open'];
-const DISC_LABEL = { yoga: 'Yoga', pilates: 'Pilates', meditazione: 'Meditazione', gravidanza: 'Gravidanza', mamma: 'Mamma e Bimbo', open: 'Open' };
-const DISC_TITLE = { yoga: 'Abbonamento Yoga', pilates: 'Abbonamento Pilates', meditazione: 'Meditazione e Chakra', gravidanza: 'Yoga in Gravidanza', mamma: 'Yoga Mamma e Bimbo', open: 'Abbonamento Open' };
+const DISC_ORDER = ['yoga', 'pilates', 'gravidanza', 'mamma', 'open'];
+const DISC_LABEL = { yoga: 'Yoga', pilates: 'Pilates', meditazione: 'Meditazione', gravidanza: 'Yoga Gravidanza', mamma: 'Yoga Mamma e Bimbo', open: 'Open' };
+const DISC_TITLE = { yoga: 'Abbonamento Yoga', pilates: 'Abbonamento Pilates', meditazione: 'Meditazione e Chakra', gravidanza: 'Yoga Gravidanza', mamma: 'Yoga Mamma e Bimbo', open: 'Abbonamento Open' };
 
 function trovaProdotto(id) {
   return PRODOTTI.find(function (p) { return p.id === id; });
