@@ -39,8 +39,7 @@
         <ul class="nav-links" id="nav-menu">
           <li class="has-dropdown">
             <span class="dropdown-parent">
-              <a href="yoga.html">Yoga</a>
-              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Yoga <span class="caret" aria-hidden="true"></span></button>
             </span>
             <ul class="dropdown-menu">
               <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
@@ -68,7 +67,7 @@
               <li><a href="il-team.html">Le insegnanti</a></li>
             </ul>
           </li>
-          <li><a href="blog.html">Blog</a></li>
+          <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog</a></li> -->
         </ul>
       </nav>
       <div class="nav-cta">
@@ -108,66 +107,158 @@
         <li><span class="dot" style="background:#ece8f8;outline:1px solid var(--violetto)"></span>Yoga Mamma e Bimbo</li>
       </ul>
 
-      <div class="day-tabs" role="tablist" aria-label="Scegli il giorno">
-        <button class="day-tab is-active" type="button" data-day="lun" role="tab" aria-selected="true">Lun</button>
-        <button class="day-tab" type="button" data-day="mar" role="tab" aria-selected="false">Mar</button>
-        <button class="day-tab" type="button" data-day="mer" role="tab" aria-selected="false">Mer</button>
-        <button class="day-tab" type="button" data-day="gio" role="tab" aria-selected="false">Gio</button>
-        <button class="day-tab" type="button" data-day="ven" role="tab" aria-selected="false">Ven</button>
-        <button class="day-tab" type="button" data-day="sab" role="tab" aria-selected="false">Sab</button>
+      <p class="center tt-note">Questo è il <strong>palinsesto estivo</strong>, valido fino a <strong>fine agosto</strong>. Da <strong>settembre 2026</strong> parte il nuovo palinsesto: lo trovi qui sotto, nella panoramica della settimana.</p>
+
+      <!-- Interruttore tra la panoramica settimanale e il giorno per giorno -->
+      <div class="view-switch" role="tablist" aria-label="Come vedere il palinsesto">
+        <button class="view-btn is-active" type="button" data-view="week" role="tab" aria-selected="true">Panoramica settimana</button>
+        <button class="view-btn" type="button" data-view="day" role="tab" aria-selected="false">Giorno per giorno</button>
       </div>
 
-      <div class="day-panels">
-        <div class="day-panel is-active" data-day-panel="lun" role="tabpanel">
-          <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">20:15</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+      <!-- VISTA 1: panoramica dell'intera settimana in tabella -->
+      <div class="view-panel is-active" data-view-panel="week" role="tabpanel">
+        <h3 class="tt-period">Fino a fine agosto <span>· estate</span></h3>
+        <div class="week-grid">
+          <div class="week-col">
+            <div class="week-col__head">Lunedì</div>
+            <div class="week-slot slot--pilates"><b>13:00</b> Pilates</div>
+            <div class="week-slot slot--yoga"><b>19:00</b> Vinyasa Yoga</div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Martedì</div>
+            <div class="week-slot slot--yoga"><b>9:30</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--gravidanza"><b>11:00</b> Yoga Gravidanza</div>
+            <div class="week-slot slot--yoga"><b>13:00</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--pilates"><b>16:30</b> Pilates</div>
+            <div class="week-slot slot--pilates"><b>17:45</b> Pilates</div>
+            <div class="week-slot slot--pilates"><b>19:00</b> Pilates</div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Mercoledì</div>
+            <div class="week-slot slot--pilates"><b>10:00</b> Pilates</div>
+            <div class="week-slot slot--yoga"><b>19:00</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--yoga"><b>20:15</b> Vinyasa Yoga</div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Giovedì</div>
+            <div class="week-slot slot--yoga"><b>7:30</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--mamma"><b>9:00</b> Yoga Mamma e Bimbo</div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Venerdì</div>
+            <div class="week-slot slot--pilates"><b>13:00</b> Pilates</div>
+            <div class="week-slot slot--gravidanza"><b>15:30</b> Yoga Gravidanza</div>
+            <div class="week-slot slot--yoga"><b>17:00</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--yoga"><b>18:15</b> Vinyasa Yoga</div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Sabato</div>
+            <div class="week-slot slot--yoga"><b>8:30</b> Vinyasa Yoga</div>
+            <div class="week-slot slot--pilates"><b>10:00</b> Pilates</div>
+            <div class="week-slot slot--pilates"><b>11:15</b> Pilates</div>
+          </div>
         </div>
-        <div class="day-panel" data-day-panel="mar" role="tabpanel" hidden>
-          <div class="class-row"><span class="class-time">9:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">11:00</span><span class="class-name slot--gravidanza">Yoga Gravidanza</span></div>
-          <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">16:30</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">17:45</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--pilates">Pilates</span></div>
-        </div>
-        <div class="day-panel" data-day-panel="mer" role="tabpanel" hidden>
-          <div class="class-row"><span class="class-time">10:00</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">20:15</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-        </div>
-        <div class="day-panel" data-day-panel="gio" role="tabpanel" hidden>
-          <div class="class-row"><span class="class-time">7:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">9:00</span><span class="class-name slot--mamma">Yoga Mamma e Bimbo</span></div>
-        </div>
-        <div class="day-panel" data-day-panel="ven" role="tabpanel" hidden>
-          <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">15:30</span><span class="class-name slot--gravidanza">Yoga Gravidanza</span></div>
-          <div class="class-row"><span class="class-time">17:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">18:15</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-        </div>
-        <div class="day-panel" data-day-panel="sab" role="tabpanel" hidden>
-          <div class="class-row"><span class="class-time">8:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
-          <div class="class-row"><span class="class-time">10:00</span><span class="class-name slot--pilates">Pilates</span></div>
-          <div class="class-row"><span class="class-time">11:15</span><span class="class-name slot--pilates">Pilates</span></div>
+
+        <h3 class="tt-period" style="margin-top:48px">Da settembre 2026 <span>· nuovo palinsesto</span></h3>
+        <div class="week-grid">
+          <div class="week-col">
+            <div class="week-col__head">Lunedì</div>
+            <div class="week-slot slot--pilates"><b>11:30</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--pilates"><b>13:00</b> Pilates <small>Paola</small></div>
+            <div class="week-slot slot--yoga"><b>18:00</b> Vinyasa Yoga <small>Laura Mantratzi</small></div>
+            <div class="week-slot slot--yoga"><b>19:15</b> Vinyasa Yoga <small>Laura Mantratzi</small></div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Martedì</div>
+            <div class="week-slot slot--yoga"><b>7:30</b> Vinyasa Yoga <small>Paola</small></div>
+            <div class="week-slot slot--yoga"><b>9:30</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--gravidanza"><b>11:00</b> Yoga Gravidanza <small>Laura</small></div>
+            <div class="week-slot slot--yoga"><b>13:00</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--pilates"><b>18:45</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--pilates"><b>20:15</b> Pilates <small>Paola</small></div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Mercoledì</div>
+            <div class="week-slot slot--mamma"><b>16:30</b> Yoga Mamma e Bimbo <small>Laura</small></div>
+            <div class="week-slot slot--yoga"><b>19:00</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--yoga"><b>20:15</b> Vinyasa Yoga <small>Laura</small></div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Giovedì</div>
+            <div class="week-slot slot--yoga"><b>7:30</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--pilates"><b>16:30</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--pilates"><b>17:45</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--pilates"><b>19:00</b> Pilates <small>Paola</small></div>
+            <div class="week-slot slot--yoga"><b>20:15</b> Vinyasa Yoga <small>Paola</small></div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Venerdì</div>
+            <div class="week-slot slot--yoga"><b>10:00</b> Vinyasa Yoga <small>Laura · Santa Giulia</small></div>
+            <div class="week-slot slot--pilates"><b>13:00</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--gravidanza"><b>15:30</b> Yoga Gravidanza <small>Laura</small></div>
+            <div class="week-slot slot--yoga"><b>17:00</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--yoga"><b>18:15</b> Vinyasa Yoga <small>Laura</small></div>
+          </div>
+          <div class="week-col">
+            <div class="week-col__head">Sabato</div>
+            <div class="week-slot slot--yoga"><b>8:30</b> Vinyasa Yoga <small>Laura</small></div>
+            <div class="week-slot slot--pilates"><b>10:00</b> Pilates <small>Camilla</small></div>
+            <div class="week-slot slot--pilates"><b>11:15</b> Pilates <small>Camilla</small></div>
+          </div>
         </div>
       </div>
+
+      <!-- VISTA 2: un giorno alla volta (default = oggi) -->
+      <div class="view-panel" data-view-panel="day" role="tabpanel" hidden>
+        <div class="day-tabs" role="tablist" aria-label="Scegli il giorno">
+          <button class="day-tab is-active" type="button" data-day="lun" role="tab" aria-selected="true">Lun</button>
+          <button class="day-tab" type="button" data-day="mar" role="tab" aria-selected="false">Mar</button>
+          <button class="day-tab" type="button" data-day="mer" role="tab" aria-selected="false">Mer</button>
+          <button class="day-tab" type="button" data-day="gio" role="tab" aria-selected="false">Gio</button>
+          <button class="day-tab" type="button" data-day="ven" role="tab" aria-selected="false">Ven</button>
+          <button class="day-tab" type="button" data-day="sab" role="tab" aria-selected="false">Sab</button>
+        </div>
+
+        <div class="day-panels">
+          <div class="day-panel is-active" data-day-panel="lun" role="tabpanel">
+            <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+          </div>
+          <div class="day-panel" data-day-panel="mar" role="tabpanel" hidden>
+            <div class="class-row"><span class="class-time">9:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">11:00</span><span class="class-name slot--gravidanza">Yoga Gravidanza</span></div>
+            <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">16:30</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">17:45</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--pilates">Pilates</span></div>
+          </div>
+          <div class="day-panel" data-day-panel="mer" role="tabpanel" hidden>
+            <div class="class-row"><span class="class-time">10:00</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">19:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">20:15</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+          </div>
+          <div class="day-panel" data-day-panel="gio" role="tabpanel" hidden>
+            <div class="class-row"><span class="class-time">7:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">9:00</span><span class="class-name slot--mamma">Yoga Mamma e Bimbo</span></div>
+          </div>
+          <div class="day-panel" data-day-panel="ven" role="tabpanel" hidden>
+            <div class="class-row"><span class="class-time">13:00</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">15:30</span><span class="class-name slot--gravidanza">Yoga Gravidanza</span></div>
+            <div class="class-row"><span class="class-time">17:00</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">18:15</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+          </div>
+          <div class="day-panel" data-day-panel="sab" role="tabpanel" hidden>
+            <div class="class-row"><span class="class-time">8:30</span><span class="class-name slot--yoga">Vinyasa Yoga</span></div>
+            <div class="class-row"><span class="class-time">10:00</span><span class="class-name slot--pilates">Pilates</span></div>
+            <div class="class-row"><span class="class-time">11:15</span><span class="class-name slot--pilates">Pilates</span></div>
+          </div>
+        </div>
+        <p class="center" style="margin-top:20px;font-size:.9rem;color:var(--ink-soft)">Questi sono gli orari estivi: <strong>a metà agosto verranno aggiornati</strong>. Il palinsesto da settembre 2026 lo trovi nella <strong>panoramica settimana</strong>.</p>
+      </div>
+
       <p class="center" style="margin-top:22px;font-size:.92rem;color:var(--ink-soft)">Domenica la scuola è chiusa. Gli orari possono subire variazioni stagionali: chi è già iscritto prenota il posto dall'<a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener" style="color:var(--viola);font-weight:600">app</a>, con il calendario sempre aggiornato.</p>
     </div>
   </section>
-
-  <!-- ============ CORSI LINK ============ -->
-  <section class="section tint-lilla">
-    <div class="container">
-      <div class="center"><h2>Tutte le nostre pratiche</h2></div>
-      <div class="steps">
-        <div class="step reveal"><span class="n" aria-hidden="true">🌿</span><h3>Yoga</h3><p>Vinyasa Yoga, Yoga Gravidanza, Yoga Mamma e Bimbo: corsi per ogni livello.</p><p style="margin-top:12px"><a class="more" href="yoga.html">Vai al corso →</a></p></div>
-        <div class="step reveal"><span class="n" aria-hidden="true">💪</span><h3>Pilates</h3><p>Forza dolce e postura, con esercizi a basso impatto.</p><p style="margin-top:12px"><a class="more" href="pilates.html">Scopri →</a></p></div>
-        <div class="step reveal"><span class="n" aria-hidden="true">🧘</span><h3>Meditazione</h3><p>Non nel palinsesto settimanale: si fa a cicli, tra gli eventi.</p><p style="margin-top:12px"><a class="more" href="eventi.html">Scopri →</a></p></div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- ============ CTA FINALE ============ -->
   <section class="section cta-band">
@@ -177,7 +268,7 @@
       <div class="actions">
         <a class="btn btn-cta btn--lg" href="prova-gratuita.html">Prenota la lezione di prova</a>
       </div>
-      <p class="note">📍 Via Fontane 32, Mompiano (Brescia) — dentro l’Emporio nel Bosco</p>
+      <p class="note"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="luogo"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Via Fontane 32, Mompiano (Brescia) — dentro l’Emporio nel Bosco</p>
     </div>
   </section>
 
@@ -196,7 +287,6 @@
         <div>
           <h4>Corsi</h4>
           <ul>
-            <li><a href="yoga.html">Yoga</a></li>
             <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
             <li><a href="pilates.html">Pilates</a></li>
             <li><a href="gravidanza.html">Yoga Gravidanza</a></li>
@@ -212,17 +302,17 @@
             <li><a href="il-team.html">Il team</a></li>
             <li><a href="la-visione.html">La visione</a></li>
             <li><a href="regolamento.html">Regolamento</a></li>
-            <li><a href="blog.html">Blog dal Bosco</a></li>
+            <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog dal Bosco</a></li> -->
           </ul>
         </div>
         <div>
           <h4>Contatti</h4>
           <ul>
-            <li>📍 Via Fontane 32, Brescia</li>
-            <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-            <li><a href="https://wa.me/393520885612" target="_blank" rel="noopener">💬 WhatsApp</a></li>
-            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener">📷 Instagram</a></li>
-            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">📱 App prenotazione</a></li>
+            <li><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="luogo"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Via Fontane 32, Brescia</li>
+            <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+            <li><a href="https://wa.me/393520885613" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="messaggio"><path d="M20 12.3c0 3.8-3.6 6.9-8 6.9-1 0-2-.2-2.9-.5L4 20.4l1.7-3.3A6.5 6.5 0 0 1 4 12.3c0-3.8 3.6-6.9 8-6.9s8 3.1 8 6.9Z"/></svg> WhatsApp</a></li>
+            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="instagram"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.9" cy="7.1" r=".7"/></svg> Instagram</a></li>
+            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="app"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 5.6h3M12 18.4h.01"/></svg> App prenotazione</a></li>
             <li><a href="prenota.html">Come prenotare</a></li>
             <li><a href="prova-gratuita.html">Lezione di prova</a></li>
           </ul>
@@ -238,8 +328,8 @@
   <!-- ============ BARRA CTA MOBILE ============ -->
   <div class="mobile-cta">
     <a class="btn btn-cta" href="prova-gratuita.html">Prenota la lezione di prova</a>
-    <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-    <a class="btn btn-wa" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg></a>
+    <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+    <a class="btn btn-wa" href="https://wa.me/393520885613?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg></a>
   </div>
 
   <script src="js/nav.js" defer></script>

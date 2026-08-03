@@ -17,7 +17,8 @@ const PRODOTTI = [
   { id: 'grav-12',       disc: 'gravidanza',  tag: 'Gravidanza',    titolo: '12 lezioni',       prezzo: 167, nota: '' },
   { id: 'mb-1',          disc: 'mamma',       tag: 'Mamma e Bimbo', titolo: '1 lezione',        prezzo: 17,  nota: '' },
   { id: 'mb-4',          disc: 'mamma',       tag: 'Mamma e Bimbo', titolo: '4 lezioni',        prezzo: 55,  nota: '' },
-  { id: 'open',          disc: 'open',        tag: 'Open',          titolo: 'Tutte le lezioni', prezzo: 275, nota: 'ogni corso incluso — Yoga, Pilates e oltre' }
+  { id: 'mb-12',         disc: 'mamma',       tag: 'Mamma e Bimbo', titolo: '12 lezioni',       prezzo: 167, nota: '' },
+  { id: 'open',          disc: 'open',        tag: 'Open',          titolo: 'Tutte le lezioni', prezzo: 275, nota: 'ogni corso incluso — Yoga e Pilates' }
 ];
 
 // Ordine e titoli delle discipline (l'Open resta per ultimo)
@@ -32,51 +33,66 @@ function variantiDi(disc) {
   return PRODOTTI.filter(function (p) { return p.disc === disc; });
 }
 
-/* ---- Catalogo (abbonamenti.html): una card per disciplina + selettore pacchetto ---- */
+/* Numero di lezioni ricavato dal titolo ("4 lezioni" -> 4); null se non applicabile. */
+function numeroLezioni(p) {
+  var m = /^(\d+)\s+lezion/i.exec(p.titolo);
+  return m ? parseInt(m[1], 10) : null;
+}
+/* Prezzo a lezione (solo per i pacchetti da 4 o più lezioni). */
+function perLezione(p) {
+  var n = numeroLezioni(p);
+  if (!n || n < 4) return null;
+  return p.prezzo / n;
+}
+function formattaEuro(v) {
+  return (Math.round(v * 100) / 100).toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+/* Nel catalogo mostriamo solo le opzioni essenziali: 1 lezione e pacchetto da 12.
+   Gli altri tagli (4, 8, privata) restano vendibili via link diretto, ma non in vetrina. */
+function inCatalogo(v) {
+  var n = numeroLezioni(v);
+  return n === 1 || n === 12;
+}
+var CATALOG_DISC = ['yoga', 'pilates', 'gravidanza', 'mamma'];
+
+/* ---- Catalogo (abbonamenti.html): per ogni disciplina, i pacchetti essenziali affiancati ---- */
 function initCatalogo(grid) {
-  grid.innerHTML = DISC_ORDER.map(function (disc) {
-    var vs = variantiDi(disc);
+  grid.innerHTML = CATALOG_DISC.map(function (disc) {
+    var vs = variantiDi(disc).filter(inCatalogo);
     if (!vs.length) return '';
-    var first = vs[0];
-    var open = disc === 'open' ? ' shop-card--open' : '';
 
-    var picker;
-    if (vs.length > 1) {
-      var options = vs.map(function (v) {
-        return '<option value="' + v.id + '" data-prezzo="' + v.prezzo + '" data-nota="' + (v.nota || '') + '">' + v.titolo + ' — ' + v.prezzo + '€</option>';
-      }).join('');
-      picker = '<label class="variant-pick">Scegli il pacchetto<select class="variant-select">' + options + '</select></label>';
-    } else {
-      picker = '<p class="variant-single">' + first.titolo + '</p>';
-    }
+    // Miglior prezzo a lezione della disciplina (per il badge "più conveniente")
+    var minPer = null;
+    vs.forEach(function (v) { var pl = perLezione(v); if (pl != null && (minPer == null || pl < minPer)) minPer = pl; });
 
-    return '<article class="shop-card shop-card--disc' + open + '" data-disc="' + disc + '">' +
-             '<span class="tag">' + DISC_LABEL[disc] + '</span>' +
-             '<h3>' + DISC_TITLE[disc] + '</h3>' +
-             picker +
-             '<div class="shop-price"><span class="vp-num">' + first.prezzo + '</span>€</div>' +
-             '<p class="shop-note vp-nota">' + (first.nota || '&nbsp;') + '</p>' +
-             '<a class="btn btn-primary vp-buy" href="checkout.html?p=' + first.id + '">Acquista</a>' +
-           '</article>';
+    var cards = vs.map(function (v) {
+      var pl = perLezione(v);
+      var best = pl != null && pl === minPer && vs.length > 1;
+      return '<article class="pkg' + (best ? ' pkg--best' : '') + '">' +
+               (best ? '<span class="pkg-badge">Più conveniente</span>' : '') +
+               '<h4>' + v.titolo + '</h4>' +
+               '<div class="pkg-price"><span>' + v.prezzo + '</span>€</div>' +
+               (pl != null ? '<p class="pkg-per">' + formattaEuro(pl) + '&nbsp;€ a lezione</p>' : '') +
+               (v.nota ? '<p class="pkg-note">' + v.nota + '</p>' : '') +
+               '<a class="btn btn-primary" href="checkout.html?p=' + v.id + '">Scegli</a>' +
+             '</article>';
+    }).join('');
+
+    var openCls = disc === 'open' ? ' pkg-group--open' : '';
+    var soloUno = vs.length === 1 ? ' pkg-cards--single' : '';
+    return '<div class="pkg-group' + openCls + '" data-disc="' + disc + '">' +
+             '<h3 class="pkg-group__title">' + DISC_TITLE[disc] + '</h3>' +
+             '<div class="pkg-cards' + soloUno + '">' + cards + '</div>' +
+           '</div>';
   }).join('');
 
-  // Aggiorna prezzo / nota / link "Acquista" al cambio di pacchetto
-  grid.querySelectorAll('.shop-card--disc').forEach(function (card) {
-    var sel = card.querySelector('.variant-select');
-    if (!sel) return;
-    sel.addEventListener('change', function () {
-      var opt = sel.options[sel.selectedIndex];
-      card.querySelector('.vp-num').textContent = opt.dataset.prezzo;
-      card.querySelector('.vp-nota').innerHTML = opt.dataset.nota || '&nbsp;';
-      card.querySelector('.vp-buy').setAttribute('href', 'checkout.html?p=' + opt.value);
-    });
-  });
-
-  // Filtri = selettore disciplina (niente "Tutti"): si vede una disciplina alla volta
+  // Filtri = selettore disciplina + Open. La fascia Open resta sempre visibile
+  // sotto i pacchetti (è l'alternativa "tutto incluso"); il chip Open mostra solo lei.
   var chips = document.querySelectorAll('.shop-filters .chip');
   function mostra(f) {
-    grid.querySelectorAll('.shop-card--disc').forEach(function (card) {
-      card.style.display = (card.dataset.disc === f) ? '' : 'none';
+    grid.querySelectorAll('.pkg-group').forEach(function (g) {
+      g.style.display = (g.dataset.disc === f) ? '' : 'none';
     });
   }
   chips.forEach(function (chip) {
@@ -91,6 +107,23 @@ function initCatalogo(grid) {
     chips[0].classList.add('is-active');
     mostra(chips[0].dataset.f);
   }
+}
+
+/* ---- Fascia Open (abbonamenti.html): l'alternativa "tutto incluso", sempre visibile ---- */
+function initOpen(box) {
+  var p = trovaProdotto('open');
+  if (!p) return;
+  box.innerHTML =
+    '<div class="open-band__text">' +
+      '<span class="tag">Open</span>' +
+      '<h3>Vuoi accedere a tutto?</h3>' +
+      '<p>Un solo abbonamento per tutte le lezioni della settimana: Yoga e Pilates, ogni corso incluso. Vale 3 mesi dall’attivazione.</p>' +
+    '</div>' +
+    '<div class="open-band__buy">' +
+      '<div class="pkg-price"><span>' + p.prezzo + '</span>€</div>' +
+      '<p class="pkg-note">valido 3 mesi</p>' +
+      '<a class="btn btn-cta" href="checkout.html?p=' + p.id + '">Scegli l’Open</a>' +
+    '</div>';
 }
 
 /* ---- Checkout (checkout.html) ---- */
@@ -122,5 +155,7 @@ function initCheckout() {
 document.addEventListener('DOMContentLoaded', function () {
   var grid = document.getElementById('shop-grid');
   if (grid) initCatalogo(grid);
+  var openBox = document.getElementById('open-box');
+  if (openBox) initOpen(openBox);
   if (document.getElementById('ck-summary')) initCheckout();
 });

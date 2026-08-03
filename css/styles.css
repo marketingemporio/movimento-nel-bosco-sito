@@ -8,7 +8,7 @@
    Si mantengono: palette Brand DEF (Beamlight) + font Rubik / DM Sans.
    ================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* --- Palette ufficiale Beamlight (Brand DEF) — NON toccare --- */
@@ -20,8 +20,10 @@
   --lilla:       #d1b4ed;  /* lilla chiaro */
   --lilla-tenue: #efe6fb;  /* lilla pastello (tint) */
   --lime:        #9dbf43;  /* verde lime accento */
-  --ambra:       #f2ac20;  /* ambra — riservata alla CTA "prova" */
-  --panna:       #faf8f5;  /* off-white */
+  --ambra:       #f2ac20;  /* ambra — solo la CTA "prova" */
+  --gold:        #7a5b17;  /* oro antico — occhielli e filetti raffinati (contrasto AA su crema) */
+  --line:        rgba(46,6,68,.12); /* filo sottile */
+  --panna:       #f4eee4;  /* crema calda (base) */
   --bianco:      #ffffff;
 
   /* Derivati (tint calcolati dalla palette, nessun colore nuovo) */
@@ -31,14 +33,32 @@
 
   --font-title: 'Rubik', system-ui, sans-serif;
   --font-body:  'DM Sans', system-ui, sans-serif;
+  /* Etichette d'interfaccia (menu, bottoni, filtri, tab): Rubik, per dare
+     carattere ai comandi. Il brand book non le classifica né come titoli né
+     come testo: se le vuoi tutte in DM Sans, basta metterci var(--font-body). */
+  --font-ui:    var(--font-title);
 
   --maxw: 1140px;
-  /* Forma firma: rettangolo arrotondato uniforme */
-  --arch: 24px;
+  /* Forma firma: l'ARCO (doorway) — il segno grafico che ricorre su immagini e card */
+  --arch: 26px;
   --radius: 22px;
   --radius-lg: 30px;
-  --shadow: 0 22px 55px -24px rgba(46, 6, 68, .28);
-  --shadow-sm: 0 10px 28px -14px rgba(46, 6, 68, .22);
+  /* Sommità ad arco: gli angoli alti diventano una volta ellittica, quelli bassi restano dolci */
+  --arch-top:      42px 42px var(--radius) var(--radius);
+  /* Forme organiche (macchie / ovali irregolari) per le foto firma */
+  --arch-top-tall: 60% 40% 55% 45% / 50% 62% 40% 52%;
+  --blob:          63% 37% 58% 42% / 52% 60% 40% 55%;
+  /* Card con testo: cima organica, base stabile (il testo in basso non sborda) */
+  --arch-card:     57% 43% 30px 30px / 46% 40% 30px 30px;
+  /* Tessera fotografica orizzontale (i corsi in home): arco largo e dolce,
+     appena asimmetrico come tutte le forme del brand */
+  --arch-tile:     60% 40% 30px 30px / 34% 34% 30px 30px;
+  /* Ombre morbide e diffuse, con una punta di viola: "luce d'atmosfera" */
+  --shadow: 0 26px 60px -28px rgba(46, 6, 68, .30);
+  --shadow-sm: 0 12px 32px -16px rgba(46, 6, 68, .20);
+  /* Aloni luminosi (tocco etereo) */
+  --glow-oro:   0 0 40px -6px rgba(242, 172, 32, .45);
+  --glow-lilla: 0 0 60px -10px rgba(130, 111, 197, .40);
 
   --header-h: 64px;
   --mobilebar-h: 62px;
@@ -49,10 +69,18 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
+  /* `hidden` su body lo rende un contenitore di scorrimento e romperebbe il
+     `position: sticky` dell'header; `clip` taglia allo stesso modo senza crearlo.
+     Chi non conosce `clip` (Safari < 16) usa `hidden` come prima. */
   overflow-x: hidden;
+  overflow-x: clip;
   font-family: var(--font-body);
   color: var(--melanzana);
-  background: var(--panna);
+  /* Velo di luce: aloni pastello morbidi in alto, come luce che filtra */
+  background:
+    radial-gradient(130% 46% at 50% -12%, rgba(209,180,237,.15), transparent 62%),
+    var(--panna);
+  background-attachment: fixed;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   font-size: 1.02rem;
@@ -70,145 +98,78 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--lilla); color: var(--viola-scuro); }
 
-h1, h2, h3, h4 { font-family: var(--font-title); line-height: 1.08; margin: 0 0 .45em; color: var(--viola-scuro); font-weight: 700; letter-spacing: -.02em; }
-h1 { font-size: clamp(2.3rem, 6vw, 4.1rem); }
-h2 { font-size: clamp(1.75rem, 3.8vw, 2.75rem); }
-h3 { font-size: 1.28rem; letter-spacing: -.01em; }
+/* Titoli: Rubik SemiBold (600). È il peso con cui il brand book Rev.1 compone
+   OGNI titolo — dal claim "Il benessere è un movimento naturale." ai titoli di
+   sezione. La spaziatura negativa (-.025em) ricalca il Tc -0.021 del documento. */
+h1, h2, h3, h4 { font-family: var(--font-title); line-height: 1.05; margin: 0 0 .4em; color: var(--viola-scuro); font-weight: 600; letter-spacing: -.025em; }
+h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); }
+h2 { font-size: clamp(2.05rem, 4.6vw, 3.5rem); }
+h3 { font-size: 1.4rem; letter-spacing: -.015em; }
 p  { margin: 0 0 1rem; }
 .muted { color: var(--ink-soft); }
 
+/* L'header sta sempre in cima (fisso sulla home, sticky altrove): gli ancoraggi
+   devono fermarsi SOTTO di esso, altrimenti "Scopri i corsi ↓" porta il titolo
+   della sezione a finire nascosto dietro il menu. */
+section[id], div[id] { scroll-margin-top: calc(var(--header-h) + 18px); }
+
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
-.section { padding: clamp(52px, 8.5vw, 104px) 0; }
+.section { padding: clamp(72px, 10vw, 150px) 0; }
 .section--slim { padding: clamp(34px, 5vw, 60px) 0; }
 .center { text-align: center; }
 .lead { font-size: 1.16rem; max-width: 62ch; color: var(--ink-soft); }
 .center .lead { margin-left: auto; margin-right: auto; }
 
 /* Sfondi alternati delle sezioni */
-.tint-lilla  { background: var(--lilla-tenue); }
+.tint-lilla { background:
+  radial-gradient(ellipse 100% 82% at 50% -16%, rgba(209,180,237,.40), transparent 68%),
+  var(--lilla-tenue); }
 .tint-panna  { background: var(--bianco); }
-.tint-lime   { background: var(--lime-tenue); }
-.tint-scuro  { background: var(--viola-scuro); }
+.tint-lime { background:
+  radial-gradient(ellipse 100% 82% at 50% -16%, rgba(157,191,67,.20), transparent 68%),
+  var(--lime-tenue); }
+.tint-scuro { position: relative; overflow: hidden; background:
+  radial-gradient(ellipse 92% 78% at 50% -20%, rgba(130,111,197,.42), transparent 66%),
+  var(--viola-scuro); }
 .tint-scuro h2, .tint-scuro h3 { color: #fff; }
 .tint-scuro p { color: var(--lilla-tenue); }
 
-/* ---------- Sfondi sfumati "bosco magico" (solo home) ---------- */
-/* Sostituiscono i tint piatti con macchie di colore morbide e sature,
-   mescolando la palette come luce che filtra tra le foglie, e rompono
-   il bordo dritto delle sezioni con un margine strappato/organico.
-   Solo sulla home: le altre pagine restano con i tint piatti (.tint-*). */
-#struttura, #presentazione, #corsi, #esperienze, #prova, #ambiente, #recensioni, #faq, .parent {
-  clip-path: polygon(0 1.6%, 8% 0.9%, 16% 0.4%, 24% 0.5%, 32% 1.1%, 40% 1.9%, 48% 2.4%, 56% 2.4%, 64% 1.8%, 72% 1%, 80% 0.4%, 88% 0.5%, 96% 1.2%, 100% 1.6%, 100% 100%, 0 100%);
-}
-/* Il primo blocco dopo l'hero non si sovrappone (l'hero resta un bordo dritto,
-   sotto il proprio bordo ondulato: niente doppio bordo misto). Dal secondo in poi
-   si sovrappongono di proposito, così l'onda "morde" anche il blocco precedente. */
-#presentazione, #corsi, #esperienze, #prova, #ambiente, #recensioni, #faq, .parent {
-  margin-top: -28px;
-  padding-top: calc(clamp(52px, 8.5vw, 104px) + 28px);
+/* ---------- Ritmo pulito della home (minimal, caldo-neutro) ---------- */
+/* Sezioni su panna con appena un velo di colore tono-su-tono, alternato:
+   aria e respiro, niente bordi strappati né macchie sature (ispirazione MYA). */
+#presentazione, #struttura, #corsi, #esperienze, #prova, #abbonamenti-teaser,
+#ambiente, #recensioni, #faq, .parent {
+  position: relative; overflow: hidden;
 }
 
-/* Timbro (il crocus del logo, a mano libera): watermark decorativo, dalla
-   cartella immagini/Branding — lega gli sfondi sfumati al segno del brand. */
+/* Timbro (croco del brand) come firma discreta, in filigrana */
 #struttura::before, #faq::before, .parent::after {
   content: ""; position: absolute; z-index: 0; pointer-events: none;
   background: url("../assets/timbro.svg") center / contain no-repeat;
-  opacity: .07;
+  opacity: .05;
 }
-#struttura::before { width: 480px; height: 420px; top: -60px; right: -100px; transform: rotate(12deg); }
-#faq::before { width: 420px; height: 370px; bottom: -70px; left: -90px; transform: rotate(-18deg); }
-.parent::after { width: 460px; height: 400px; top: -40%; right: -8%; transform: rotate(-8deg); opacity: .1; filter: brightness(3); }
+#struttura::before { width: 460px; height: 400px; top: -50px; right: -110px; transform: rotate(10deg); }
+#faq::before { width: 400px; height: 350px; bottom: -70px; left: -90px; transform: rotate(-16deg); }
+.parent::after { width: 440px; height: 380px; top: -30%; right: -6%; transform: rotate(-8deg); opacity: .12; filter: brightness(3); }
 @media (max-width: 720px) {
-  #struttura::before, #faq::before, .parent::after { width: 300px; height: 260px; }
+  #struttura::before, #faq::before, .parent::after { width: 280px; height: 245px; }
 }
-#presentazione {
-  position: relative; overflow: hidden;
+/* Il velo si alterna lilla / lime scendendo, senza salti: nessuna sezione della
+   home è bianca (il bianco resta ai soli elementi in rilievo: card, FAQ, form). */
+#presentazione, #esperienze, #abbonamenti-teaser, #recensioni {
   background:
-    radial-gradient(ellipse 55% 60% at 96% 100%, rgba(242,172,32,.26), transparent 58%),
-    radial-gradient(ellipse 55% 55% at 2% 0%, rgba(130,111,197,.28), transparent 58%),
-    var(--lilla-tenue);
-}
-#struttura {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 55% 60% at 95% 6%, rgba(136,155,226,.34), transparent 58%),
-    radial-gradient(ellipse 55% 55% at 4% 20%, rgba(157,191,67,.26), transparent 58%),
-    radial-gradient(ellipse 55% 60% at 20% 100%, rgba(209,180,237,.40), transparent 58%),
+    radial-gradient(ellipse 120% 72% at 50% -22%, rgba(209,180,237,.16), transparent 72%),
     var(--panna);
 }
-#corsi {
-  position: relative; overflow: hidden;
+#corsi, #prova, #ambiente {
   background:
-    radial-gradient(ellipse 60% 60% at 4% 8%, rgba(157,191,67,.34), transparent 58%),
-    radial-gradient(ellipse 55% 60% at 97% 4%, rgba(209,180,237,.55), transparent 58%),
-    radial-gradient(ellipse 65% 65% at 90% 100%, rgba(136,155,226,.36), transparent 58%),
-    radial-gradient(ellipse 45% 50% at 30% 90%, rgba(242,172,32,.20), transparent 55%),
+    radial-gradient(ellipse 120% 72% at 50% -22%, rgba(157,191,67,.10), transparent 72%),
     var(--panna);
 }
-#esperienze {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 65% at 94% 4%, rgba(242,172,32,.42), transparent 58%),
-    radial-gradient(ellipse 55% 60% at 2% 40%, rgba(209,180,237,.48), transparent 58%),
-    radial-gradient(ellipse 65% 60% at 24% 102%, rgba(96,29,125,.26), transparent 58%),
-    radial-gradient(ellipse 40% 45% at 70% 60%, rgba(157,191,67,.22), transparent 55%),
-    var(--lime-tenue);
-}
-#esperienze::after {
-  content: ""; position: absolute; z-index: 0; pointer-events: none;
-  width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
-  top: -18%; right: -12%; border-radius: 50%;
-  background: radial-gradient(circle, rgba(242,172,32,.32), transparent 70%);
-  filter: blur(40px);
-}
-#esperienze .container { position: relative; z-index: 1; }
-#prova {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 60% at 98% 100%, rgba(130,111,197,.30), transparent 58%),
-    radial-gradient(ellipse 55% 55% at 0% 0%, rgba(157,191,67,.28), transparent 58%),
-    radial-gradient(ellipse 40% 45% at 60% 30%, rgba(242,172,32,.14), transparent 55%),
-    var(--panna);
-}
-#ambiente {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 55% 55% at 100% 50%, rgba(157,191,67,.24), transparent 62%),
-    radial-gradient(ellipse 40% 40% at 0% 0%, rgba(209,180,237,.24), transparent 60%),
-    var(--panna);
-}
-#recensioni {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 60% at 95% 95%, rgba(136,155,226,.36), transparent 58%),
-    radial-gradient(ellipse 55% 55% at 3% 5%, rgba(242,172,32,.30), transparent 58%),
-    radial-gradient(ellipse 40% 45% at 50% 50%, rgba(209,180,237,.18), transparent 55%),
-    var(--panna);
-}
-#faq {
-  position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse 65% 65% at 6% 98%, rgba(157,191,67,.36), transparent 58%),
-    radial-gradient(ellipse 55% 60% at 98% 2%, rgba(96,29,125,.26), transparent 58%),
-    radial-gradient(ellipse 40% 45% at 60% 40%, rgba(136,155,226,.20), transparent 55%),
-    var(--lilla-tenue);
-}
-#faq::after {
-  content: ""; position: absolute; z-index: 0; pointer-events: none;
-  width: 38vw; height: 38vw; max-width: 480px; max-height: 480px;
-  bottom: -16%; left: -10%; border-radius: 50%;
-  background: radial-gradient(circle, rgba(157,191,67,.30), transparent 70%);
-  filter: blur(36px);
-}
-#faq .container { position: relative; z-index: 1; }
-.parent { position: relative; overflow: hidden; }
-.parent::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(ellipse 55% 65% at 94% 0%, rgba(157,191,67,.30), transparent 58%),
-    radial-gradient(ellipse 60% 65% at 0% 100%, rgba(136,155,226,.32), transparent 58%),
-    radial-gradient(ellipse 35% 40% at 50% 50%, rgba(242,172,32,.10), transparent 55%);
-}
+#struttura, #faq { background: var(--panna); }
+#presentazione .container, #struttura .container, #corsi .container, #esperienze .container,
+#prova .container, #abbonamenti-teaser .container, #ambiente .container,
+#recensioni .container, #faq .container,
 .parent .container { position: relative; z-index: 1; }
 
 /* ---------- Struttura della scuola (due percorsi, solo home) ---------- */
@@ -223,7 +184,7 @@ p  { margin: 0 0 1rem; }
 @media (max-width: 720px) { .pillars::after { display: none; } }
 .pillar { background: #fff; border-radius: var(--radius-lg); padding: clamp(28px, 4vw, 40px); box-shadow: 0 24px 50px -20px rgba(130,111,197,.45); border-top: 5px solid var(--violetto); }
 .pillar--eventi { border-top-color: var(--lime); box-shadow: 0 24px 50px -20px rgba(157,191,67,.45); }
-.pillar-tag { display: inline-block; font-family: var(--font-title); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--violetto); background: var(--lilla-tenue); padding: .3em 1em; border-radius: 999px; margin-bottom: 16px; }
+.pillar-tag { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--violetto); background: var(--lilla-tenue); padding: .3em 1em; border-radius: 999px; margin-bottom: 16px; }
 .pillar--eventi .pillar-tag { color: #5c7317; background: var(--lime-tenue); }
 .pillar p { color: var(--ink-soft); }
 @media (max-width: 720px) { .pillars { grid-template-columns: 1fr; } }
@@ -233,7 +194,7 @@ p  { margin: 0 0 1rem; }
 .video-placeholder img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: brightness(.72); }
 .video-placeholder .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 84px; height: 84px; border-radius: 50%; background: rgba(255,255,255,.94); border: none; display: flex; align-items: center; justify-content: center; color: var(--viola); cursor: not-allowed; box-shadow: var(--shadow-sm); }
 .video-placeholder .play-btn svg { width: 32px; height: 32px; margin-left: 4px; }
-.video-placeholder__tag { position: absolute; bottom: 16px; left: 16px; background: var(--viola-scuro); color: #fff; font-family: var(--font-title); font-weight: 600; font-size: .82rem; padding: .4em 1.1em; border-radius: 999px; }
+.video-placeholder__tag { position: absolute; bottom: 16px; left: 16px; background: var(--viola-scuro); color: #fff; font-family: var(--font-body); font-weight: 600; font-size: .82rem; padding: .4em 1.1em; border-radius: 999px; }
 .intro-video { width: 100%; max-width: 720px; display: block; margin: 40px auto 0; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--viola-scuro); aspect-ratio: 16/9; }
 
 /* Evidenziatore organico dietro a una parola/frase chiave */
@@ -250,14 +211,21 @@ p  { margin: 0 0 1rem; }
 
 /* Carte leggermente storte, come appoggiate a mano — si raddrizzano al hover */
 .disc, .review { transition: transform .25s ease; }
-.disc:nth-child(odd), .review:nth-child(odd) { transform: rotate(-1.4deg); }
-.disc:nth-child(even), .review:nth-child(even) { transform: rotate(1.2deg); }
-.disc:hover, .review:hover { transform: rotate(0deg) translateY(-4px); }
+.disc:hover, .review:hover { transform: translateY(-4px); }
+
+/* ---------- Icone ----------
+   Regola: SEMPRE icone a contorno (tratto viola), mai piene o colorate.
+   Sostituiscono le emoji: `.ico-i` eredita il colore dal contenitore
+   (viola nelle sezioni chiare, chiaro nel footer scuro). */
+.ico-i { width: 1.05em; height: 1.05em; vertical-align: -.16em; flex: none; }
+.info .ico .ico-i { width: 26px; height: 26px; vertical-align: 0; }
+.step .n .ico-i { width: 22px; height: 22px; vertical-align: 0; }
+.site-footer .ico-i, .note .ico-i { margin-right: .1em; }
 
 /* ---------- Bottoni ----------
    Gerarchia voluta: la CTA "prova" è UNA e si vede (ambra).
    Tutto il resto è secondario. */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; font-family: var(--font-title);
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; font-family: var(--font-ui);
   font-weight: 600; font-size: 1rem; padding: .9em 1.7em; border-radius: 999px; border: 2px solid transparent;
   cursor: pointer; transition: transform .16s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
   white-space: nowrap; }
@@ -277,20 +245,20 @@ p  { margin: 0 0 1rem; }
 .actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .center .actions { justify-content: center; }
 
-.more { font-family: var(--font-title); font-weight: 600; color: var(--viola); display: inline-flex; align-items: center; gap: .35em; }
+.more { font-family: var(--font-ui); font-weight: 600; color: var(--viola); display: inline-flex; align-items: center; gap: .35em; }
 .more:hover { text-decoration: underline; }
 
 /* Icona WhatsApp (inline SVG via mask, così prende il colore del testo) */
 .ico-wa { width: 1.15em; height: 1.15em; flex: none; }
 
 /* ---------- Header ---------- */
-.site-header { position: sticky; top: 0; z-index: 60; background: rgba(250,248,245,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--lilla-tenue); }
+.site-header { position: sticky; top: 0; z-index: 60; background: rgba(244,238,228,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); padding: 8px 0; }
 .brand { display: flex; align-items: center; flex: none; }
 .logo-full { height: 44px; width: auto; }
 .logo-footer { height: 52px; }
 
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; font-family: var(--font-title); font-weight: 500; font-size: .97rem; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; font-family: var(--font-ui); font-weight: 500; font-size: .97rem; }
 .nav-links > li > a, .nav-links > li > .dropdown-parent > a, .nav-links .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: .3em; padding: .55em .8em; border-radius: 999px; color: var(--melanzana); transition: background .15s ease, color .15s ease; }
 .nav-links > li > a:hover, .nav-links > li > .dropdown-parent > a:hover { background: var(--lilla-tenue); color: var(--viola); }
 /* Voce con link + freccetta (es. Yoga): il link e il toggle stanno vicini */
@@ -314,7 +282,7 @@ p  { margin: 0 0 1rem; }
 .dropdown-menu .dropdown-parent > a { flex: 1; }
 
 .nav-cta { display: flex; align-items: center; gap: 10px; }
-.nav-app { font-family: var(--font-title); font-weight: 500; font-size: .92rem; color: var(--ink-soft); padding: .5em .6em; border-radius: 999px; }
+.nav-app { font-family: var(--font-ui); font-weight: 500; font-size: .92rem; color: var(--ink-soft); padding: .5em .6em; border-radius: 999px; }
 .nav-app:hover { color: var(--viola); background: var(--lilla-tenue); }
 .nav-cta .btn { padding: .7em 1.35em; font-size: .95rem; }
 
@@ -333,33 +301,95 @@ p  { margin: 0 0 1rem; }
 
 /* ---------- Hero HOME ---------- */
 .hero { position: relative; overflow: hidden; }
-.hero--big { min-height: min(88vh, 760px); display: flex; align-items: flex-end; color: #fff; }
+.hero--big { min-height: min(94vh, 840px); display: flex; align-items: flex-end; color: #fff; }
 .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .hero--big::after { content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to top, rgba(46,6,68,.82) 0%, rgba(46,6,68,.35) 45%, rgba(46,6,68,.12) 100%); }
-.hero--big .container { position: relative; z-index: 2; padding-bottom: clamp(40px, 7vw, 84px); padding-top: 140px; }
-.hero--big h1 { color: #fff; max-width: 15ch; }
+  background:
+    linear-gradient(to bottom, rgba(20,3,30,.55), transparent 20%),
+    radial-gradient(ellipse 72% 55% at 22% 120%, rgba(130,111,197,.50), transparent 60%),
+    linear-gradient(to top, rgba(46,6,68,.82) 0%, rgba(46,6,68,.35) 45%, rgba(46,6,68,.12) 100%); }
+.hero--big .container { position: relative; z-index: 2; padding-bottom: clamp(22px, 3vw, 42px); padding-top: 140px; }
+.hero--big h1 { color: #fff; max-width: none; }
 .hero--big p.hero-sub { max-width: 52ch; font-size: 1.12rem; color: rgba(255,255,255,.92); }
+/* Home hero: titolo su due righe (a sinistra), font un filo più contenuto perché stia in due righe */
+@media (min-width: 760px) {
+  .hero--big h1 { font-size: clamp(2.8rem, 5.6vw, 4.8rem); }
+}
 .hero-proof { display: flex; align-items: center; gap: 10px; margin-top: 26px; font-size: .92rem; color: rgba(255,255,255,.85); flex-wrap: wrap; }
 .hero-proof .stars { color: var(--ambra); letter-spacing: .1em; }
+/* Hero in stile "concept": occhiello oro con filetto, sottotitolo arioso, invito allo scroll */
+.hero-inner { max-width: 660px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: .9em; font-family: var(--font-body); font-weight: 600; font-size: .74rem; letter-spacing: .28em; text-transform: uppercase; color: #e7c877; margin: 0 0 1.1rem; }
+.hero-eyebrow::before { content: ""; width: 34px; height: 1px; background: #e7c877; opacity: .75; }
+/* Lo stesso occhiello per le sezioni su fondo chiaro: oro antico e filetto,
+   come negli occhielli dei varchi e delle tessere dei corsi. */
+.eyebrow { display: inline-flex; align-items: center; gap: .8em; margin: 0 0 .9rem;
+  font-family: var(--font-body); font-weight: 600; font-size: .72rem;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); opacity: .75; }
+.hero--big .hero-sub { margin-bottom: 1.7rem; }
+.scroll-cue { margin: 2.4rem 0 0; font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(244,238,228,.7); }
+
+/* Header sovrapposto all'hero (solo home). Due cose:
+   1. È `fixed`, non `absolute`: con `absolute` scorreva via insieme al contenuto.
+   2. Scorrendo si porta dietro una STRISCIA DEL BOSCO — lo stesso ritaglio di foto
+      che gli sta sotto quando si è in cima alla pagina. Misurato: l'header copre
+      il 5–12% superiore dell'immagine, e `100vw auto` la dipinge alla stessa scala
+      della hero, quindi la striscia combacia invece di essere un ritaglio a caso.
+      Il velo scuro ricalca il gradiente della hero (là in cima vale ~.55 e sfuma),
+      così il menu chiaro resta leggibile: per questo il testo NON diventa scuro. */
+.site-header--over { position: fixed; top: 0; left: 0; right: 0; background: transparent; backdrop-filter: none; border-bottom: none;
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.site-header--over.is-stuck {
+  background-image:
+    linear-gradient(to bottom, rgba(20,3,30,.60), rgba(20,3,30,.44)),
+    url("../immagini/foto/vinyasa-hero.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, 100vw auto;
+  background-position: center, center top;
+  border-bottom: 1px solid rgba(231,200,119,.28);
+  box-shadow: 0 16px 36px -26px rgba(20,3,30,.85);
+}
+.site-header--over .nav-toggle-bars,
+.site-header--over .nav-toggle-bars::before,
+.site-header--over .nav-toggle-bars::after { background: #fff; }
+.site-header.site-header--over.open .nav-toggle-bars { background: transparent; }
+@media (min-width: 1025px) {
+  .site-header--over .nav-links > li > a,
+  .site-header--over .nav-links > li > .dropdown-parent > a,
+  .site-header--over .nav-links .nav-dropdown-toggle,
+  .site-header--over .nav-app { color: rgba(255,255,255,.92); }
+  .site-header--over .nav-links > li > a:hover,
+  .site-header--over .nav-links > li > .dropdown-parent > a:hover,
+  .site-header--over .nav-dropdown-toggle:hover,
+  .site-header--over .nav-app:hover { background: rgba(255,255,255,.15); color: #fff; }
+  /* CTA in navbar come pillola chiara a filo (come nel concept) */
+  .site-header--over .nav-cta .btn-cta { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); box-shadow: none; }
+  .site-header--over .nav-cta .btn-cta:hover { background: rgba(255,255,255,.16); }
+}
 
 /* ---------- Hero di pagina (compatto) ---------- */
-.page-hero { position: relative; color: #fff; display: flex; align-items: flex-end; min-height: 340px; overflow: hidden; }
-.page-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(46,6,68,.8), rgba(46,6,68,.25)); z-index: 1; }
+.page-hero { position: relative; color: #fff; display: flex; align-items: flex-end; min-height: clamp(400px, 56vh, 560px); overflow: hidden; }
+.page-hero::after { content: ""; position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 128%, rgba(130,111,197,.48), transparent 60%),
+    linear-gradient(to top, rgba(46,6,68,.8), rgba(46,6,68,.22)); }
 .page-hero .container { position: relative; z-index: 2; padding-top: 90px; padding-bottom: 34px; }
-.page-hero h1 { color: #fff; font-size: clamp(2rem, 4.6vw, 3.2rem); }
+.page-hero h1 { color: #fff; font-size: clamp(2.4rem, 5.4vw, 4.2rem); }
 .page-hero p { max-width: 58ch; color: rgba(255,255,255,.92); margin-bottom: .4rem; }
 .page-hero--plain { background: var(--viola-scuro); min-height: 0; }
 .page-hero--plain::after { display: none; }
 
 /* ---------- Foto ad arco (forma firma) ---------- */
-.arch-img { border-radius: var(--arch); overflow: hidden; box-shadow: var(--shadow); }
+.arch-img { border-radius: var(--arch-top-tall); overflow: hidden; box-shadow: var(--shadow); }
 .arch-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 3.8; }
 
 /* ---------- Griglia discipline ---------- */
 .disc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 44px; max-width: 680px; margin-left: auto; margin-right: auto; }
+/* Variante a 4 corsi (home): una riga piena, senza il vincolo dei 680px. */
+.disc-grid--4 { grid-template-columns: repeat(4, 1fr); max-width: none; }
 .disc { text-align: center; }
-.disc__img { display: block; border-radius: var(--arch); overflow: hidden; box-shadow: 0 20px 40px -18px rgba(96,29,125,.4); margin-bottom: 18px; position: relative; }
+.disc__img { display: block; border-radius: var(--arch-top-tall); overflow: hidden; box-shadow: 0 30px 56px -30px rgba(46,6,68,.4); margin-bottom: 18px; position: relative; }
 .disc__img img { aspect-ratio: 3 / 3.6; width: 100%; object-fit: cover; transition: transform .45s ease; }
 .disc:hover .disc__img img { transform: scale(1.05); }
 .disc h3 { margin-bottom: .25em; }
@@ -367,18 +397,33 @@ p  { margin: 0 0 1rem; }
 
 /* ---------- Insegnanti ---------- */
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 44px; }
+/* Variante a 3 insegnanti (pagina Vinyasa): riga piena, senza colonna vuota. */
+.team-grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 900px; margin-left: auto; margin-right: auto; }
+/* Variante a 2 insegnanti (pagina Pilates) */
+.team-grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 620px; margin-left: auto; margin-right: auto; }
+/* Variante a 1 insegnante (Gravidanza, Mamma e Bimbo) */
+.team-grid--1 { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
 .teacher { text-align: center; }
-.teacher__photo { width: min(200px, 70%); aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin: 0 auto 16px; box-shadow: var(--shadow-sm); border: 5px solid #fff; background: var(--lilla-tenue); }
+.teacher__photo { display: block; width: min(200px, 70%); aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin: 0 auto 16px; box-shadow: 0 0 0 1px rgba(122,91,23,.5), var(--shadow-sm); border: 5px solid #fff; background: var(--lilla-tenue); }
 .teacher__photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Quando il tondino è un link (pagina Vinyasa → Le insegnanti) */
+a.teacher__photo { transition: transform .2s ease, box-shadow .2s ease; }
+a.teacher__photo:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .teacher h3 { margin-bottom: .1em; font-size: 1.15rem; }
-.teacher .role { font-size: .88rem; color: var(--viola); font-family: var(--font-title); font-weight: 500; margin-bottom: .4rem; }
+.teacher h3 a { color: inherit; }
+.teacher h3 a:hover { color: var(--viola); }
+.teacher .role { font-size: .88rem; color: var(--viola); font-family: var(--font-body); font-weight: 500; margin-bottom: .4rem; }
 .teacher p { font-size: .93rem; color: var(--ink-soft); }
 
-/* ---------- I 3 passi della prova ---------- */
+/* ---------- Schede a tre (passi, ma anche caratteristiche con icona) ----------
+   Pattern condiviso da dieci pagine: sulla home il blocco #prova ha una veste
+   propria (più sotto, "I TRE PASSI DELLA PROVA"), qui resta la scheda bianca. */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 44px; counter-reset: step; }
-.step { background: #fff; border-radius: var(--radius-lg); padding: 30px 26px; box-shadow: 0 20px 40px -18px rgba(242,172,32,.35); position: relative; }
-.step .n { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%;
-  background: var(--lilla-tenue); color: var(--viola); font-family: var(--font-title); font-weight: 700; font-size: 1.15rem; margin-bottom: 14px; }
+.step { background: #fff; border-radius: var(--radius-lg); padding: 30px 26px; position: relative; }
+/* Il tondino è pieno di lilla come le caselle degli elenchi della home:
+   stesso fondo, niente filetto, così i segni della pagina si somigliano. */
+.step .n { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(209, 180, 237, .30); border: none; color: var(--viola); font-family: var(--font-title); font-weight: 700; font-size: 1.1rem; margin-bottom: 14px; }
 .step h3 { font-size: 1.12rem; }
 .step p { font-size: .95rem; color: var(--ink-soft); margin: 0; }
 
@@ -387,31 +432,28 @@ p  { margin: 0 0 1rem; }
 .review { background: #fff; border-radius: var(--radius-lg); padding: 28px 26px; box-shadow: 0 20px 40px -18px rgba(136,155,226,.4); display: flex; flex-direction: column; }
 .review .stars { color: var(--ambra); letter-spacing: .12em; margin-bottom: 10px; font-size: .95rem; }
 .review p { font-size: .97rem; flex: 1; }
-.review cite { font-style: normal; font-family: var(--font-title); font-weight: 600; color: var(--viola); font-size: .92rem; }
+.review cite { font-style: normal; font-family: var(--font-body); font-weight: 600; color: var(--viola); font-size: .92rem; }
 .review .src { font-size: .8rem; color: var(--ink-soft); }
 
 /* ---------- Fascia full-bleed con citazione ---------- */
 
 /* ---------- Split (testo + foto) ---------- */
 .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
-.split > img, .split .arch-img { border-radius: var(--arch); box-shadow: var(--shadow); object-fit: cover; width: 100%; aspect-ratio: 4/4.6; }
+.split > img, .split .arch-img { border-radius: var(--arch-top-tall); box-shadow: var(--shadow); object-fit: cover; width: 100%; aspect-ratio: 4/4.6; }
 .split.reverse > *:first-child { order: 2; }
 .split.reverse > *:last-child { order: 1; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(26px, 4vw, 56px); margin-top: 40px; }
 
 /* ---------- Lista esperienze ---------- */
-.explist { max-width: 780px; margin: 40px auto 0; }
-.exp-row { display: flex; align-items: center; gap: 22px; padding: 22px 8px; border-bottom: 1px solid var(--lilla-tenue); }
-.exp-row .num { font-family: var(--font-title); font-weight: 700; color: var(--lilla); font-size: 1.5rem; flex: none; width: 2ch; }
-.exp-row .exp-txt { flex: 1; }
-.exp-row h3 { margin-bottom: .15em; font-size: 1.13rem; }
-.exp-row p { margin: 0; font-size: .95rem; color: var(--ink-soft); }
+/* L'impaginazione degli elenchi della home (corsi ed eventi) è una sola e sta
+   più in basso, nel blocco "ELENCHI DELLA HOME": qui restano solo le eccezioni. */
 
 /* ---------- Info / contatti ---------- */
 .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
 .info { background: #fff; border-radius: var(--radius-lg); padding: 28px 26px; box-shadow: var(--shadow-sm); text-align: center; }
-.info .ico { font-size: 1.7rem; margin-bottom: 10px; }
+.info .ico { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 12px;
+  border: 1.5px solid var(--viola); border-radius: 50%; color: var(--viola); }
 .info h3 { font-size: 1.08rem; }
 .info p { font-size: .94rem; color: var(--ink-soft); margin: 0; }
 .info a { color: var(--viola); font-weight: 600; }
@@ -427,7 +469,9 @@ p  { margin: 0 0 1rem; }
 .faq .faq-a p { margin-bottom: .5rem; }
 
 /* ---------- CTA band (chiusura di ogni pagina) ---------- */
-.cta-band { background: linear-gradient(135deg, var(--viola) 0%, var(--viola-scuro) 100%); color: #fff; text-align: center; }
+.cta-band { color: #fff; text-align: center; background:
+  radial-gradient(ellipse 95% 120% at 50% -25%, rgba(130,111,197,.35), transparent 64%),
+  var(--viola-scuro); }
 .cta-band h2 { color: #fff; }
 .cta-band p { color: var(--lilla-tenue); max-width: 56ch; margin-left: auto; margin-right: auto; }
 .cta-band .actions { justify-content: center; margin-top: 26px; }
@@ -443,12 +487,12 @@ p  { margin: 0 0 1rem; }
 .slot--pilates { background: var(--ambra-tenue); color: #8a5f0a; }
 .slot--gravidanza { background: var(--lime-tenue); color: #5c7317; }
 .slot--mamma { background: #ece8f8; color: #5a48a8; }
-.tt-legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; list-style: none; margin: 30px 0 0; padding: 0; font-size: .9rem; font-family: var(--font-title); font-weight: 500; }
+.tt-legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; list-style: none; margin: 30px 0 0; padding: 0; font-size: .9rem; font-family: var(--font-body); font-weight: 500; }
 .tt-legend .dot { display: inline-block; width: .85em; height: .85em; border-radius: 4px; margin-right: .45em; vertical-align: -1px; }
 
 /* ---------- Palinsesto giornaliero (a tab, un giorno alla volta) ---------- */
 .day-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 38px; }
-.day-tab { font-family: var(--font-title); font-weight: 600; font-size: .92rem; padding: 10px 22px; border-radius: 999px; border: 1px solid var(--lilla); background: #fff; color: var(--viola-scuro); cursor: pointer; transition: background .18s, color .18s; }
+.day-tab { font-family: var(--font-ui); font-weight: 600; font-size: .92rem; padding: 10px 22px; border-radius: 999px; border: 1px solid var(--lilla); background: #fff; color: var(--viola-scuro); cursor: pointer; transition: background .18s, color .18s; }
 .day-tab:hover { background: var(--lilla-tenue); }
 .day-tab.is-active { background: var(--viola); border-color: var(--viola); color: #fff; }
 
@@ -457,38 +501,77 @@ p  { margin: 0 0 1rem; }
 .day-panel.is-active { display: block; }
 .class-row { display: flex; align-items: center; gap: 20px; padding: 18px 28px; border-bottom: 1px solid var(--lilla-tenue); }
 .class-row:last-child { border-bottom: none; }
-.class-time { font-family: var(--font-title); font-weight: 700; color: var(--viola-scuro); min-width: 60px; font-size: 1.05rem; }
-.class-name { display: inline-block; padding: 7px 16px; border-radius: 999px; font-family: var(--font-title); font-weight: 600; font-size: .92rem; }
+.class-time { font-family: var(--font-body); font-weight: 700; color: var(--viola-scuro); min-width: 60px; font-size: 1.05rem; }
+.class-name { display: inline-block; padding: 7px 16px; border-radius: 999px; font-family: var(--font-body); font-weight: 600; font-size: .92rem; }
+
+/* Interruttore fra le due viste del palinsesto (settimana / giorno) */
+.view-switch { display: flex; width: fit-content; margin: 34px auto 0; padding: 5px; gap: 4px; background: var(--lilla-tenue); border-radius: 999px; }
+.view-btn { font-family: var(--font-ui); font-weight: 600; font-size: .92rem; padding: 10px 22px; border-radius: 999px; border: none; background: transparent; color: var(--viola-scuro); cursor: pointer; transition: background .18s, color .18s; }
+.view-btn:hover { color: var(--viola); }
+.view-btn.is-active { background: var(--viola); color: #fff; box-shadow: var(--shadow-sm); }
+.view-panel { display: none; }
+.view-panel.is-active { display: block; }
+
+/* Vista settimana: una colonna per giorno, con le classi impilate */
+.week-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 34px; }
+.week-col { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; display: flex; flex-direction: column; }
+.week-col__head { background: var(--viola-scuro); color: #fff; font-family: var(--font-body); font-weight: 600; font-size: .92rem; text-align: center; padding: 12px 8px; }
+.week-slot { font-size: .82rem; line-height: 1.3; padding: 10px 12px; border-bottom: 3px solid #fff; }
+.week-slot:last-child { border-bottom: none; }
+.week-slot b { display: block; font-family: var(--font-body); font-size: .95rem; }
+.week-slot small { display: block; margin-top: 2px; font-size: .78rem; opacity: .75; }
+/* Nota sui periodi e intestazione di ciascun palinsesto */
+.tt-note { max-width: 620px; margin: 26px auto 0; font-size: .95rem; color: var(--ink-soft); }
+.tt-period { text-align: center; font-size: 1.15rem; margin: 30px 0 4px; }
+.tt-period span { font-weight: 400; color: var(--ink-soft); font-size: .9rem; }
+/* Su schermi stretti la griglia scorre in orizzontale, colonne a larghezza fissa */
+@media (max-width: 760px) {
+  .week-grid { display: flex; overflow-x: auto; gap: 12px; padding-bottom: 10px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+  .week-col { flex: 0 0 190px; scroll-snap-align: start; }
+}
 
 /* ---------- Shop / catalogo abbonamenti (classi usate da js/shop.js) ---------- */
 .chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
-.chip { font-family: var(--font-title); font-weight: 600; font-size: .95rem; padding: .55em 1.3em; border-radius: 999px;
+.chip { font-family: var(--font-ui); font-weight: 600; font-size: .95rem; padding: .55em 1.3em; border-radius: 999px;
   border: 2px solid var(--lilla); background: #fff; color: var(--viola); cursor: pointer; transition: all .15s ease; }
 .chip:hover { border-color: var(--viola); }
 .chip.is-active { background: var(--viola); border-color: var(--viola); color: #fff; }
 .shop-filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 34px; }
-.shop-card--open { border: 2px solid var(--ambra); }
-.shop-card--open .tag { background: var(--ambra-tenue); color: #8a5f0a; }
+/* Il chip "Open" è distinto (ambra): è l'opzione "tutto incluso" */
+.chip--open { border-color: var(--ambra); color: #8a5f0a; }
+.chip--open:hover { border-color: var(--ambra); }
+.chip--open.is-active { background: var(--ambra); border-color: var(--ambra); color: #4a3208; }
 
-.shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-.shop-card { background: #fff; border-radius: var(--radius-lg); padding: 30px 28px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
-.shop-card h3 { font-size: 1.25rem; }
-.shop-card .tag { display: inline-block; align-self: flex-start; font-size: .78rem; font-family: var(--font-title); font-weight: 600; color: #5c7317; background: var(--lime-tenue); border-radius: 999px; padding: .25em .9em; margin-bottom: 12px; }
-.shop-price { font-family: var(--font-title); font-weight: 700; color: var(--viola-scuro); font-size: 2rem; margin: 10px 0 4px; }
-.shop-price .vp-num { font-size: inherit; }
-.shop-note { font-size: .88rem; color: var(--ink-soft); }
-.variant-pick { margin: 14px 0 6px; }
-.variant-select { width: 100%; font-family: var(--font-body); font-size: 1rem; padding: .7em .9em; border-radius: 12px; border: 2px solid var(--lilla-tenue); background: var(--panna); color: var(--melanzana); }
-.variant-select:focus { outline: none; border-color: var(--lilla); }
-.variant-single { font-size: .95rem; color: var(--ink-soft); margin: 14px 0 6px; }
-.vp-buy { margin-top: auto; }
-.shop-card .btn { margin-top: 16px; }
+/* ---- Catalogo abbonamenti: tutti i pacchetti di una disciplina, affiancati ---- */
+.pkg-group__title { text-align: center; font-size: 1.5rem; margin: 40px 0 4px; }
+.pkg-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; max-width: 940px; margin: 26px auto 0; }
+/* Con un solo pacchetto (Open) la card non si allarga a tutta riga */
+.pkg-cards--single { grid-template-columns: minmax(240px, 340px); justify-content: center; }
+.pkg { position: relative; background: #fff; border-radius: var(--radius-lg); padding: 26px 24px 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; text-align: center; border: 2px solid transparent; }
+.pkg h4 { font-size: 1.12rem; margin-bottom: 8px; }
+.pkg-price { font-family: var(--font-title); font-weight: 700; color: var(--viola-scuro); font-size: 2.1rem; line-height: 1; }
+.pkg-per { font-size: .82rem; color: var(--viola); font-weight: 600; margin-top: 6px; }
+.pkg-note { font-size: .86rem; color: var(--ink-soft); margin-top: 8px; }
+.pkg .btn { margin-top: 18px; }
+.pkg--best { border-color: var(--ambra); box-shadow: 0 14px 30px -16px rgba(214,158,46,.6); }
+.pkg-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: var(--ambra); color: #4a3208; font-family: var(--font-body); font-weight: 700; font-size: .74rem; padding: .3em 1em; border-radius: 999px; box-shadow: var(--shadow-sm); }
+/* Fascia Open: l'alternativa "tutto incluso", sotto le discipline */
+.open-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px;
+  max-width: 940px; margin: 46px auto 0; background: var(--ambra-tenue); border: 2px solid var(--ambra);
+  border-radius: var(--radius-lg); padding: 30px 34px; }
+.open-band .tag { display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: .78rem;
+  color: #8a5f0a; background: #fff; border-radius: 999px; padding: .25em .9em; margin-bottom: 12px; }
+.open-band__text { flex: 1 1 320px; }
+.open-band__text h3 { font-size: 1.45rem; margin-bottom: 6px; }
+.open-band__text p { color: var(--ink-soft); margin: 0; max-width: 54ch; }
+.open-band__buy { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.open-band__buy .pkg-price { color: #8a5f0a; }
 
 /* ---------- Checkout / form ---------- */
 .form-card { background: #fff; border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 44px); box-shadow: var(--shadow-sm); }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-grid .full { grid-column: 1 / -1; }
-label { font-family: var(--font-title); font-weight: 600; font-size: .92rem; color: var(--viola-scuro); display: block; margin-bottom: .35em; }
+label { font-family: var(--font-body); font-weight: 600; font-size: .92rem; color: var(--viola-scuro); display: block; margin-bottom: .35em; }
 input[type="text"], input[type="email"], input[type="tel"], textarea, select {
   width: 100%; font-family: var(--font-body); font-size: 1rem; padding: .75em 1em; border-radius: 12px;
   border: 2px solid var(--lilla-tenue); background: var(--panna); color: var(--melanzana); }
@@ -498,14 +581,14 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .radio-pill:has(input:checked) { border-color: var(--viola); background: var(--lilla-tenue); }
 .radio-pill input { margin-top: .3em; accent-color: var(--viola); }
 .radio-pill .rp-txt { font-size: .93rem; color: var(--ink-soft); }
-.radio-pill .rp-txt strong { display: block; font-family: var(--font-title); color: var(--viola-scuro); }
+.radio-pill .rp-txt strong { display: block; font-family: var(--font-body); color: var(--viola-scuro); }
 .ck-line { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--lilla-tenue); font-size: .97rem; }
-.ck-line strong { font-family: var(--font-title); color: var(--viola-scuro); }
+.ck-line strong { font-family: var(--font-body); color: var(--viola-scuro); }
 .ck-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 26px; align-items: start; margin-top: 30px; }
 .ck-card { background: #fff; border-radius: var(--radius-lg); padding: clamp(22px, 3.5vw, 36px); box-shadow: var(--shadow-sm); display: grid; gap: 14px; }
 .ck-card h2 { font-size: 1.3rem; margin: 0; }
 .ck-pay { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
-.ck-pay legend { font-family: var(--font-title); font-weight: 600; color: var(--viola-scuro); margin-bottom: .4em; }
+.ck-pay legend { font-family: var(--font-body); font-weight: 600; color: var(--viola-scuro); margin-bottom: .4em; }
 .ck-radio { display: block; border: 2px solid var(--lilla-tenue); border-radius: 14px; padding: 12px 14px; cursor: pointer; background: var(--panna); font-weight: 400; font-family: var(--font-body); color: var(--melanzana); }
 .ck-radio:has(input:checked) { border-color: var(--viola); background: var(--lilla-tenue); }
 .ck-radio input { accent-color: var(--viola); margin-right: .5em; }
@@ -525,16 +608,16 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .checklist li { padding: 8px 0 8px 34px; position: relative; }
 .checklist li::before { content: "✓"; position: absolute; left: 4px; top: 8px; color: var(--lime); font-weight: 800; font-family: var(--font-title); }
 .laura-video { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--viola-scuro); aspect-ratio: 9/12; object-fit: cover; }
-.quote-band { background: var(--lilla-tenue); text-align: center; }
-.quote-band blockquote { font-family: var(--font-title); font-weight: 500; font-size: clamp(1.25rem, 2.6vw, 1.8rem); line-height: 1.4; color: var(--viola-scuro); max-width: 30ch; margin: 0 auto .6em; letter-spacing: -.01em; }
-.quote-band cite { font-style: normal; color: var(--viola); font-weight: 600; }
+.quote-band { position: relative; overflow: hidden; text-align: center; background: var(--viola-scuro); color: #fff; }
+.quote-band blockquote { font-family: var(--font-title); font-weight: 300; font-size: clamp(1.7rem, 3.6vw, 2.9rem); line-height: 1.3; color: #fff; max-width: 24ch; margin: 0 auto .5em; letter-spacing: -.02em; }
+.quote-band cite { font-style: normal; color: #e7c877; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; font-size: .78rem; }
 
 /* ---------- Card eventi / appuntamenti ---------- */
 .event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
 .event { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; }
 .event img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
 .event .ev-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
-.event .when { font-size: .8rem; color: var(--viola); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-title); font-weight: 600; margin: 0 0 6px; }
+.event .when { font-size: .8rem; color: var(--viola); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-body); font-weight: 600; margin: 0 0 6px; }
 .event h3 { font-size: 1.12rem; margin-bottom: .3em; }
 .event p { font-size: .93rem; color: var(--ink-soft); margin: 0 0 .5rem; }
 .event .ev-body .more { margin-top: auto; }
@@ -543,7 +626,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .equip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 40px; }
 .equip figure { margin: 0; text-align: center; }
 .equip img { border-radius: var(--radius); box-shadow: var(--shadow-sm); aspect-ratio: 1; object-fit: cover; width: 100%; }
-.equip figcaption { font-family: var(--font-title); font-weight: 600; font-size: .9rem; color: var(--viola-scuro); margin-top: 10px; }
+.equip figcaption { font-family: var(--font-body); font-weight: 600; font-size: .9rem; color: var(--viola-scuro); margin-top: 10px; }
 
 /* ---------- Form "avvisami" (Netlify) ---------- */
 .avvisami-form { max-width: 520px; margin: 36px auto 0; display: grid; gap: 14px; }
@@ -559,11 +642,11 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
 .card .body h3 { font-size: 1.15rem; }
 .card .body p { font-size: .94rem; color: var(--ink-soft); flex: 1; }
-.card .body .tag { display: inline-block; align-self: flex-start; font-size: .78rem; font-family: var(--font-title); font-weight: 600; color: var(--viola); background: var(--lilla-tenue); border-radius: 999px; padding: .25em .9em; margin-bottom: 10px; }
-.post-date { font-size: .8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-title); font-weight: 500; margin-bottom: 8px; }
+.card .body .tag { display: inline-block; align-self: flex-start; font-size: .78rem; font-family: var(--font-body); font-weight: 600; color: var(--viola); background: var(--lilla-tenue); border-radius: 999px; padding: .25em .9em; margin-bottom: 10px; }
+.post-date { font-size: .8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-body); font-weight: 500; margin-bottom: 8px; }
 
 /* Il racconto (pagine blog-*.html) — classi documentate in BLOG.md */
-.post-meta { font-size: .92rem; color: var(--lilla); font-family: var(--font-title); }
+.post-meta { font-size: .92rem; color: var(--lilla); font-family: var(--font-body); }
 .post-meta .sep { opacity: .6; margin: 0 .35em; }
 .post-body { max-width: 680px; margin: 0 auto; font-size: 1.08rem; line-height: 1.85; }
 .post-body > p:first-of-type::first-letter { font-family: var(--font-title); font-weight: 700; font-size: 3.2em; float: left; line-height: .85; padding-right: .12em; color: var(--viola); }
@@ -582,7 +665,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .post-card img { aspect-ratio: 16/10; object-fit: cover; width: 100%; }
 .post-card .pc-body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1; }
-.post-card .date { font-size: .8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-title); font-weight: 500; margin-bottom: 8px; }
+.post-card .date { font-size: .8rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-body); font-weight: 500; margin-bottom: 8px; }
 .post-card h3 { font-size: 1.15rem; }
 .post-card p { font-size: .94rem; color: var(--ink-soft); flex: 1; }
 
@@ -613,6 +696,277 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 }
 
 /* =================================================================
+   Rifiniture "erbario luminoso" — arco firma, filetti sottili, timbro del croco
+   ================================================================= */
+
+/* Timbro del croco (lo stamp del brand) come ornamento sotto i titoli centrati */
+.center > h2 { position: relative; }
+.center > h2::after {
+  content: ""; display: block; width: 44px; height: 40px; margin: 16px auto 0;
+  background: url("../assets/timbro.svg") center / contain no-repeat;
+  opacity: .72;
+}
+
+/* CTA "prova": un alone dorato discreto, senza riflessi appariscenti */
+.btn-cta { box-shadow: 0 14px 30px -14px rgba(242,172,32,.6), var(--glow-oro); }
+
+/* Card con foto in cima: sommità dolcemente ad arco (forma firma), senza bordi */
+.card, .post-card, .event {
+  border-radius: var(--arch-top);
+  box-shadow: 0 44px 74px -48px rgba(46,6,68,.30);
+}
+/* Card di testo e contenitori: niente bordi né ombre colorate — si fondono nello sfondo */
+.pillar, .step, .review, .info, .pkg, .form-card, .ck-card, .tally-wrap, .day-panels {
+  box-shadow: 0 44px 74px -48px rgba(46,6,68,.24);
+}
+/* Il pacchetto in evidenza tiene l'unico accento: un filo d'ambra */
+.pkg--best { box-shadow: 0 0 0 1.5px var(--ambra), 0 44px 74px -48px rgba(214,158,46,.36); }
+
+/* Occhielli raffinati: piccole maiuscole in oro antico */
+.teacher .role, .event .when, .post-date, .post-card .date, .post-meta {
+  font-family: var(--font-body); font-weight: 600; text-transform: uppercase;
+  letter-spacing: .2em; font-size: .74rem; color: var(--gold);
+}
+/* Etichette a pillola alleggerite: filo sottile invece del riempimento pieno */
+.pillar-tag, .card .body .tag {
+  color: var(--gold); background: transparent; border: 1px solid var(--line); letter-spacing: .14em;
+}
+/* Timbro del croco (in oro) in apertura delle fasce scure editoriali */
+.cta-band::before, .quote-band::before {
+  content: ""; display: block; width: 46px; height: 42px; margin: 0 auto 26px;
+  background: #e7c877;
+  -webkit-mask: url("../assets/timbro.svg") center / contain no-repeat;
+  mask: url("../assets/timbro.svg") center / contain no-repeat;
+}
+
+/* --- Correzioni di coerenza (dall'audit) --- */
+/* Occhiello data/byline sugli hero scuri: oro chiaro leggibile (non oro scuro). */
+.page-hero .post-meta { color: #e7c877; }
+/* I ruoli insegnante sono stringhe lunghe: tracking più contenuto degli occhielli. */
+.teacher .role { letter-spacing: .1em; }
+/* La fascia Open è vuota finché non la popola lo shop.js: non mostrare la scatola vuota. */
+.open-band:empty { display: none; }
+/* Vetrina blog con pochi racconti: card a larghezza naturale e centrate, mai "sole" a 1/3. */
+.cards.blog-cards { grid-template-columns: repeat(auto-fill, minmax(300px, 360px)); justify-content: center; }
+
+/* =========== I QUATTRO CORSI SETTIMANALI (home) ===========
+   Quattro tessere fotografiche in fila: sono il cuore dell'offerta, quindi
+   parlano con le immagini. La foto ha la sommità ad arco — la porta, forma
+   firma del brand, la stessa dei due varchi in apertura — e il testo sta
+   sotto, senza cornici né fondi: la griglia resta invisibile.
+   Le foto sono le copertine delle rispettive pagine: chi clicca ritrova la
+   stessa immagine ingrandita, e la home non dipende da file esterni. */
+.corsi {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(18px, 2.2vw, 30px);
+  margin-top: clamp(30px, 4.2vw, 48px);
+}
+.corso { color: inherit; display: block; transition: transform .35s ease; }
+.corso:hover { transform: translateY(-5px); }
+.corso__foto { display: block; overflow: hidden; aspect-ratio: 4 / 3.4;
+  border-radius: var(--arch-tile); background: var(--lilla-tenue);
+  box-shadow: 0 26px 46px -30px rgba(46, 6, 68, .45); }
+.corso__foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+.corso:hover .corso__foto img { transform: scale(1.06); }
+.corso__tag { display: inline-flex; align-items: center; gap: .6em; margin: 16px 0 .25em;
+  font-family: var(--font-body); font-weight: 600; font-size: .66rem;
+  text-transform: uppercase; letter-spacing: .2em; color: var(--gold); }
+.corso__tag::before { content: ""; width: 18px; height: 1px; background: var(--gold); opacity: .75; }
+.corso h3 { font-size: clamp(1.04rem, 1.4vw, 1.22rem); margin: 0; line-height: 1.25; transition: color .3s ease; }
+.corso:hover h3 { color: var(--viola); }
+.corso p { color: var(--ink-soft); font-size: .88rem; margin: .3em 0 0; }
+@media (max-width: 980px) {
+  /* Due colonne: le tessere restano grandi abbastanza da leggersi. */
+  .corsi { grid-template-columns: 1fr 1fr; gap: clamp(18px, 3vw, 26px); }
+}
+@media (max-width: 560px) {
+  /* Sul telefono resta la griglia 2×2, ma senza la riga di descrizione:
+     il titolo basta, e le quattro foto si vedono tutte in una schermata. */
+  .corso__foto { aspect-ratio: 1 / 1; }
+  .corso__tag { margin-top: 12px; font-size: .6rem; letter-spacing: .16em; }
+  .corso__tag::before { width: 12px; }
+  .corso h3 { font-size: .98rem; }
+  .corso p { display: none; }
+}
+
+/* =========== LA SALA NEL VERDE (solo home, #ambiente) ===========
+   La sezione dice due cose insieme — il verde attorno e la sala dentro — e ora
+   lo mostra: lo scatto orizzontale del bosco prende l'arco largo delle tessere
+   dei corsi, quello verticale della sala si appoggia sopra nell'arco organico,
+   staccato da un bordo panna. Dietro, un petalo lilla come quelli dei tre passi:
+   è la stessa lingua, non un elemento nuovo. */
+#ambiente .ambiente-foto { position: relative; margin: 0; padding-bottom: clamp(20px, 3vw, 38px); }
+#ambiente .ambiente-foto::before {
+  content: ""; position: absolute; z-index: 0; top: clamp(-26px, -2vw, -14px); right: -3%;
+  width: 56%; aspect-ratio: 1 / 1; border-radius: var(--blob);
+  background: rgba(209, 180, 237, .38);
+}
+#ambiente .ambiente-foto__verde {
+  position: relative; z-index: 1; display: block; width: 100%;
+  aspect-ratio: 3 / 2; object-fit: cover;
+  border-radius: var(--arch-tile); box-shadow: var(--shadow);
+}
+#ambiente .ambiente-foto__sala {
+  /* sporge nel margine sinistro (dentro il gap della griglia, non sul testo)
+     per coprire il meno possibile le insegnanti nello scatto grande */
+  position: absolute; z-index: 2; left: -8%; bottom: 0; width: 40%;
+  aspect-ratio: 3 / 4; object-fit: cover; object-position: center 30%;
+  border-radius: var(--arch-top-tall);
+  box-shadow: 0 0 0 7px var(--panna), 0 26px 46px -26px rgba(46, 6, 68, .45);
+}
+@media (max-width: 720px) {
+  /* Impilato: la foto della sala rientra nel margine e si fa più piccola. */
+  #ambiente .ambiente-foto { padding-bottom: 26px; }
+  #ambiente .ambiente-foto__verde { aspect-ratio: 16 / 11; }
+  #ambiente .ambiente-foto__sala { left: 2%; width: 34%; box-shadow: 0 0 0 5px var(--panna), var(--shadow-sm); }
+  #ambiente .ambiente-foto::before { width: 50%; top: -14px; }
+}
+
+/* =========== I TRE PASSI DELLA PROVA (solo home, #prova) ===========
+   Tre petali su una ghirlanda, non tre scatole bianche: via il fondo e l'ombra,
+   resta un tondo organico col numero e il testo sotto, centrato. I tre petali
+   hanno tre forme diverse — le forme organiche del brand — così sembrano colti
+   e non stampati; la linea tratteggiata che li unisce racconta il percorso.
+   Fuori dalla home .step resta la scheda bianca condivisa dalle altre pagine. */
+#prova .steps { position: relative; gap: clamp(22px, 3.2vw, 44px); margin-top: clamp(34px, 4.6vw, 56px); }
+#prova .steps::before {
+  content: ""; position: absolute; z-index: 0; top: 52px; left: 17%; right: 17%;
+  border-top: 1.5px dashed var(--lilla); opacity: .8;
+}
+#prova .step { position: relative; z-index: 1; background: none; box-shadow: none;
+  padding: 0; text-align: center; }
+#prova .step .n { width: 104px; height: 104px; border-radius: var(--blob);
+  /* petalo pieno (non trasparente: la ghirlanda gli passa dietro) con un velo
+     di luce in alto a sinistra, come un fiore appena aperto */
+  background: radial-gradient(circle at 34% 28%, #f8f4ff 0%, var(--lilla-tenue) 68%);
+  font-weight: 600; font-size: 1.5rem; margin-bottom: 20px;
+  transition: transform .5s ease, box-shadow .3s ease; }
+#prova .step:nth-child(2) .n { border-radius: var(--arch-top-tall); }
+#prova .step:nth-child(3) .n { border-radius: 55% 45% 48% 52% / 45% 55% 45% 55%; }
+#prova .step:hover .n { transform: rotate(-4deg) scale(1.04); box-shadow: var(--glow-lilla); }
+#prova .step h3 { font-size: 1.14rem; margin-bottom: .35em; }
+#prova .step p { margin: 0 auto; max-width: 30ch; }
+@media (max-width: 720px) {
+  /* Impilati: la ghirlanda non serve più, il petalo passa a sinistra del testo
+     e i passi prendono il ritmo delle righe degli eventi. */
+  #prova .steps { grid-template-columns: 1fr; gap: clamp(20px, 5vw, 30px); }
+  #prova .steps::before { display: none; }
+  #prova .step { display: grid; grid-template-columns: auto 1fr; column-gap: 18px;
+    grid-template-areas: "petalo titolo" "petalo testo"; align-items: center; text-align: left; }
+  #prova .step .n { grid-area: petalo; width: 76px; height: 76px; font-size: 1.3rem; margin-bottom: 0; }
+  #prova .step h3 { grid-area: titolo; align-self: end; margin-bottom: .2em; }
+  #prova .step p { grid-area: testo; align-self: start; max-width: none; }
+}
+
+/* =========== GLI EVENTI (home) ===========
+   L'elenco delle pratiche stagionali: due colonne, la griglia serve solo a
+   mettere in ordine (niente riquadri, niente fili), freccia in fila col titolo
+   e alone lilla appena percettibile al passaggio del mouse — disegnato da
+   ::before, così il testo resta allineato al margine del contenitore.
+   Al posto della foto, che qui cambia a ogni stagione, il timbro del croco. */
+.explist {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 2.8vw, 34px) clamp(28px, 4.6vw, 68px);
+  max-width: none; margin: clamp(30px, 4.2vw, 48px) 0 0;
+}
+.exp-row {
+  position: relative; isolation: isolate; color: inherit;
+  display: grid; grid-template-columns: auto 1fr; align-items: center;
+  gap: clamp(16px, 2vw, 24px);
+}
+.exp-row::before {
+  content: ""; position: absolute; inset: -14px -18px; z-index: -1;
+  border-radius: var(--radius); background: var(--lilla-tenue);
+  opacity: 0; transition: opacity .3s ease;
+}
+.exp-row:hover::before { opacity: .85; }
+.exp-mark { display: grid; place-items: center; width: 88px; height: 106px;
+  border-radius: var(--arch-top-tall); background: rgba(209, 180, 237, .30); }
+.exp-mark::before {
+  content: ""; width: 46px; height: 42px; background: var(--viola); opacity: .82;
+  -webkit-mask: url("../assets/timbro.svg") center / contain no-repeat;
+  mask: url("../assets/timbro.svg") center / contain no-repeat;
+  transition: opacity .3s ease, transform .5s ease;
+}
+.exp-row:hover .exp-mark::before { opacity: 1; transform: scale(1.08); }
+.exp-row h3 { font-size: clamp(1.16rem, 1.9vw, 1.44rem); margin: 0; line-height: 1.2;
+  transition: color .3s ease; }
+.exp-row:hover h3 { color: var(--viola); }
+.exp-row p { color: var(--ink-soft); font-size: .92rem; margin: .35em 0 0; max-width: 34ch; }
+/* La freccia in fila col titolo è la stessa nelle due sezioni: leggera a
+   riposo, si fa avanti in hover. */
+.corso__go, .exp-go { display: inline-block; color: var(--viola); opacity: .45;
+  transition: transform .3s ease, opacity .3s ease; }
+.corso:hover .corso__go, .exp-row:hover .exp-go { opacity: 1; transform: translateX(5px); }
+@media (max-width: 720px) {
+  /* Sul telefono gli eventi si impilano: righe basse, niente cornici. */
+  .explist { grid-template-columns: 1fr; gap: clamp(18px, 4vw, 26px); }
+  .exp-row::before { inset: -10px -14px; }
+  .exp-mark { width: 70px; height: 86px; }
+  .exp-mark::before { width: 38px; height: 35px; }
+  .exp-row p { font-size: .875rem; max-width: none; }
+}
+
+/* Blocco "Corsi ed eventi": due colonne editoriali (forma concept) — via card, bordi colorati e badge "+" */
+/* "Corsi ed eventi": DUE VARCHI.
+   L'arco è la forma-firma del brand: qui è preso alla lettera, due porte
+   affiancate. Una è fotografica (la pratica in sala, ogni settimana), l'altra
+   grafica — viola profondo e timbro del croco in filigrana (le stagioni).
+   Ordine di pittura dentro .pillar: fondo viola → foto (z -2) → velo (z -1) →
+   testo. `isolation: isolate` tiene tutto dentro il pannello. */
+#struttura .pillars { grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.4vw, 30px); margin-top: clamp(40px, 6vw, 66px); }
+#struttura .pillars::after { display: none; }
+#struttura .pillar {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: clamp(430px, 46vw, 570px);
+  padding: clamp(28px, 3.2vw, 46px);
+  border: none; border-top: none;
+  background: var(--viola-scuro);
+  border-radius: var(--arch-card);
+  box-shadow: 0 44px 84px -46px rgba(46,6,68,.58);
+  color: #fff;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+#struttura .pillar:hover { transform: translateY(-6px); box-shadow: 0 56px 96px -46px rgba(46,6,68,.66); }
+
+/* Varco 1 — la foto delle insegnanti, con velo viola che sale: il testo si legge */
+#struttura .pillar__photo {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 32%;
+  transition: transform .7s ease;
+}
+#struttura .pillar:hover .pillar__photo { transform: scale(1.06); }
+#struttura .pillar--corsi::after, #struttura .pillar--eventi::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  /* Velo viola che sale: soggetto in alto libero, testo in basso leggibile. */
+  background: linear-gradient(to top, rgba(46,6,68,.96) 27%, rgba(46,6,68,.72) 52%, rgba(46,6,68,.16) 100%);
+}
+/* Varco 2 — Michele all'handpan (bagno sonoro). Lo scatto è orizzontale: se
+   riempisse il varco lo zoom lo renderebbe un primo piano, fuori scala
+   rispetto alle tre insegnanti del varco accanto. Il file è quindi già
+   composto in verticale (foto in alto a tutta larghezza, sfumata nel viola
+   profondo del fondo): la figura resta alla stessa scala di quella a fianco. */
+#struttura .pillar--eventi { background: var(--viola-scuro); }
+#struttura .pillar--eventi .pillar__photo { object-position: center top; }
+
+/* Testo dentro i varchi: occhiello oro chiaro, titolo bianco, corpo su crema */
+#struttura .pillar__body { position: relative; }
+#struttura .pillar-tag { color: #e7c877; background: transparent; border: none; padding: 0; letter-spacing: .22em; margin-bottom: 14px; display: inline-flex; align-items: center; gap: .8em; }
+#struttura .pillar-tag::before { content: ""; width: 26px; height: 1px; background: #e7c877; opacity: .8; }
+#struttura .pillar h3 { color: #fff; font-size: clamp(1.6rem, 2.7vw, 2.15rem); margin-bottom: .5em; }
+#struttura .pillar p { color: rgba(244,238,228,.90); max-width: 46ch; font-size: .97rem; }
+#struttura .pillar .more { color: #e7c877; }
+#struttura .pillar .more:hover { color: #fff; }
+@media (max-width: 720px) {
+  /* I due varchi si impilano; l'arco resta, un po' più basso */
+  #struttura .pillars { grid-template-columns: 1fr; gap: 20px; }
+  #struttura .pillar { min-height: 400px; }
+}
+/* Sui telefoni molto stretti il ritorno a capo forzato dell'hero si neutralizza. */
+@media (max-width: 520px) { .hero--big h1 br { display: none; } }
+
+/* =================================================================
    RESPONSIVE — mobile first nel comportamento:
    sotto i 1024px il menu testuale collassa nell'hamburger,
    sotto i 720px appare la barra CTA fissa in basso.
@@ -635,12 +989,13 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 
 @media (max-width: 900px) {
   .disc-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .disc-grid--4 { max-width: 680px; }
   .reviews, .steps, .info-grid, .shop-grid, .blog-grid, .event-grid, .cards { grid-template-columns: repeat(2, 1fr); }
   .equip { grid-template-columns: repeat(3, 1fr); }
   .split, .split.reverse { grid-template-columns: 1fr; }
   .split.reverse > *:first-child { order: 1; }
   .split.reverse > *:last-child { order: 2; }
-  .split > img, .split .arch-img { aspect-ratio: 16/11; }
+  .split > img, .split .arch-img { aspect-ratio: 16/11; border-radius: var(--radius-lg); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -661,8 +1016,8 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--l
 @media (max-width: 560px) {
   .disc-grid, .team-grid, .reviews, .steps, .info-grid, .shop-grid, .blog-grid, .event-grid, .cards { grid-template-columns: 1fr; }
   .equip { grid-template-columns: repeat(2, 1fr); }
+  .disc__img { border-radius: var(--radius-lg); }
   .disc__img img { aspect-ratio: 16/10; }
   .footer-grid { grid-template-columns: 1fr; gap: 26px; }
-  .exp-row { gap: 14px; }
   .actions .btn { flex: 1 1 auto; }
 }

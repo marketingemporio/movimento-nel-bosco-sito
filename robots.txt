@@ -3,6 +3,10 @@ Allow: /
 Disallow: /checkout.html
 Disallow: /grazie.html
 Disallow: /grazie-avvisami.html
+Disallow: /grazie-prova.html
 Disallow: /blog-modello-racconto.html
+# BLOG NASCOSTO (temporaneo, da riattivare): pagine ancora online ma non linkate né indicizzate
+Disallow: /blog.html
+Disallow: /blog-le-primule-sotto-il-faggio.html
 
 Sitemap: https://movimentonelbosco.it/sitemap.xml

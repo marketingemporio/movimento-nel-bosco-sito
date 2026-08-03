@@ -30,17 +30,16 @@
 <body>
 
   <!-- ============ HEADER (condiviso su tutte le pagine) ============ -->
-  <header class="site-header">
+  <header class="site-header site-header--over">
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Movimento nel Bosco — home">
-        <img class="logo-full" src="assets/logo-positivo.svg" alt="Movimento nel Bosco">
+        <img class="logo-full" src="assets/logo-negativo.svg" alt="Movimento nel Bosco">
       </a>
       <nav>
         <ul class="nav-links" id="nav-menu">
           <li class="has-dropdown">
             <span class="dropdown-parent">
-              <a href="yoga.html">Yoga</a>
-              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Yoga <span class="caret" aria-hidden="true"></span></button>
             </span>
             <ul class="dropdown-menu">
               <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
@@ -68,7 +67,7 @@
               <li><a href="il-team.html">Le insegnanti</a></li>
             </ul>
           </li>
-          <li><a href="blog.html">Blog</a></li>
+          <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog</a></li> -->
         </ul>
       </nav>
       <div class="nav-cta">
@@ -81,16 +80,18 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero hero--big">
-    <img class="hero-bg" src="immagini/Yoga%20Rochi.jpg" alt="Lezione di yoga di gruppo al tramonto, nel verde dei dintorni di Brescia — Movimento nel Bosco">
+    <img class="hero-bg" style="object-position:center 42%" src="immagini/foto/vinyasa-hero.jpg" alt="Pratica di yoga sul tappetino, immersa nel verde di Mompiano">
     <div class="container">
       <div class="hero-inner">
-        <h1>Yoga, Pilates e consapevolezza,<br>a Brescia</h1>
+        <p class="hero-eyebrow">Nel verde di Mompiano · Brescia</p>
+        <h1>Yoga, Pilates e pratiche magiche,<br>a Mompiano</h1>
         <p class="hero-sub">Immersi nel verde di Mompiano: Yoga e Pilates ogni settimana con insegnanti certificate ed eventi ciclici tra suono, meditazione, aromaterapia e natura.</p>
         <div class="actions">
           <a class="btn btn-cta btn--lg" href="prova-gratuita.html">Prenota la lezione di prova gratuita</a>
           <a class="btn btn-light" href="orari.html">Guarda gli orari</a>
         </div>
         <p class="hero-proof"><span class="stars" aria-hidden="true">★★★★★</span> le recensioni dei nostri allievi su Google</p>
+        <p class="scroll-cue" aria-hidden="true">Scorri ↓</p>
       </div>
     </div>
   </section>
@@ -102,18 +103,27 @@
         <h2>Corsi ed eventi, una direzione</h2>
         <p class="lead">Il corpo come strumento di consapevolezza: il lavoro <span class="mark mark--lime">costante</span> in sala e le esperienze che lo arricchiscono.</p>
       </div>
+      <!-- Due "varchi": l'arco è la forma-firma del brand, qui preso alla lettera.
+           A sinistra la porta fotografica (la pratica in sala, ogni settimana),
+           a destra quella grafica col timbro del croco (le stagioni). -->
       <div class="pillars">
-        <div class="pillar reveal">
-          <span class="pillar-tag">Ogni settimana</span>
-          <h3>Corsi: Yoga e Pilates</h3>
-          <p>Una pratica continuativa per il benessere psicofisico: il corpo diventa uno strumento di consapevolezza, un accesso a una parte di noi che la mente da sola non raggiunge. Da lì, un passo alla volta, nasce il cambiamento.</p>
-          <a class="more" href="#corsi">Scopri i corsi ↓</a>
+        <div class="pillar pillar--corsi reveal">
+          <img class="pillar__photo" src="immagini/foto/gruppo-team.jpg" alt="Le tre insegnanti di Movimento nel Bosco nel parco, con tappetino e mattoncino da yoga" loading="lazy">
+          <div class="pillar__body">
+            <span class="pillar-tag">Ogni settimana</span>
+            <h3>Corsi: Yoga e Pilates</h3>
+            <p>Una pratica continuativa per il benessere psicofisico: il corpo diventa uno strumento di consapevolezza, un accesso a una parte di noi che la mente da sola non raggiunge. Da lì, un passo alla volta, nasce il cambiamento.</p>
+            <a class="more" href="#corsi">Scopri i corsi ↓</a>
+          </div>
         </div>
         <div class="pillar pillar--eventi reveal">
-          <span class="pillar-tag">A cicli e stagioni</span>
-          <h3>Eventi: altre pratiche magiche</h3>
-          <p>Suono, meditazione, aromaterapia, connessione con la natura: esperienze che si intrecciano con la pratica in sala e aprono i sensi, da vivere a cicli e stagioni.</p>
-          <a class="more" href="#esperienze">Scopri gli eventi ↓</a>
+          <img class="pillar__photo" src="immagini/foto/handpan-michele.jpg" alt="Michele Frosio suona l'handpan durante un bagno sonoro" loading="lazy">
+          <div class="pillar__body">
+            <span class="pillar-tag">A cicli e stagioni</span>
+            <h3>Eventi: altre pratiche magiche</h3>
+            <p>Suono, meditazione, aromaterapia, connessione con la natura: esperienze che si intrecciano con la pratica in sala e aprono i sensi, da vivere a cicli e stagioni.</p>
+            <a class="more" href="#esperienze">Scopri gli eventi ↓</a>
+          </div>
         </div>
       </div>
     </div>
@@ -130,7 +140,7 @@
              <source src="URL_VIDEO.mp4" type="video/mp4">
            </video> -->
       <div class="video-placeholder reveal">
-        <img src="immagini/Yoga%20Rochi.jpg" alt="Anteprima del video di presentazione, in arrivo" loading="lazy">
+        <img src="immagini/foto/presentiamo.jpg" alt="Le insegnanti di Movimento nel Bosco — anteprima del video di presentazione, in arrivo" loading="lazy">
         <button type="button" class="play-btn" aria-label="Video in arrivo" disabled>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         </button>
@@ -140,62 +150,100 @@
   </section>
 
   <!-- ============ CORSI SETTIMANALI ============ -->
-  <section class="section tint-panna" id="corsi">
+  <section class="section" id="corsi">
     <div class="container">
       <div class="center">
         <h2>I corsi settimanali</h2>
-        <p class="lead">Yoga e Pilates, ogni settimana, per ogni livello.</p>
+        <p class="lead">Quattro corsi, ogni settimana, in sala a Mompiano.</p>
       </div>
-      <div class="disc-grid">
-        <div class="disc reveal">
-          <a class="disc__img" href="vinyasa-yoga.html"><img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/gempages_509155305033040999-0c95a512-124d-47e5-bf54-bb7b2d21f36c.jpg" alt="Lezione di Vinyasa Yoga in sala a Mompiano" loading="lazy"></a>
-          <h3>Yoga</h3>
-          <p>Vinyasa yoga, yoga in gravidanza e yoga mamma e bimbo: una pratica per ogni momento della vita.</p>
-          <a class="more" href="vinyasa-yoga.html">Scopri lo Yoga →</a>
-        </div>
-        <div class="disc reveal">
-          <a class="disc__img" href="pilates.html"><img src="https://cdn.shopify.com/s/files/1/0562/4512/5328/files/Camilla_pilates_2.jpg" alt="Camilla durante una lezione di Pilates Matwork" loading="lazy"></a>
-          <h3>Pilates</h3>
-          <p>Rinforzo dei muscoli e miglioramento della postura: un lavoro preciso che senti già dalla prima volta.</p>
-          <a class="more" href="pilates.html">Scopri il Pilates →</a>
-        </div>
+      <!-- Quattro tessere fotografiche in fila: la foto con la sommità ad arco
+           (la porta del brand) è il segno, il testo sta sotto senza cornici.
+           Ogni tessera usa la copertina della sua pagina: chi clicca ritrova
+           la stessa immagine, ingrandita. -->
+      <div class="corsi">
+        <a class="corso reveal" href="vinyasa-yoga.html">
+          <span class="corso__foto"><img src="immagini/foto/vinyasa-card.jpg" alt="Pratica di Vinyasa Yoga in sala a Mompiano" loading="lazy"></span>
+          <span class="corso__tag">Yoga</span>
+          <h3>Vinyasa Yoga <span class="corso__go" aria-hidden="true">→</span></h3>
+          <p>Fluida, guidata dal respiro, con gli oli essenziali.</p>
+        </a>
+        <a class="corso reveal" href="pilates.html">
+          <span class="corso__foto"><img src="immagini/foto/pilates-cover.jpg" alt="Esercizio di Pilates Matwork con l'elastico, sul tappetino in sala" loading="lazy"></span>
+          <span class="corso__tag">Pilates</span>
+          <h3>Pilates Matwork <span class="corso__go" aria-hidden="true">→</span></h3>
+          <p>Muscoli e postura: un lavoro preciso, lo senti subito.</p>
+        </a>
+        <a class="corso reveal" href="gravidanza.html">
+          <span class="corso__foto"><img src="immagini/foto/cover-gravidanza.jpg" alt="Pratica di yoga all'aperto, nel verde" loading="lazy"></span>
+          <span class="corso__tag">Yoga</span>
+          <h3>Yoga in gravidanza <span class="corso__go" aria-hidden="true">→</span></h3>
+          <p>Dal secondo trimestre: respiro e posizioni dolci.</p>
+        </a>
+        <a class="corso reveal" href="mamma-e-bimbo.html">
+          <span class="corso__foto"><img src="immagini/foto/cover-mamma-bimbo.jpg" alt="Mamma con il suo bimbo durante una pratica di yoga post parto" loading="lazy"></span>
+          <span class="corso__tag">Post parto</span>
+          <h3>Yoga mamma e bimbo <span class="corso__go" aria-hidden="true">→</span></h3>
+          <p>Esercizi dolci per il recupero, col bimbo accanto.</p>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ============ ESPERIENZE ============ -->
-  <section class="section tint-lime" id="esperienze">
+  <section class="section" id="esperienze">
     <div class="container">
       <div class="center">
         <h2>Gli eventi</h2>
         <p class="lead">Oltre alle lezioni, durante l'anno organizziamo appuntamenti che cambiano con le stagioni.</p>
       </div>
+      <!-- Stesso ritmo dei corsi settimanali (due colonne, nessuna cornice):
+           al posto della foto il numero in oro, che è l'indice delle stagioni. -->
       <div class="explist">
-        <div class="exp-row reveal">
-          <span class="num">01</span>
-          <div class="exp-txt"><h3>Bagni sonori</h3><p>Serate di rilassamento con l'handpan, suonato dal vivo a 432 Hz.</p></div>
-          <a class="more" href="bagno-sonoro.html">Scopri →</a>
-        </div>
-        <div class="exp-row reveal">
-          <span class="num">02</span>
-          <div class="exp-txt"><h3>Cicli di Meditazione</h3><p>Il Respiro dei Chakra con Camilla: 7 pratiche a cicli stagionali, non in orario fisso.</p></div>
-          <a class="more" href="meditazione.html">Scopri →</a>
-        </div>
-        <div class="exp-row reveal">
-          <span class="num">03</span>
-          <div class="exp-txt"><h3>Viaggi negli oli essenziali</h3><p>Incontri con Laura per imparare a usare gli oli essenziali.</p></div>
-          <a class="more" href="viaggio-oli-essenziali.html">Scopri →</a>
-        </div>
-        <div class="exp-row reveal">
-          <span class="num">04</span>
-          <div class="exp-txt"><h3>Yoga all'aperto</h3><p>Lezioni fuori sala: una vigna, il lago, un rifugio di montagna.</p></div>
-          <a class="more" href="eventi.html">Scopri →</a>
-        </div>
-        <div class="exp-row reveal">
-          <span class="num">05</span>
-          <div class="exp-txt"><h3>Blog dal Bosco</h3><p>Il diario di Paola: passeggiate, fiori e stagioni.</p></div>
-          <a class="more" href="blog.html">Leggi →</a>
-        </div>
+        <a class="exp-row reveal" href="bagno-sonoro.html">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Bagni sonori <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Serate di rilassamento con l'handpan, suonato dal vivo a 432 Hz.</p>
+          </span>
+        </a>
+        <a class="exp-row reveal" href="meditazione.html">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Cicli di Meditazione <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Il Respiro dei Chakra con Camilla: 7 pratiche a cicli stagionali.</p>
+          </span>
+        </a>
+        <a class="exp-row reveal" href="viaggio-oli-essenziali.html">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Viaggi negli oli essenziali <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Incontri con Laura per imparare a usare gli oli essenziali.</p>
+          </span>
+        </a>
+        <a class="exp-row reveal" href="eventi.html#yoga-aperto">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Yoga all'aperto <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Lezioni fuori sala: una vigna, il lago, un rifugio di montagna.</p>
+          </span>
+        </a>
+        <a class="exp-row reveal" href="eventi.html#retreat">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Retreat <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Qualche giorno di pratica fuori dalla sala, tutti insieme.</p>
+          </span>
+        </a>
+        <!-- BLOG NASCOSTO (temporaneo, da riattivare):
+        <a class="exp-row reveal" href="blog.html">
+          <span class="exp-mark" aria-hidden="true"></span>
+          <span class="exp-txt">
+            <h3>Blog dal Bosco <span class="exp-go" aria-hidden="true">→</span></h3>
+            <p>Il diario di Paola: passeggiate, fiori e stagioni.</p>
+          </span>
+        </a>
+        -->
+
       </div>
     </div>
   </section>
@@ -227,8 +275,8 @@
       <div class="center" style="margin-top:38px">
         <div class="actions">
           <a class="btn btn-cta btn--lg" href="prova-gratuita.html">Prenota la lezione di prova</a>
-          <!-- SEGNAPOSTO WHATSAPP: ora punta al numero Emporio (+39 352 088 5612); sostituire se la scuola avrà un numero dedicato -->
-          <a class="btn btn-wa" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+          <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+          <a class="btn btn-wa" href="https://wa.me/393520885613?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener">
             <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
             Scrivici su WhatsApp
           </a>
@@ -237,11 +285,26 @@
     </div>
   </section>
 
+  <!-- ============ ABBONAMENTI TEASER ============ -->
+  <section class="section" id="abbonamenti-teaser">
+    <div class="container center">
+      <h2>Prima provi, poi scegli</h2>
+      <p class="lead">Singola lezione, pacchetti da 4 o 12 e la formula Open valida per tutti i corsi: trovi tutto nella pagina abbonamenti.</p>
+      <p style="margin-top:22px"><a class="btn btn-primary" href="abbonamenti.html">Vedi gli abbonamenti</a></p>
+    </div>
+  </section>
+
   <!-- ============ IL NOSTRO SPAZIO / IL BOSCO ============ -->
   <section class="section" id="ambiente">
     <div class="container split reverse">
-      <img src="immagini/Piazzetta%20Braille%203_02072026.jpeg" alt="La Piazzetta Louis Braille, nel verde di Mompiano, ai piedi del Colle San Giuseppe" loading="lazy">
+      <!-- Due scatti sovrapposti perché la sezione dice due cose: il verde
+           attorno (orizzontale) e la sala dentro (verticale, nell'arco). -->
+      <figure class="ambiente-foto">
+        <img class="ambiente-foto__verde" src="immagini/foto/sala.jpg" alt="Le insegnanti di Movimento nel Bosco nel verde di Mompiano, ai piedi del Colle San Giuseppe" loading="lazy">
+        <img class="ambiente-foto__sala" src="immagini/foto/vinyasa-sala.jpg" alt="La sala di pratica: parquet, luce naturale e pareti chiare" loading="lazy">
+      </figure>
       <div>
+        <p class="eyebrow">Lo spazio</p>
         <h2>La sala, nel verde di Mompiano</h2>
         <p>Siamo ai piedi del Colle San Giuseppe — <span class="mark">il bosco c'è davvero</span>. La sala ha luce naturale, silenzio e lo spazio per muoversi con calma.</p>
         <p>Siamo dentro l'Emporio nel Bosco: nelle pratiche entrano oli essenziali e fiori di Bach della sua erboristeria.</p>
@@ -251,7 +314,7 @@
   </section>
 
   <!-- ============ RECENSIONI ============ -->
-  <section class="section tint-panna" id="recensioni">
+  <section class="section" id="recensioni">
     <div class="container">
       <div class="center">
         <h2>Cosa dicono gli allievi</h2>
@@ -277,7 +340,7 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section tint-panna" id="faq">
+  <section class="section" id="faq">
     <div class="container">
       <div class="center">
         <h2>Qualche informazione utile</h2>
@@ -285,7 +348,7 @@
       <div class="faq">
         <details>
           <summary>Devo avere esperienza per partecipare?</summary>
-          <div class="faq-a"><p>Assolutamente no. Ogni pratica viene adattata a chi c'è in sala: chi è alle prime armi e chi pratica da anni trovano entrambi il proprio spazio.</p></div>
+          <div class="faq-a"><p>No. L'insegnante guida la pratica passo passo e resta a disposizione durante la lezione. La prima lezione è una prova: serve anche a questo.</p></div>
         </details>
         <details>
           <summary>Cosa devo portare con me?</summary>
@@ -334,7 +397,6 @@
         <div>
           <h4>Corsi</h4>
           <ul>
-            <li><a href="yoga.html">Yoga</a></li>
             <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
             <li><a href="pilates.html">Pilates</a></li>
             <li><a href="gravidanza.html">Yoga Gravidanza</a></li>
@@ -350,17 +412,17 @@
             <li><a href="il-team.html">Il team</a></li>
             <li><a href="la-visione.html">La visione</a></li>
             <li><a href="regolamento.html">Regolamento</a></li>
-            <li><a href="blog.html">Blog dal Bosco</a></li>
+            <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog dal Bosco</a></li> -->
           </ul>
         </div>
         <div>
           <h4>Contatti</h4>
           <ul>
-            <li>📍 Via Fontane 32, Brescia</li>
-            <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-            <li><a href="https://wa.me/393520885612" target="_blank" rel="noopener">💬 WhatsApp</a></li>
-            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener">📷 Instagram</a></li>
-            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">📱 App prenotazione</a></li>
+            <li><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="luogo"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Via Fontane 32, Brescia</li>
+            <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+            <li><a href="https://wa.me/393520885613" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="messaggio"><path d="M20 12.3c0 3.8-3.6 6.9-8 6.9-1 0-2-.2-2.9-.5L4 20.4l1.7-3.3A6.5 6.5 0 0 1 4 12.3c0-3.8 3.6-6.9 8-6.9s8 3.1 8 6.9Z"/></svg> WhatsApp</a></li>
+            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="instagram"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.9" cy="7.1" r=".7"/></svg> Instagram</a></li>
+            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="app"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 5.6h3M12 18.4h.01"/></svg> App prenotazione</a></li>
             <li><a href="prenota.html">Come prenotare</a></li>
             <li><a href="prova-gratuita.html">Lezione di prova</a></li>
           </ul>
@@ -376,8 +438,8 @@
   <!-- ============ BARRA CTA MOBILE (condivisa) ============ -->
   <div class="mobile-cta">
     <a class="btn btn-cta" href="prova-gratuita.html">Prenota la lezione di prova</a>
-    <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-    <a class="btn btn-wa" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+    <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+    <a class="btn btn-wa" href="https://wa.me/393520885613?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
       <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
     </a>
   </div>

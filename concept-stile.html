@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concept stile — Movimento nel Bosco</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+  :root{
+    --paper:#F4EEE4;        /* crema calda */
+    --paper-2:#EBE2D3;      /* crema più profonda (alternanza) */
+    --ink:#2E0644;          /* prugna quasi-nero (testo) */
+    --ink-soft:#6b5a6e;     /* prugna attenuata */
+    --plum:#601D7D;         /* viola brand (accento) */
+    --lilla:#D1B4ED;
+    --mist:#EFE6FB;
+    --gold:#B0812B;         /* oro antico raffinato (filetti, occhielli) */
+    --ambra:#F2AC20;        /* solo la CTA */
+    --line:rgba(46,6,68,.14);
+
+    --wrap:1180px;
+    --font-title:'Rubik',system-ui,sans-serif;
+    --font-body:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-body); font-size:1.05rem; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{width:100%; max-width:var(--wrap); margin:0 auto; padding:0 clamp(20px,5vw,48px);}
+
+  h1,h2,h3{font-family:var(--font-title); font-weight:600; line-height:1.02; letter-spacing:-.025em; margin:0; color:var(--ink);}
+  h1{font-size:clamp(3rem,8.5vw,7rem);}
+  h2{font-size:clamp(2.2rem,5vw,3.9rem);}
+  h3{font-size:1.5rem; letter-spacing:-.01em;}
+  p{margin:0;}
+
+  /* Occhiello: piccole maiuscole lettarspaziate, oro */
+  .eyebrow{
+    font-family:var(--font-body); font-weight:600; font-size:.74rem;
+    letter-spacing:.32em; text-transform:uppercase; color:var(--gold);
+    display:inline-flex; align-items:center; gap:.9em;
+  }
+  .eyebrow::before{content:""; width:34px; height:1px; background:var(--gold); opacity:.7;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.6em; font-family:var(--font-title);
+    font-weight:500; font-size:1rem; padding:1em 1.9em; border-radius:999px;
+    background:var(--ambra); color:var(--ink); transition:transform .25s ease, box-shadow .25s ease;
+    box-shadow:0 18px 40px -20px rgba(242,172,32,.8);
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn--ghost{background:transparent; color:var(--ink); border:1px solid var(--line); box-shadow:none; padding:.9em 1.6em;}
+  .btn--ghost:hover{border-color:var(--ink);}
+  .btn--light{background:rgba(244,238,228,.14); color:var(--paper); border:1px solid rgba(244,238,228,.35); box-shadow:none;}
+
+  /* ---------- Header ---------- */
+  header.top{position:absolute; top:0; left:0; right:0; z-index:5;}
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:26px; padding-bottom:26px;}
+  .brand{font-family:var(--font-title); font-weight:500; letter-spacing:.02em; color:var(--paper); font-size:1.05rem;}
+  .brand small{display:block; font-size:.62rem; letter-spacing:.34em; text-transform:uppercase; opacity:.8; font-weight:600;}
+  .top nav{display:flex; align-items:center; gap:28px; color:var(--paper);}
+  .top nav a.link{font-family:var(--font-title); font-weight:400; font-size:.95rem; opacity:.9;}
+  .top nav a.link:hover{opacity:1;}
+  @media(max-width:760px){ .top nav .link{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative; min-height:100svh; display:flex; align-items:flex-end; overflow:hidden;}
+  .hero img.bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%;}
+  .hero::after{content:""; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(28,4,42,.82) 0%, rgba(28,4,42,.30) 42%, rgba(28,4,42,.12) 100%);}
+  .hero .wrap{position:relative; z-index:2; padding-bottom:clamp(48px,7vw,96px); padding-top:140px; color:var(--paper);}
+  .hero .eyebrow{color:#e7c877;}
+  .hero .eyebrow::before{background:#e7c877;}
+  .hero h1{color:var(--paper); max-width:14ch; margin:.34em 0 .5em;}
+  .hero p.sub{max-width:44ch; color:rgba(244,238,228,.9); font-size:1.15rem; margin-bottom:2em;}
+  .hero .cta-row{display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .scroll-cue{margin-top:3rem; font-size:.78rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(244,238,228,.7); font-family:var(--font-body); font-weight:600;}
+
+  /* ---------- Manifesto ---------- */
+  .manifesto{padding:clamp(90px,15vw,190px) 0;}
+  .manifesto .wrap{display:grid; grid-template-columns:1fr; gap:0; max-width:1000px;}
+  .manifesto .lead{
+    font-family:var(--font-title); font-weight:300; letter-spacing:-.02em;
+    font-size:clamp(1.7rem,4vw,3rem); line-height:1.25; color:var(--ink); max-width:20ch;
+  }
+  .manifesto .lead b{font-weight:500; color:var(--plum); font-style:normal;}
+  .manifesto .col{display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(30px,6vw,90px); align-items:end; margin-top:clamp(40px,6vw,80px);}
+  .manifesto .col p{color:var(--ink-soft); max-width:42ch;}
+  @media(max-width:760px){ .manifesto .col{grid-template-columns:1fr; gap:28px;} }
+
+  /* ---------- Indice discipline (editoriale, non a card) ---------- */
+  .discipline{background:var(--paper-2); padding:clamp(80px,12vw,150px) 0;}
+  .sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(40px,6vw,72px);}
+  .sec-head h2{max-width:12ch;}
+  .index{border-top:1px solid var(--line);}
+  .row{
+    display:grid; grid-template-columns:110px 1fr auto; gap:clamp(20px,4vw,54px); align-items:center;
+    padding:clamp(22px,3vw,34px) 0; border-bottom:1px solid var(--line);
+    transition:padding .3s ease;
+  }
+  .row .thumb{width:110px; height:132px; overflow:hidden; border-radius:999px 999px 14px 14px; background:var(--mist);}
+  .row .thumb img{width:100%; height:100%; object-fit:cover;}
+  .row .rt h3{font-size:clamp(1.6rem,3.4vw,2.5rem); letter-spacing:-.02em;}
+  .row .rt p{color:var(--ink-soft); margin-top:.3em; max-width:46ch;}
+  .row .go{font-family:var(--font-title); font-weight:500; color:var(--plum); white-space:nowrap; display:inline-flex; align-items:center; gap:.5em;}
+  .row .go .arrow{transition:transform .3s ease;}
+  .row:hover{padding-left:clamp(6px,1.4vw,18px); padding-right:clamp(6px,1.4vw,18px);}
+  .row:hover .go .arrow{transform:translateX(6px);}
+  @media(max-width:680px){
+    .row{grid-template-columns:78px 1fr; gap:18px;}
+    .row .thumb{width:78px; height:96px;}
+    .row .go{display:none;}
+  }
+
+  /* ---------- Split editoriale con arco ---------- */
+  .split{padding:clamp(80px,12vw,160px) 0;}
+  .split .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(36px,6vw,90px); align-items:center;}
+  .split .fig{overflow:hidden; border-radius:999px 999px 20px 20px; box-shadow:0 50px 90px -50px rgba(46,6,68,.5); background:var(--mist);}
+  .split .fig img{width:100%; aspect-ratio:4/4.9; object-fit:cover;}
+  .split .txt h2{margin-bottom:.5em;}
+  .split .txt p{color:var(--ink-soft); margin-bottom:1.1em; max-width:46ch;}
+  .split .txt ul{list-style:none; margin:0 0 1.6em; padding:0;}
+  .split .txt li{padding:.5em 0 .5em 1.6em; position:relative; border-bottom:1px solid var(--line);}
+  .split .txt li::before{content:""; position:absolute; left:0; top:1.15em; width:9px; height:9px; border:1px solid var(--gold); border-radius:50%;}
+  @media(max-width:820px){ .split .wrap{grid-template-columns:1fr; gap:36px;} .split .fig img{aspect-ratio:16/12;} }
+
+  /* ---------- Sezione scura (momento editoriale) ---------- */
+  .dark{background:var(--ink); color:var(--paper); padding:clamp(90px,14vw,180px) 0; text-align:center; position:relative; overflow:hidden;}
+  .dark .crocus{width:40px; height:66px; margin:0 auto 34px; background:#e7c877;
+    -webkit-mask:url("assets/solo-icona.svg") center/contain no-repeat;
+    mask:url("assets/solo-icona.svg") center/contain no-repeat;}
+  .dark blockquote{font-family:var(--font-title); font-weight:300; letter-spacing:-.02em;
+    font-size:clamp(1.8rem,4.4vw,3.3rem); line-height:1.28; max-width:20ch; margin:0 auto; color:var(--paper);}
+  .dark cite{display:block; margin-top:2rem; font-style:normal; font-family:var(--font-body); font-weight:500; letter-spacing:.24em; text-transform:uppercase; font-size:.78rem; color:#e7c877;}
+
+  /* ---------- Insegnanti ---------- */
+  .teachers{padding:clamp(80px,12vw,150px) 0; text-align:center;}
+  .teachers .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(30px,5vw,64px); margin-top:clamp(44px,6vw,72px); max-width:820px; margin-left:auto; margin-right:auto;}
+  .teacher .ph{width:min(180px,80%); aspect-ratio:1; margin:0 auto 20px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 1px var(--gold), 0 40px 60px -40px rgba(46,6,68,.5);}
+  .teacher .ph img{width:100%; height:100%; object-fit:cover;}
+  .teacher h3{font-size:1.3rem;}
+  .teacher .role{font-family:var(--font-body); font-weight:500; color:var(--plum); font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; margin-top:.3em;}
+  @media(max-width:680px){ .teachers .grid{grid-template-columns:1fr; max-width:260px;} }
+
+  /* ---------- CTA finale ---------- */
+  .cta{padding:clamp(80px,12vw,150px) 0 clamp(90px,13vw,170px); text-align:center;}
+  .cta h2{max-width:16ch; margin:0 auto .6em;}
+  .cta p{color:var(--ink-soft); max-width:44ch; margin:0 auto 2em;}
+
+  footer.foot{background:var(--ink); color:rgba(244,238,228,.7); padding:56px 0 40px; font-size:.9rem;}
+  footer.foot .wrap{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center;}
+  footer .brand{color:var(--paper);}
+
+  /* Reveal */
+  .rv{opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
+  .rv.in{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .rv{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">Movimento nel Bosco<small>Mompiano · Brescia</small></div>
+    <nav>
+      <a class="link" href="#">Discipline</a>
+      <a class="link" href="#">Insegnanti</a>
+      <a class="link" href="#">Orari</a>
+      <a class="btn btn--light" href="#">Prenota la prova</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="bg" src="immagini/foto/vinyasa-hero.jpg" alt="Pratica di yoga all'aperto, nel verde">
+  <div class="wrap">
+    <span class="eyebrow">Yoga · Pilates · Movimento consapevole</span>
+    <h1>Rallenta.<br>Respira.<br>Ritrovati.</h1>
+    <p class="sub">Un piccolo studio nel verde di Mompiano, dove il corpo trova spazio e la mente si scioglie. Poche persone per volta, cura vera.</p>
+    <div class="cta-row">
+      <a class="btn" href="#">Prenota la lezione di prova</a>
+      <a class="btn btn--light" href="#">Scopri le discipline</a>
+    </div>
+    <div class="scroll-cue">Scorri ↓</div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="eyebrow rv">La nostra idea</p>
+    <p class="lead rv" style="margin-top:1.2rem">Lavoriamo sul <b>corpo</b> per fare spazio alla <b>mente</b>. Un movimento gentile, ascoltato, mai di fretta.</p>
+    <div class="col">
+      <p class="rv">Non siamo una palestra. Siamo un luogo raccolto dove ci si conosce per nome, dove ogni lezione è pensata per chi c'è quel giorno, e dove la natura non è uno sfondo ma parte della pratica.</p>
+      <p class="rv">Yoga, Pilates, gravidanza, mamma e bimbo: percorsi diversi, la stessa attenzione. Si comincia con calma, dal punto in cui sei.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDICE DISCIPLINE -->
+<section class="discipline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow rv">Le discipline</p>
+        <h2 class="rv" style="margin-top:1rem">Quattro strade, un solo respiro.</h2>
+      </div>
+      <a class="btn btn--ghost rv" href="#">Vedi gli orari</a>
+    </div>
+    <div class="index">
+      <div class="row rv">
+        <div class="thumb"><img src="immagini/foto/vinyasa-card.jpg" alt="Vinyasa Yoga"></div>
+        <div class="rt"><h3>Vinyasa Yoga</h3><p>Il respiro guida il movimento: forza, fluidità e presenza.</p></div>
+        <span class="go">Scopri <span class="arrow">→</span></span>
+      </div>
+      <div class="row rv">
+        <div class="thumb"><img src="immagini/foto/cover-gravidanza.jpg" alt="Yoga in gravidanza"></div>
+        <div class="rt"><h3>Yoga in gravidanza</h3><p>Preparare il corpo e il legame, dal secondo trimestre.</p></div>
+        <span class="go">Scopri <span class="arrow">→</span></span>
+      </div>
+      <div class="row rv">
+        <div class="thumb"><img src="immagini/foto/cover-mamma-bimbo.jpg" alt="Yoga mamma e bimbo"></div>
+        <div class="rt"><h3>Yoga mamma e bimbo</h3><p>Ritrovarsi dopo il parto, con il tuo bimbo accanto.</p></div>
+        <span class="go">Scopri <span class="arrow">→</span></span>
+      </div>
+      <div class="row rv">
+        <div class="thumb"><img src="immagini/foto/pilates-cover.jpg" alt="Pilates Matwork"></div>
+        <div class="rt"><h3>Pilates Matwork</h3><p>Postura, controllo e forza profonda, a basso impatto.</p></div>
+        <span class="go">Scopri <span class="arrow">→</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT -->
+<section class="split">
+  <div class="wrap">
+    <div class="fig rv"><img src="immagini/foto/sala.jpg" alt="La sala di pratica"></div>
+    <div class="txt">
+      <p class="eyebrow rv">Lo studio</p>
+      <h2 class="rv">Uno spazio che accoglie.</h2>
+      <p class="rv">Luce naturale, pochi tappetini, il bosco a un passo. Un ambiente pensato perché tu possa lasciare fuori la fretta.</p>
+      <ul>
+        <li class="rv">Gruppi piccoli, attenzione a ciascuno</li>
+        <li class="rv">Insegnanti che ti seguono per nome</li>
+        <li class="rv">Oli essenziali e rilassamento a fine pratica</li>
+      </ul>
+      <a class="btn btn--ghost rv" href="#">Prenota la lezione di prova</a>
+    </div>
+  </div>
+</section>
+
+<!-- DARK -->
+<section class="dark">
+  <div class="wrap">
+    <div class="crocus rv"></div>
+    <blockquote class="rv">«Ogni lezione è unica: elementi della natura, parole chiave, un lavoro dolce.»</blockquote>
+    <cite class="rv">Movimento nel Bosco</cite>
+  </div>
+</section>
+
+<!-- INSEGNANTI -->
+<section class="teachers">
+  <div class="wrap">
+    <p class="eyebrow rv" style="justify-content:center; display:inline-flex">Le insegnanti</p>
+    <h2 class="rv" style="margin-top:1rem; font-weight:400">Mani che ti conoscono.</h2>
+    <div class="grid">
+      <div class="teacher rv"><div class="ph"><img src="immagini/foto/laura-albertini.jpg" alt="Laura Albertini"></div><h3>Laura Albertini</h3><div class="role">Yoga</div></div>
+      <div class="teacher rv"><div class="ph"><img src="immagini/foto/camilla-rossini.jpg" alt="Camilla Rossini"></div><h3>Camilla Rossini</h3><div class="role">Pilates</div></div>
+      <div class="teacher rv"><div class="ph"><img src="immagini/foto/paola-parisi.jpg" alt="Paola Parisi"></div><h3>Paola Parisi</h3><div class="role">Yoga &amp; Pilates</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow rv" style="justify-content:center; display:inline-flex">Il primo passo</p>
+    <h2 class="rv" style="margin-top:1rem">La prima lezione è un regalo che ti fai.</h2>
+    <p class="rv">Provala senza impegno. Ti aspettiamo nel bosco.</p>
+    <a class="btn rv" href="#">Prenota la lezione di prova</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="brand">Movimento nel Bosco</div>
+    <div>Mompiano, Brescia · concept di stile</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.rv');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+</body>
+</html>

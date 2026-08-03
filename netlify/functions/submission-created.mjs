@@ -2,12 +2,15 @@
 // Si attiva da sola a OGNI invio di un modulo Netlify del sito e smista in base al modulo:
 //   1) "ordine-abbonamento" -> invia la MAIL DI CONFERMA ordine (Resend)
 //   2) "avvisami-eventi"    -> aggiunge il contatto a una LISTA BREVO (avvisi sulle date)
+//   3) "prova-gratuita"     -> mail di conferma a chi compila + copia alla scuola (Resend)
 //
 // === VARIABILI D'AMBIENTE (Netlify -> Site settings -> Environment variables) ===
 // Per la conferma ordini (Resend):
 //      RESEND_API_KEY = la tua chiave Resend
 //      MAIL_FROM      = "Movimento nel Bosco <info@movimentonelbosco.it>"
 //      MAIL_BCC       = (facoltativo) tua email per ricevere copia degli ordini
+//      MAIL_PROVA     = (facoltativo) dove arriva la copia delle richieste di prova
+//                       (default: paola@movimentonelbosco.it)
 // Per gli avvisi eventi (Brevo):
 //      BREVO_API_KEY  = chiave API di Brevo (Brevo -> impostazioni -> SMTP & API -> API Keys)
 //      BREVO_LIST_ID  = numero della lista Brevo in cui salvare gli iscritti agli avvisi
@@ -27,6 +30,9 @@ export const handler = async (event) => {
     }
     if (formName === 'ordine-abbonamento') {
       return await inviaConfermaOrdine(d);
+    }
+    if (formName === 'prova-gratuita') {
+      return await inviaRichiestaProva(d);
     }
     // Qualsiasi altro modulo: non facciamo nulla (resta comunque salvato su Netlify).
     return { statusCode: 200, body: 'ignored' };
@@ -76,6 +82,62 @@ function brevoUpsert(apiKey, payload) {
     },
     body: JSON.stringify(payload)
   });
+}
+
+// Piccolo escape per non rompere l'HTML della mail con i dati del form.
+function esc(s) {
+  return String(s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+// === Modulo "prova-gratuita" -> conferma a chi compila + copia alla scuola (Resend) ===
+async function inviaRichiestaProva(d) {
+  const nome = d.nome || '';
+  const email = d.email;
+  const telefono = d.telefono || '';
+  const disciplina = d.disciplina || '';
+  const messaggio = d.messaggio || '';
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey || !email) {
+    // Niente chiave o niente email: esci pulito, la richiesta è comunque salvata su Netlify Forms.
+    return { statusCode: 200, body: 'no-send' };
+  }
+
+  const from = process.env.MAIL_FROM || 'Movimento nel Bosco <onboarding@resend.dev>';
+  const scuola = process.env.MAIL_PROVA || 'paola@movimentonelbosco.it';
+
+  // 1) Conferma a chi ha compilato
+  const htmlCliente = `
+    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#2b1a2e">
+      <h2 style="color:#4a1463">Grazie ${esc(nome) || 'e benvenuto'}! 🌿</h2>
+      <p>Abbiamo ricevuto la tua richiesta per una lezione di prova${disciplina ? ` di <strong>${esc(disciplina)}</strong>` : ''}.</p>
+      <p>Ti scriviamo a breve per proporti giorno e orario. La prima lezione è gratuita e senza impegno.</p>
+      ${messaggio ? `<p style="color:#6e1e8e">Il tuo messaggio: “${esc(messaggio)}”</p>` : ''}
+      <p style="color:#6e1e8e">A presto,<br>Movimento nel Bosco — Mompiano (Brescia)</p>
+    </div>`;
+
+  // 2) Copia alla scuola, con reply-to su chi ha scritto (così basta "Rispondi")
+  const htmlScuola = `
+    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#2b1a2e">
+      <h2 style="color:#4a1463">Nuova richiesta di prova</h2>
+      <p><strong>Nome:</strong> ${esc(nome) || '—'}</p>
+      <p><strong>Email:</strong> ${esc(email)}</p>
+      ${telefono ? `<p><strong>Telefono:</strong> ${esc(telefono)}</p>` : ''}
+      <p><strong>Corso:</strong> ${esc(disciplina) || '—'}</p>
+      ${messaggio ? `<p><strong>Messaggio:</strong> ${esc(messaggio)}</p>` : ''}
+    </div>`;
+
+  const inviaMail = (to, subject, html, replyTo) => fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from, to: [to], subject, html, reply_to: replyTo })
+  });
+
+  const r1 = await inviaMail(email, 'Richiesta di prova ricevuta — Movimento nel Bosco', htmlCliente);
+  const r2 = await inviaMail(scuola, `Nuova richiesta di prova — ${nome || email}`, htmlScuola, email);
+
+  const ok = r1.ok && r2.ok;
+  return { statusCode: ok ? 200 : 502, body: ok ? 'sent' : 'send-error' };
 }
 
 // === Modulo "ordine-abbonamento" -> mail di conferma ordine (Resend) ===

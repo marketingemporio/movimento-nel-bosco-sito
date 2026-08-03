@@ -39,8 +39,7 @@
         <ul class="nav-links" id="nav-menu">
           <li class="has-dropdown">
             <span class="dropdown-parent">
-              <a href="yoga.html">Yoga</a>
-              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Mostra i corsi di Yoga"><span class="caret" aria-hidden="true"></span></button>
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Yoga <span class="caret" aria-hidden="true"></span></button>
             </span>
             <ul class="dropdown-menu">
               <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
@@ -68,7 +67,7 @@
               <li><a href="il-team.html">Le insegnanti</a></li>
             </ul>
           </li>
-          <li><a href="blog.html">Blog</a></li>
+          <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog</a></li> -->
         </ul>
       </nav>
       <div class="nav-cta">
@@ -99,26 +98,54 @@
       <div class="two-col" style="align-items:start">
         <!-- Via 1: WhatsApp (un tocco) -->
         <div class="step reveal" style="text-align:center;padding:38px 30px">
-          <span class="n" aria-hidden="true">💬</span>
+          <span class="n" aria-hidden="true"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="messaggio"><path d="M20 12.3c0 3.8-3.6 6.9-8 6.9-1 0-2-.2-2.9-.5L4 20.4l1.7-3.3A6.5 6.5 0 0 1 4 12.3c0-3.8 3.6-6.9 8-6.9s8 3.1 8 6.9Z"/></svg></span>
           <h3>Scrivici su WhatsApp</h3>
           <p style="margin-bottom:1.2rem">Il modo più veloce: dicci quale corso ti interessa e quando vorresti venire.</p>
-          <!-- SEGNAPOSTO WHATSAPP: ora punta al numero Emporio (+39 352 088 5612); sostituire se la scuola avrà un numero dedicato -->
-          <a class="btn btn-wa btn--lg" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+          <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+          <a class="btn btn-wa btn--lg" href="https://wa.me/393520885613?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener">
             <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
             Apri WhatsApp
           </a>
           <p style="margin-top:14px;font-size:.85rem;color:var(--ink-soft)">Oppure passa a trovarci: Via Fontane 32, Mompiano (Brescia).</p>
         </div>
 
-        <!-- Via 2: modulo Tally -->
+        <!-- Via 2: modulo nativo (Netlify Forms). All'invio la funzione
+             netlify/functions/submission-created.mjs manda in automatico
+             la mail di conferma a chi compila + copia a paola@movimentonelbosco.it. -->
         <div>
-          <!-- ⚠️ SEGNAPOSTO MODULO TALLY: qui c'è il form Yoga (ID w2LvYg) come TEMPORANEO.
-               Quando crei l'UNICO form con la tendina "Disciplina", sostituisci w2LvYg con il nuovo ID. -->
-          <div class="tally-wrap reveal">
-            <h3 style="margin-bottom:.8em">Preferisci il modulo?</h3>
-            <iframe data-tally-src="https://tally.so/embed/w2LvYg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="420" frameborder="0" marginheight="0" marginwidth="0" title="Richiedi una prova"></iframe>
-          </div>
-          <!-- SEGNAPOSTO EMAIL: quando c'è l'indirizzo dedicato, aggiungere qui una riga "oppure scrivici a ..." -->
+          <h3 style="margin-bottom:.8em">Preferisci il modulo?</h3>
+          <form class="form-card avvisami-form reveal" name="prova-gratuita" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/grazie-prova.html">
+            <input type="hidden" name="form-name" value="prova-gratuita">
+            <p hidden><label>Non compilare: <input name="bot-field"></label></p>
+            <div>
+              <label for="pv-nome">Nome</label>
+              <input id="pv-nome" type="text" name="nome" required autocomplete="name">
+            </div>
+            <div>
+              <label for="pv-email">Email</label>
+              <input id="pv-email" type="email" name="email" required autocomplete="email">
+            </div>
+            <div>
+              <label for="pv-tel">Telefono <span style="font-weight:400;color:var(--ink-soft)">(facoltativo)</span></label>
+              <input id="pv-tel" type="tel" name="telefono" autocomplete="tel">
+            </div>
+            <div>
+              <label for="pv-disc">Quale corso ti incuriosisce?</label>
+              <select id="pv-disc" name="disciplina">
+                <option value="Vinyasa Yoga">Vinyasa Yoga</option>
+                <option value="Pilates">Pilates</option>
+                <option value="Yoga in gravidanza">Yoga in gravidanza</option>
+                <option value="Yoga Mamma e Bimbo">Yoga Mamma e Bimbo</option>
+                <option value="Non so ancora">Non so ancora, mi fate sapere voi</option>
+              </select>
+            </div>
+            <div>
+              <label for="pv-msg">Un messaggio <span style="font-weight:400;color:var(--ink-soft)">(facoltativo)</span></label>
+              <textarea id="pv-msg" name="messaggio" rows="3"></textarea>
+            </div>
+            <button class="btn btn-cta" type="submit">Richiedi la prova</button>
+            <p class="ck-privacy">Useremo i tuoi dati solo per organizzare la lezione di prova. Ti arriva una mail di conferma; una copia va alla scuola.</p>
+          </form>
         </div>
       </div>
     </div>
@@ -159,7 +186,7 @@
       <div class="faq">
         <details>
           <summary>Devo avere esperienza per partecipare?</summary>
-          <div class="faq-a"><p>No. Le classi sono multilivello e ogni pratica viene adattata a chi c'è in sala: la prova serve proprio a capire, senza pressioni, se il corso fa per te.</p></div>
+          <div class="faq-a"><p>No. La prova serve proprio a questo: capire come lavoriamo, senza pressioni, e decidere se il corso fa per te.</p></div>
         </details>
         <details>
           <summary>Cosa devo portare?</summary>
@@ -203,7 +230,6 @@
         <div>
           <h4>Corsi</h4>
           <ul>
-            <li><a href="yoga.html">Yoga</a></li>
             <li><a href="vinyasa-yoga.html">Vinyasa Yoga</a></li>
             <li><a href="pilates.html">Pilates</a></li>
             <li><a href="gravidanza.html">Yoga Gravidanza</a></li>
@@ -219,17 +245,17 @@
             <li><a href="il-team.html">Il team</a></li>
             <li><a href="la-visione.html">La visione</a></li>
             <li><a href="regolamento.html">Regolamento</a></li>
-            <li><a href="blog.html">Blog dal Bosco</a></li>
+            <!-- BLOG NASCOSTO (temporaneo, da riattivare): <li><a href="blog.html">Blog dal Bosco</a></li> -->
           </ul>
         </div>
         <div>
           <h4>Contatti</h4>
           <ul>
-            <li>📍 Via Fontane 32, Brescia</li>
-            <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-            <li><a href="https://wa.me/393520885612" target="_blank" rel="noopener">💬 WhatsApp</a></li>
-            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener">📷 Instagram</a></li>
-            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener">📱 App prenotazione</a></li>
+            <li><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="luogo"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Via Fontane 32, Brescia</li>
+            <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+            <li><a href="https://wa.me/393520885613" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="messaggio"><path d="M20 12.3c0 3.8-3.6 6.9-8 6.9-1 0-2-.2-2.9-.5L4 20.4l1.7-3.3A6.5 6.5 0 0 1 4 12.3c0-3.8 3.6-6.9 8-6.9s8 3.1 8 6.9Z"/></svg> WhatsApp</a></li>
+            <li><a href="https://instagram.com/movimentonelbosco" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="instagram"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.9" cy="7.1" r=".7"/></svg> Instagram</a></li>
+            <li><a href="https://movimentonelbosco.it/app" target="_blank" rel="noopener"><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="app"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 5.6h3M12 18.4h.01"/></svg> App prenotazione</a></li>
             <li><a href="prenota.html">Come prenotare</a></li>
             <li><a href="prova-gratuita.html">Lezione di prova</a></li>
           </ul>
@@ -245,14 +271,12 @@
   <!-- ============ BARRA CTA MOBILE ============ -->
   <div class="mobile-cta">
     <a class="btn btn-cta" href="#contatti">Prenota la lezione di prova</a>
-    <!-- SEGNAPOSTO WHATSAPP: numero Emporio; sostituire se arriva un numero dedicato -->
-    <a class="btn btn-wa" href="https://wa.me/393520885612?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+    <!-- WhatsApp Movimento nel Bosco: +39 352 088 5613 (numero ufficiale della scuola) -->
+    <a class="btn btn-wa" href="https://wa.me/393520885613?text=Ciao!%20Vorrei%20prenotare%20una%20lezione%20di%20prova%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
       <svg class="ico-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
     </a>
   </div>
 
   <script src="js/nav.js" defer></script>
-  <!-- Loader Tally per il modulo "Richiedi la prova" -->
-  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 </body>
 </html>

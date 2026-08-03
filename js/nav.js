@@ -77,6 +77,27 @@ document.addEventListener('DOMContentLoaded', function () {
     if (e.key === 'Escape') setOpen(false);
   });
 
+  // ---------- Home: header sovrapposto alla foto, che resta in vista ----------
+  // Finché scorre la hero l'header sta trasparente sulla foto (testo chiaro);
+  // quando arriva il contenuto chiaro diventa solido, così resta leggibile.
+  if (header.classList.contains('site-header--over')) {
+    var hero = document.querySelector('.hero--big');
+    var pending = false;
+    function syncHeader() {
+      pending = false;
+      var limit = hero ? Math.max(0, hero.offsetHeight - header.offsetHeight) : 24;
+      header.classList.toggle('is-stuck', window.scrollY > limit);
+    }
+    function onScroll() {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(syncHeader);
+    }
+    syncHeader();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
   // ---------- Comparsa dolce allo scroll (.reveal) ----------
   // Rispetta prefers-reduced-motion (il CSS mostra tutto senza animazione).
   var els = document.querySelectorAll('.reveal');

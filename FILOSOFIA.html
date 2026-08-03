@@ -6,20 +6,21 @@
 <title>Filosofia — l'essenza di Movimento nel Bosco</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
   :root {
     --viola:#601d7d; --viola-scuro:#2e0644; --melanzana:#33252d;
     --violetto:#826fc5; --periwinkle:#889be2; --lilla:#d1b4ed; --lilla-tenue:#efe6fb;
     --lime:#9dbf43; --lime-tenue:#f0f4e0; --ambra:#f2ac20; --ambra-tenue:#fdf3dd;
-    --panna:#faf8f5; --ink-soft:#6d5f68;
+    --panna:#f4eee4; --ink-soft:#6d5f68; --gold:#7a5b17; --line:rgba(46,6,68,.12);
     --font-title:'Rubik',system-ui,sans-serif; --font-body:'DM Sans',system-ui,sans-serif;
     --radius-lg:26px; --shadow:0 22px 55px -24px rgba(46,6,68,.28);
   }
   * { box-sizing:border-box; }
   body { margin:0; font-family:var(--font-body); color:var(--melanzana); background:var(--panna); line-height:1.65; font-size:1.02rem; }
   .wrap { max-width:880px; margin:0 auto; padding:0 24px 80px; }
-  h1,h2,h3 { font-family:var(--font-title); color:var(--viola-scuro); line-height:1.15; margin:0 0 .5em; }
-  h1 { font-size:clamp(1.9rem,4.5vw,2.7rem); }
+  h1,h2,h3 { font-family:var(--font-title); color:var(--viola-scuro); line-height:1.08; margin:0 0 .5em; font-weight:600; letter-spacing:-.02em; }
+  h1 { font-size:clamp(2.2rem,5vw,3.3rem); letter-spacing:-.025em; }
+  .ico-i { width:1.05em; height:1.05em; vertical-align:-.16em; flex:none; }
   h2 { font-size:clamp(1.35rem,3vw,1.7rem); margin-top:2.4em; padding-top:.2em; }
   p { margin:0 0 1em; }
   strong { color:var(--viola-scuro); }
@@ -27,30 +28,27 @@
 
   header.hero {
     background:
-      radial-gradient(ellipse 60% 70% at 90% 0%, rgba(157,191,67,.35), transparent 60%),
-      radial-gradient(ellipse 55% 60% at 5% 100%, rgba(136,155,226,.35), transparent 60%),
-      linear-gradient(135deg, var(--viola-scuro), var(--viola));
-    color:#fff; padding:56px 24px 46px; text-align:center;
+      radial-gradient(ellipse 92% 78% at 50% -20%, rgba(130,111,197,.42), transparent 66%),
+      var(--viola-scuro);
+    color:#fff; padding:64px 24px 54px; text-align:center;
   }
-  header.hero .kicker { font-family:var(--font-title); letter-spacing:.2em; text-transform:uppercase; font-size:12.5px; color:var(--lilla); font-weight:600; }
+  header.hero .kicker { font-family:var(--font-body); letter-spacing:.22em; text-transform:uppercase; font-size:12.5px; color:#e7c877; font-weight:600; }
   header.hero h1 { color:#fff; margin:.4em auto .3em; max-width:22ch; }
   header.hero p { color:#efe6fb; max-width:46ch; margin:0 auto; }
 
   .lead { font-size:1.18rem; color:var(--ink-soft); }
 
-  .center-block { background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:clamp(28px,4vw,44px); margin:34px 0; border-left:6px solid var(--violetto); }
+  .center-block { background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow); padding:clamp(28px,4vw,44px); margin:34px 0; }
   .center-block p:last-child { margin-bottom:0; }
 
   .pillars { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:28px 0; }
-  .pillar { background:#fff; border-radius:var(--radius-lg); padding:26px 28px; box-shadow:var(--shadow); border-top:5px solid var(--violetto); }
-  .pillar--eventi { border-top-color:var(--lime); }
-  .pillar-tag { display:inline-block; font-family:var(--font-title); font-weight:600; font-size:.74rem; letter-spacing:.05em; text-transform:uppercase; color:var(--violetto); background:var(--lilla-tenue); padding:.3em 1em; border-radius:999px; margin-bottom:14px; }
-  .pillar--eventi .pillar-tag { color:#5c7317; background:var(--lime-tenue); }
+  .pillar { background:#fff; border-radius:var(--radius-lg); padding:26px 28px; box-shadow:var(--shadow); }
+  .pillar-tag { display:inline-block; font-family:var(--font-body); font-weight:600; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); background:transparent; border:1px solid var(--line); padding:.3em 1em; border-radius:999px; margin-bottom:14px; }
   .pillar ul { margin:.6em 0 0; padding-left:1.2em; }
   .pillar li { margin:.3em 0; }
   @media (max-width:640px) { .pillars { grid-template-columns:1fr; } }
 
-  .callout { background:var(--ambra-tenue); border:1px solid var(--ambra); border-radius:16px; padding:20px 24px; margin:22px 0; }
+  .callout { background:var(--ambra-tenue); border:1px solid var(--line); border-radius:16px; padding:20px 24px; margin:22px 0; }
   .callout h3 { margin:0 0 .4em; font-size:1.05rem; color:#8a5f0a; }
   .callout p:last-child { margin-bottom:0; }
 
@@ -107,11 +105,11 @@
   <h2>Perché "Movimento nel Bosco" (il nome)</h2>
   <div class="name-split">
     <div class="word">
-      <b>🌳 Bosco</b>
+      <b><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="albero"><path d="M12 21v-4.2"/><path d="M12 3 6.2 11.4h2.9l-3.6 5.4h13l-3.6-5.4h2.9L12 3Z"/></svg> Bosco</b>
       Il luogo reale (ai piedi del Colle San Giuseppe, Mompiano) e il simbolo: un posto dove la mente rallenta e si torna a respirare.
     </div>
     <div class="word">
-      <b>🌊 Movimento</b>
+      <b><svg class="ico-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-ico="natura"><path d="M3 9.2c2.2 0 2.2 2 4.5 2s2.2-2 4.5-2 2.2 2 4.5 2 2.3-2 4.5-2"/><path d="M3 15c2.2 0 2.2 2 4.5 2s2.2-2 4.5-2 2.2 2 4.5 2 2.3-2 4.5-2"/></svg> Movimento</b>
       Il cambiamento continuo del corpo e della mente, e una comunità di persone che si muove nella stessa direzione.
     </div>
   </div>

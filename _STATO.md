@@ -1,9 +1,16 @@
 # Movimento nel Bosco — STATO (leggimi per primo)
 
-> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-07-07**.
+> **Handoff per riprendere in una nuova chat.** Ultimo aggiornamento: **2026-08-03**.
 > Stato: **branch `restyling-v3`** — anteprima come **draft Netlify** (sito `movimento-nel-bosco-75b5b2ef`, account Paola; ogni `netlify deploy --no-build --dir .` senza `--prod` genera un nuovo link), NON in produzione. Il restyling-v2 resta intatto sul suo branch; snapshot pre-restyling nel tag **`versione-1`**.
 > 👉 **Parti dalla sezione [🆕 Sessione 2026-07-06/07](#-sessione-2026-07-0607--revisione-struttura-home-e-navbar) qui sotto**: è lo stato più recente.
 > Leggi anche: [`FILOSOFIA.md`](FILOSOFIA.md) (essenza e struttura della scuola — NUOVO), [`BRAND.md`](BRAND.md) (logo, palette, font), [`PAGINE.md`](PAGINE.md) (mappa pagine, contenuti, immagini) e [`BLOG.md`](BLOG.md) (sezione racconti: come aggiungerne).
+
+## 🆕 Sessione 2026-08-03 — numero WhatsApp ufficiale
+
+- **La scuola ha il suo numero: +39 352 088 5613.** Confermato da Paola come numero ufficiale di Movimento nel Bosco.
+- **Sostituito ovunque nel sito**: 107 sostituzioni in 25 pagine (link `wa.me/393520885613`, il numero scritto per esteso in home, e i commenti `SEGNAPOSTO WHATSAPP` rimossi perché non serve più cercarli). Il vecchio numero Emporio `393520885612` non compare più in nessun file del sito.
+- ⚠️ **Da verificare prima di pubblicare**: che il 5613 sia attivo su WhatsApp e risponda. Differisce di **una sola cifra** dal numero Emporio.
+- **QR code WhatsApp** con messaggio precompilato (prova Pilates e prova Yoga) in `brains/movimento-brain/Materiali/`.
 
 ## 🆕 Sessione 2026-07-06/07 — revisione struttura, home e navbar
 > Richieste di Paola, in sequenza. Tutto verificato con screenshot/click reali in locale.
@@ -24,7 +31,7 @@
 **Principi applicati (dal piano d'azione):**
 - **CTA unica dominante ovunque: "Prenota la lezione di prova"** (bottone ambra; l'app resta come link sobrio nel navbar). Ogni pagina chiude con la CTA prova.
 - **Mobile-first**: nuova **barra CTA fissa in basso** su mobile (prova + WhatsApp) su tutte le pagine.
-- **Frizione zero**: bottoni **WhatsApp** (`wa.me`) in home, prova, barra mobile e footer. ⚠️ Il numero è quello **Emporio (+39 352 088 5612)** come SEGNAPOSTO (già usato nella pagina di Camilla): cercare `SEGNAPOSTO WHATSAPP` per sostituirlo se arriva un numero dedicato.
+- **Frizione zero**: bottoni **WhatsApp** (`wa.me`) in home, prova, barra mobile e footer. Numero: **+39 352 088 5613** (numero ufficiale della scuola; fino al 2026-08-03 era il segnaposto Emporio +39 352 088 5612).
 - **Insegnanti in primo piano** (sezione "Facce vere" in home, team-grid con ritratti tondi). Foto Mantratzi/Parisi = placeholder iniziali (cerca `FOTO:`).
 - **Regola copy**: niente promesse di cura; benessere/equilibrio/ascolto/percorso. Claim brand in home: "Il benessere non è una destinazione, ma un percorso".
 - Recensioni Google reali con stelline su home e pagine corso.
@@ -38,7 +45,7 @@
 
 **Da fare / decisioni aperte (oltre alla lista "Cosa deve fare Michele"):**
 - Foto reali dallo shooting (10-11 lug) → sostituire hero/ritratti (cerca `FOTO:` e i commenti nei file).
-- Numero WhatsApp dedicato? (ora c'è quello Emporio, cerca `SEGNAPOSTO WHATSAPP`).
+- ~~Numero WhatsApp dedicato?~~ **Risolto il 2026-08-03**: la scuola ha il suo numero, **+39 352 088 5613** (vedi sessione in cima).
 - Link Instagram nel footer punta a `instagram.com/movimentonelbosco` (account previsto ~14 lug — verificare handle al lancio).
 - Anteprima locale: **`npx serve . -l 3000`** (⚠️ su questo PC `python` non funziona, è solo l'alias dello Store).
 

@@ -19,9 +19,39 @@ Definiti come variabili CSS nel blocco `:root` di `css/styles.css`.
 | Off-white | `--panna` | `#faf8f5` | sfondi chiari |
 
 ## Tipografia
-- **Titoli**: **Rubik** (Google Fonts)
-- **Testi / paragrafi**: **DM Sans** (Google Fonts)
+Fonte: `Movimento nel bosco brand_Rev.1.pdf`, pagina tipografia — Rubik per i **titoli**
+("contemporaneo e amichevole", dialoga col segno del logo), DM Sans per i **contenuti**
+("chiarezza, leggibilità e versatilità", neutralità che bilancia i titoli).
+
+- **Titoli**: **Rubik SemiBold (600)** (Google Fonts) — variabile `--font-title`
+  - Il peso non è opzionale: nel PDF Rev.1 **ogni** occorrenza di Rubik è SemiBold
+    (verificato sui font incorporati: il claim "Il benessere è un movimento naturale.",
+    "Concept di brand", "Movimento nel Bosco"). Con Regular (400) o Medium (500) i
+    titoli "non sembrano lo stesso font" del documento, pur essendo Rubik.
+  - Spaziatura: il documento usa `Tc -0.021`, cioè ≈ `letter-spacing: -.021em`.
+    Nel CSS i titoli stanno a `-.025em`: equivalente.
+  - Il peso è dichiarato **una volta sola**, su `h1,h2,h3,h4` in `css/styles.css`.
+    Non reintrodurre `font-weight` sui singoli titoli: è così che l'`h1` della home
+    era finito a 400.
+- **Sottotitoli, paragrafi, occhielli, didascalie, meta, etichette form**: **DM Sans** — `--font-body`
 - Caricati via `@import` in cima a `css/styles.css`. Entrambi gratuiti, nessun problema di licenza.
+
+### Chi usa cosa (per non far ri-scivolare l'assegnazione)
+| Rubik (`--font-title`) | DM Sans (`--font-body`) |
+|---|---|
+| `h1`–`h4` | occhielli: `.hero-eyebrow`, `.pillar-tag`, `.scroll-cue`, `.eyebrow` |
+| citazioni display: `.quote-band blockquote`, `.post-quote` | sottotitoli: `.teacher .role`, `.review cite` |
+| capolettera `.post-body ::first-letter` | meta/date: `.post-meta`, `.post-date`, `.post-card .date`, `.event .when` |
+| numeri display: `.pkg-price`, `.step .n` | didascalie: `.equip figcaption` |
+| domande FAQ `.faq summary`, firma `.post-signature` | form: `label`, `legend`, `strong` dentro i paragrafi |
+| | dati palinsesto: `.class-time`, `.class-name`, `.week-slot b`, `.tt-legend` |
+
+**Etichette d'interfaccia** (menu, bottoni, chip, tab: `--font-ui`) sono un caso a parte: il brand
+book non le classifica né come titoli né come testo. Oggi puntano a Rubik per dare carattere ai
+comandi; per spostarle tutte su DM Sans basta cambiare `--font-ui: var(--font-body)` nel `:root`.
+
+I pesi caricati devono coprire quelli usati: Rubik 300→800, DM Sans 400/500/600/700 + corsivo 400.
+Se assegni un peso non importato il browser lo simula (finto grassetto, resa sporca).
 
 ## Logo e icone (file in `assets/`, sorgente in `Brand DEF/`)
 - `assets/logo-positivo.svg` → **header** (su sfondo chiaro) — lockup crocus + lettering "movimento nel bosco".

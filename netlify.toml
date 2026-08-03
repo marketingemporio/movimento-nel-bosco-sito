@@ -4,3 +4,11 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+
+# La pagina contenitore /yoga.html è stata tolta: i corsi vivono nelle 3 pagine
+# della tendina. Chi arriva dal vecchio link finisce sul Vinyasa.
+[[redirects]]
+  from = "/yoga.html"
+  to = "/vinyasa-yoga.html"
+  status = 301
+  force = true
